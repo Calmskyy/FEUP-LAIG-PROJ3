@@ -28,6 +28,7 @@ class XMLscene extends CGFscene {
 
         this.viewIDs = new Object();
         this.themes = [];
+        this.themeIDs = new Object();
 
         this.gl.clearDepth(100.0);
         this.gl.enable(this.gl.DEPTH_TEST);
@@ -58,11 +59,11 @@ class XMLscene extends CGFscene {
     /**
      * Initializes the scene cameras with the values read from the XML file.
      */
-    initCameras() {
+    initCameras(theme) {
         var i = 0;
-        for (var key in this.graph.cameras) {
-            if (this.graph.cameras.hasOwnProperty(key)) {
-                var details = this.graph.cameras[key];
+        for (var key in theme.XML["cameras"]) {
+            if (theme.XML["cameras"].hasOwnProperty(key)) {
+                var details = theme.XML["cameras"][key];
                 if (details.type == "perspective") {
                     var camera = new CGFcamera(details.angle, details.near, details.far, details.fromCoords, details.toCoords);
                     this.viewIDs[key] = i;
@@ -87,18 +88,10 @@ class XMLscene extends CGFscene {
     }
 
     /**
-     * Initializes the themes with the values read from the XML file.
-     */
-    addTheme(theme) {
-        let size = this.themes.length;
-        this.themes[theme] = size;
-    }
-
-    /**
      * Updates the theme used upon being changed in the interface.
      */
     updateTheme() {
-        this.selectedTheme = this.themes[this.selectedTheme];
+        this.initializeScene();
     }
 
     /**
@@ -122,17 +115,17 @@ class XMLscene extends CGFscene {
     /**
      * Initializes the scene lights with the values read from the XML file.
      */
-    initLights() {
+    initLights(theme) {
         var i = 0;
         // Lights index.
 
         // Reads the lights from the scene graph.
-        for (var key in this.graph.lights) {
+        for (var key in theme.XML["lights"]) {
             if (i >= 8)
                 break;              // Only eight lights allowed by WebGL.
 
             if (this.graph.lights.hasOwnProperty(key)) {
-                var light = this.graph.lights[key];
+                var light = theme.XML["lights"][key];
 
                 this.lights[i].setPosition(light[2][0], light[2][1], light[2][2], light[2][3]);
                 this.lights[i].setAmbient(light[3][0], light[3][1], light[3][2], light[3][3]);
@@ -197,12 +190,25 @@ class XMLscene extends CGFscene {
         this.setAmbient(0.2, 0.4, 0.8, 1.0);
         this.setDiffuse(0.2, 0.4, 0.8, 1.0);
         this.setSpecular(0.2, 0.4, 0.8, 1.0);
-        this.setShininess(10.0);
+        this.
+        setShininess(10.0);
     }
+
+    saveThemes(sceneThemes) {
+        var i = 0;
+        for (var j = 0; j < sceneThemes.length; j++) {
+            this.themeIDs[sceneThemes[j]] = i;
+            i++;
+        }
+        console.log(this.themeIDs);
+    }
+
     /** Handler called when the graph is finally loaded. 
      * As loading is asynchronous, this may be called already after the application has started the run loop
      */
-    onGraphLoaded() {
+    initializeScene() {
+        this.sceneInited = true;
+
         this.axis = new CGFaxis(this, this.graph.referenceLength);
 
         this.gl.clearColor(this.graph.background[0], this.graph.background[1], this.graph.background[2], this.graph.background[3]);
@@ -211,27 +217,24 @@ class XMLscene extends CGFscene {
 
         this.interface.initGUI();
 
-        this.initLights();
+        var theme = this.themes[this.selectedTheme];
 
-        this.initCameras();
+        this.initLights(theme);
+
+        this.initCameras(theme);
 
         this.interface.addViews();
 
         this.interface.addThemes();
 
-        this.addTheme();
-
         this.updateCamera();
-
-        this.sceneInited = true;
     }
-
-    addGraph() {
-        this.initLights();
-
-        this.initCameras();
-
-        this.addTheme();
+    
+    /**
+     * 
+     */
+    addGraph(theme) {
+        this.themes[this.themes.length] = theme;
     }
 
     update(t) {

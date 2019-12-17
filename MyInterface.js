@@ -35,8 +35,6 @@ class MyInterface extends CGFinterface {
         this.gui = new dat.GUI();
         this.gui.add(this.scene, 'displayAxis').name('Display Axis');
         this.gui.add(this.scene, 'scaleFactor', 0.1, 15).name('Scale Factor');
-        this.addViews();
-        this.addThemes();
     }
 
     processKeyDown(event) {
@@ -59,7 +57,7 @@ class MyInterface extends CGFinterface {
     }
 
     addThemes() {
-        this.gui.add(this.scene, 'selectedTheme', this.scene.themes).name('Selected Theme').onChange(this.scene.updateTheme.bind(this.scene));
+        this.gui.add(this.scene, 'selectedTheme', this.scene.themeIDs).name('Selected Theme').onChange(this.scene.updateTheme.bind(this.scene));
     }
 
     /**

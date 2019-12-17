@@ -58,15 +58,18 @@ class MySceneGraph {
          * If any error occurs, the reader calls onXMLError on this object, with an error message
          */
         var i = 0;
+        var sceneThemes = [];
         for (var key in filenames) {
             if (filenames.hasOwnProperty(key)) {
                 var filename = filenames[key];
                 this.reader.open('scenes/' + filename, this);
                 this.content[key] = [];
                 this.themes[i] = {name: key, XML: null};
+                sceneThemes[i] = key;
                 i++;
             }
         }
+        this.scene.saveThemes(sceneThemes);
     }
 
     /*
@@ -81,6 +84,7 @@ class MySceneGraph {
         for (let j = 0; j < this.themes.length; j++) {
             if (this.themes[j].XML == null) {
                 this.themes[j].XML = this.content[this.themes[j].name];
+                this.scene.addGraph(this.themes[j]);
             }
         }
 
@@ -93,9 +97,7 @@ class MySceneGraph {
 
         // As the graph loaded ok, signal the scene so that any additional initialization depending on the graph can take place
         if (this.scene.sceneInited == false)
-            this.scene.onGraphLoaded();
-        else
-            this.scene.addGraph();
+            this.scene.initializeScene();
     }
 
     /**
@@ -1454,11 +1456,6 @@ class MySceneGraph {
      * Displays the scene, processing each node, starting in the root node.
      */
     displayScene() {
-        //To do: Create display loop for transversing the scene graph
-
-        //console.log(this.scene.selectedTheme);
-        //console.log(this.themes);
-        //console.log(this.idRoot);
         var index = this.scene.selectedTheme;
         var rootTexture = this.themes[index].XML.components[this.idRoot[this.themes[index].name]]["texture"];
         var selectedMaterial = this.mPresses % this.themes[index].XML.components[this.idRoot[this.themes[index].name]]["materials"].length;
