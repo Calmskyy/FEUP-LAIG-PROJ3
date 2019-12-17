@@ -253,6 +253,8 @@ class MySceneGraph {
         this.content[contentKey]["animations"] = this.animations;
         this.content[contentKey]["primitives"] = this.primitives;
         this.content[contentKey]["components"] = this.components;
+        this.cameras = [];
+        this.lights = [];
     }
 
     /**

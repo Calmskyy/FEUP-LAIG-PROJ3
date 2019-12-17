@@ -91,6 +91,7 @@ class XMLscene extends CGFscene {
      * Updates the theme used upon being changed in the interface.
      */
     updateTheme() {
+        this.viewIDs = new Object();
         this.initializeScene();
     }
 
@@ -124,7 +125,7 @@ class XMLscene extends CGFscene {
             if (i >= 8)
                 break;              // Only eight lights allowed by WebGL.
 
-            if (this.graph.lights.hasOwnProperty(key)) {
+            if (theme.XML["lights"].hasOwnProperty(key)) {
                 var light = theme.XML["lights"][key];
 
                 this.lights[i].setPosition(light[2][0], light[2][1], light[2][2], light[2][3]);
@@ -190,8 +191,7 @@ class XMLscene extends CGFscene {
         this.setAmbient(0.2, 0.4, 0.8, 1.0);
         this.setDiffuse(0.2, 0.4, 0.8, 1.0);
         this.setSpecular(0.2, 0.4, 0.8, 1.0);
-        this.
-        setShininess(10.0);
+        this.setShininess(10.0);
     }
 
     saveThemes(sceneThemes) {
@@ -200,7 +200,6 @@ class XMLscene extends CGFscene {
             this.themeIDs[sceneThemes[j]] = i;
             i++;
         }
-        console.log(this.themeIDs);
     }
 
     /** Handler called when the graph is finally loaded. 
@@ -229,7 +228,7 @@ class XMLscene extends CGFscene {
 
         this.updateCamera();
     }
-    
+
     /**
      * 
      */
