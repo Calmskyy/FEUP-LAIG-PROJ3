@@ -1,0 +1,291 @@
+<lxs>
+    <scene root="default_root" axis_length="5"/>
+
+    <views default="default_firstView">
+        <perspective id="default_firstView" near="0.1" far="500" angle="58">
+            <from x="20" y="45" z="0" />
+            <to x="21" y="-2" z="-1" />
+        </perspective>
+        <perspective id="default_secondView" near="0.1" far="500" angle="58">
+            <from x="-10" y="20" z="5" />
+            <to x="0" y="15" z="0" />
+        </perspective>
+        <perspective id="default_thirdView" near="0.1" far="500" angle="58">
+            <from x="-10" y="30" z="-15" />
+            <to x="0" y="-2" z="0" />
+        </perspective>
+        <perspective id="default_fourthView" near="0.1" far="500" angle="58">
+            <from x="15" y="15" z="-15" />
+            <to x="0" y="-2" z="0" />
+        </perspective>
+        <perspective id="default_fifthView" near="0.1" far="500" angle="58">
+            <from x="50" y="10" z="-30" />
+            <to x="0" y="-2" z="0" />
+        </perspective>
+    </views>
+
+    <globals>
+        <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+        <background r="0.0" g="0.0" b="0.0" a="1.0" />
+    </globals>
+
+    <lights>
+        <omni id="default_firstLight" enabled="1">
+            <location x="0" y="9" z="0" w="1.0" />
+            <ambient r="0" g="0" b="0" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="0" g="0" b="0" a="0" />
+            <attenuation constant="1" linear="0" quadratic="0" />
+        </omni>
+        <omni id="default_secondLight" enabled="0">
+            <location x="0" y="4" z="1.5" w="1.0" />
+            <ambient r="0" g="0" b="0" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="0" g="0" b="0" a="1.0" />
+            <attenuation constant="0" linear="1" quadratic="0" />
+        </omni>
+        <omni id="default_thirdLight" enabled="0">
+            <location x=".3.5" y="4" z="-4" w="1.0" />
+            <ambient r="0" g="0" b="0" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="0" g="0" b="0" a="1.0" />
+            <attenuation constant="0" linear="1" quadratic="0" />
+        </omni>
+        <omni id="default_fourthLight" enabled="0">
+            <location x="6" y="4" z="4" w="1.0" />
+            <ambient r="0" g="0" b="0" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="0" g="0" b="0" a="1.0" />
+            <attenuation constant="0" linear="1" quadratic="0" />
+        </omni>
+        <spot id="default_right-headlight1" enabled="1" angle="0.5" exponent="0.1">
+            <location x="3.9" y="1.7" z="2.5" w="1.0" />
+            <target x="10" y="0" z="2.5" />
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="0" g="0" b="0" a="1.0" />
+            <attenuation constant="0" linear="1" quadratic="0" />
+        </spot>
+    </lights>
+
+    <textures>
+        <texture id="default_metal" file="scenes/images/metal.jpg" />
+        <texture id="default_glass" file="scenes/images/glass.jpg" />
+        <texture id="default_wood" file="scenes/images/wood.jpg" />
+        <texture id="default_grass" file="scenes/images/grass.jpg" />
+        <texture id="default_plant" file="scenes/images/plant.jpg" />
+    </textures>
+
+    <materials>
+        <material id="default_carRed" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.24" g="0.05" b="0.04" a="1.0" />
+            <diffuse r="0.96" g="0.2" b="0.16" a="1.0" />
+            <specular r="0" g="0" b="0" a="0" /> 
+        </material>
+        <material id="default_semaphoreRed" shininess="10">
+            <emission r="0.86" g="0.08" b="0.08" a="1.0" />
+            <ambient r="0.22" g="0.02" b="0.06" a="1.0" />
+            <diffuse r="0.86" g="0.08" b="0.08" a="1.0" />
+            <specular r="0" g="0" b="0" a="0" /> 
+        </material>
+        <material id="default_semaphoreDarkRed" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.03" g="0.0" b="0.0" a="1.0" />
+            <diffuse r="0.1" g="0.0" b="0.0" a="1.0" />
+            <specular r="0" g="0" b="0" a="0" />                       
+        </material>
+        <material id="default_green" shininess="10">
+            <emission r="0.0" g="1.0" b="0.0" a="1.0" />
+            <ambient r="0.0" g="0.2" b="0.0" a="1.0" />
+            <diffuse r="0.0" g="1.0" b="0.0" a="1.0" />
+            <specular r="0" g="0" b="0" a="0" /> 
+        </material>
+        <material id="default_darkGreen" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.0" g="0.03" b="0.0" a="1.0" />
+            <diffuse r="0.0" g="0.1" b="0.0" a="1.0" />
+            <specular r="0" g="0" b="0" a="0" />             
+        </material>
+        <material id="default_grassGreen" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.0" g="1.0" b="0.0" a="1.0" />
+            <diffuse r="0.0" g="1.0" b="0.0" a="1.0" />
+            <specular r="0" g="0" b="0" a="0" /> 
+        </material>
+        <material id="default_treetopGreen" shininess="1">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.1" g="0.2" b="0.0" a="1.0" />
+            <diffuse r="0.1" g="0.2" b="0.0" a="1.0" />
+            <specular r="0" g="0" b="0" a="0" /> 
+        </material>
+        <material id="default_tree" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.5" g="0.25" b="0.1" a="1.0" />
+            <diffuse r="0.5" g="0.25" b="0.1" a="1.0" />
+            <specular r="0" g="0" b="0" a="0" /> 
+        </material>
+        <material id="default_lightBlue" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.03" g="0.14" b="1.0" a="1.0" />
+            <diffuse r="0.12" g="0.56" b="1.0" a="1.0" />
+            <specular r="0" g="0" b="0" a="0" />             
+        </material>
+        <material id="default_glass" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="0.1" />
+            <ambient r="0.03" g="0.14" b="0.5" a="0.1" />
+            <diffuse r="0.26" g="0.26" b="0.26" a="0.1" />
+            <specular r="0.1" g="0.1" b="0.1" a="0.1" />             
+        </material>
+        <material id="default_yellow" shininess="10">
+            <emission r="0.95" g="0.67" b="0.12" a="1.0" />
+            <ambient r="0.24" g="0.17" b="0.03" a="1.0" />
+            <diffuse r="0.95" g="0.67" b="0.12" a="1.0" />
+            <specular r="0" g="0" b="0" a="0" />             
+        </material>
+        <material id="default_darkYellow" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.03" g="0.03" b="0.0" a="1.0" />
+            <diffuse r="0.1" g="0.1" b="0.0" a="1.0" />
+            <specular r="0" g="0" b="0" a="0" />             
+        </material>
+        <material id="default_gray" shininess="0">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+            <diffuse r="0.8" g="0.8" b="0.8" a="1.0" />
+            <specular r="0" g="0" b="0" a="0" />             
+        </material>
+        <material id="default_darkGray" shininess="0">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
+            <diffuse r="0.2" g="0.2" b="0.2" a="1.0" />
+            <specular r="0" g="0" b="0" a="1.0" />
+        </material>
+        <material id="default_white" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.25" g="0.25" b="0.24" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="0.98" a="1.0" />
+            <specular r="0" g="0" b="0" a="0" />             
+        </material>
+        <material id="default_sidewalk" shininess="0">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.25" g="0.25" b="0.24" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="0.98" a="1.0" />
+            <specular r="0" g="0" b="0" a="1.0" />            
+        </material>
+        <material id="default_brown" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.14" g="0.07" b="0.02" a="1.0" />
+            <diffuse r="0.55" g="0.27" b="0.07" a="1.0" />
+            <specular r="0" g="0" b="0" a="0" />             
+        </material>
+    </materials>
+
+    <transformations>
+        <transformation id="default_noTransform">
+            <translate x="0" y="0" z="0" />
+        </transformation>
+    </transformations>
+
+    <animations>
+        <animation id ="default_train-movement">
+            <keyframe instant="0">
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="0.01" y="0.01" z="0.01" />
+            </keyframe>
+            <keyframe instant="10">
+                <translate x="0" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="0.01" y="0.01" z="0.01" />
+            </keyframe>
+            <keyframe instant="20">
+                <translate x="78" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="25">
+                <translate x="158" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="1" y="1" z="1" />
+            </keyframe>
+            <keyframe instant="30">
+                <translate x="178" y="0" z="0" />
+                <rotate angle_x="0" angle_y="0" angle_z="0" />
+                <scale x="0" y="0" z="0" />
+            </keyframe>
+        </animation>
+    </animations>
+
+    <primitives>
+        <primitive id="default_rectangle">
+            <rectangle x1="-4" y1="0" x2="4" y2="3" />
+        </primitive>
+        <primitive id="default_plane"> 
+            <plane npartsU="5" npartsV="8" />
+        </primitive>
+        <primitive id="default_patch"> 
+            <patch npointsU="4" npointsV="4" npartsU="8" npartsV="8">
+                <controlpoint x="0.3" y="0" z="-1"/>
+                <controlpoint x="2" y="0" z="0.5"/>
+                <controlpoint x="0.5" y="0" z="2"/>
+                <controlpoint x="0" y="0" z="3"/>
+                <controlpoint x="0.3" y="0.4" z="-1"/>
+                <controlpoint x="2" y="2.666" z="0.5"/>
+                <controlpoint x="0.5" y="0.666" z="2"/>
+                <controlpoint x="0" y="0" z="3"/>
+                <controlpoint x="-0.3" y="0.4" z="-1"/>
+                <controlpoint x="-2" y="2.666" z="0.5"/>
+                <controlpoint x="-0.5" y="0.666" z="2"/>
+                <controlpoint x="0" y="0" z="3"/>
+                <controlpoint x="-0.3" y="0" z="-1"/>
+                <controlpoint x="-2" y="0" z="0.5"/>
+                <controlpoint x="-0.5" y="0" z="2"/>
+                <controlpoint x="0" y="0" z="3"/>
+            </patch>
+        </primitive>
+        <primitive id="default_cylinder2">
+            <cylinder2 base="0.3" top="0.3" height="3" slices="10" stacks="5"/>
+        </primitive>
+        <primitive id="default_triangle">
+            <triangle x1="-3" y1="2.2" z1="3" x2="-2"  y2="3.2"  z2="3" x3="-2" y3="2.2" z3="3" />
+        </primitive>
+        <primitive id="default_sphere">
+            <sphere radius="2.15" slices="20" stacks="20"/>
+        </primitive>
+        <primitive id="default_torus">
+            <torus inner="1" outer="3" slices="10" loops="10"/>
+        </primitive>
+        <primitive id="default_cylinder">
+            <cylinder base="1" top="1" height="3" slices="10" stacks="5"/>
+        </primitive>        
+    </primitives>
+
+    <components>
+        <component id="default_root">
+            <transformation>
+                <translate x="0" y="0" z="0" />
+            </transformation>
+            <materials>
+                <material id="default_carRed" />
+            </materials>
+            <texture id="none" />
+            <children>
+                <componentref id="test" />
+            </children>
+        </component>
+
+        <component id="test">
+            <transformation>
+                <translate x="0" y="0.01" z="0" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="default_grass" length_s="10" length_t="10"/>
+            <children>
+                <primitiveref id="default_sphere" />
+            </children>
+        </component>
+    </components>
+</lxs>
