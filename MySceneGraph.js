@@ -40,6 +40,9 @@ class MySceneGraph {
         this.themes = [];
 
         this.content = [];
+        this.ambient = [];
+        this.background = [];
+        this.referenceLength;
         this.cameras = [];
         this.lights = [];
         this.textures = [];
@@ -245,6 +248,9 @@ class MySceneGraph {
                 return error;
         }
 
+        this.content[contentKey]["length"] = this.referenceLength;
+        this.content[contentKey]["ambient"] = this.ambient;
+        this.content[contentKey]["background"] = this.background;
         this.content[contentKey]["cameras"] = this.cameras;
         this.content[contentKey]["lights"] = this.lights;
         this.content[contentKey]["textures"] = this.textures;
@@ -253,8 +259,17 @@ class MySceneGraph {
         this.content[contentKey]["animations"] = this.animations;
         this.content[contentKey]["primitives"] = this.primitives;
         this.content[contentKey]["components"] = this.components;
+        this.referenceLength = null;
+        this.ambient = [];
+        this.background = [];
         this.cameras = [];
         this.lights = [];
+        this.textures = [];
+        this.materials = [];
+        this.transformations = [];
+        this.animations = [];
+        this.primitives = [];
+        this.components = [];
     }
 
     /**
@@ -393,9 +408,6 @@ class MySceneGraph {
     parseAmbient(ambientsNode) {
 
         var children = ambientsNode.children;
-
-        this.ambient = [];
-        this.background = [];
 
         var nodeNames = [];
 

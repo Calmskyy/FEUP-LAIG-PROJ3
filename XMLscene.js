@@ -208,15 +208,15 @@ class XMLscene extends CGFscene {
     initializeScene() {
         this.sceneInited = true;
 
-        this.axis = new CGFaxis(this, this.graph.referenceLength);
+        var theme = this.themes[this.selectedTheme];
 
-        this.gl.clearColor(this.graph.background[0], this.graph.background[1], this.graph.background[2], this.graph.background[3]);
+        this.axis = new CGFaxis(this, theme.XML["length"]);
 
-        this.setGlobalAmbientLight(this.graph.ambient[0], this.graph.ambient[1], this.graph.ambient[2], this.graph.ambient[3]);
+        this.gl.clearColor(theme.XML["background"][0], theme.XML["background"][1], theme.XML["background"][2], theme.XML["background"][3]);
+
+        this.setGlobalAmbientLight(theme.XML["ambient"][0], theme.XML["ambient"][1], theme.XML["ambient"][2], theme.XML["ambient"][3]);
 
         this.interface.initGUI();
-
-        var theme = this.themes[this.selectedTheme];
 
         this.initLights(theme);
 
