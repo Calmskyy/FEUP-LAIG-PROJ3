@@ -1449,6 +1449,8 @@ class MySceneGraph {
         }
         //if is primitive
         else {
+            this.pickIndex++;
+            this.scene.registerForPick(this.pickIndex, XML.primitives[nodeID]);
             this.scene.multMatrix(matrix);
             if (texture != "none") {
                 material.setTexture(texture);
@@ -1466,6 +1468,7 @@ class MySceneGraph {
      * Displays the scene, processing each node, starting in the root node.
      */
     displayScene() {
+        this.pickIndex = 0;
         var index = this.scene.selectedTheme;
         var rootTexture = this.themes[index].XML.components[this.idRoot[this.themes[index].name]]["texture"];
         var selectedMaterial = this.mPresses % this.themes[index].XML.components[this.idRoot[this.themes[index].name]]["materials"].length;

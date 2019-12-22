@@ -262,7 +262,7 @@
             <transformation>
                 <translate x="0" y="0" z="10" />
                 <rotate axis="y" angle="90" />
-                <scale x="2" y="2" z="1" />
+                <scale x="4" y="4" z="1" />
             </transformation>
             <materials>
                 <material id="inherit" />
@@ -324,7 +324,7 @@
         <component id="piece1">
             <transformation>
                 <translate x="1" y="1" z="0.05" />
-                <scale x="0.5" y="0.5" z="0.1" />
+                <scale x="0.25" y="0.25" z="0.1" />
             </transformation>
             <materials>
                 <material id="red" />
@@ -338,7 +338,7 @@
         <component id="piece2">
             <transformation>
                 <translate x="1" y="2" z="0.05" />
-                <scale x="0.5" y="0.5" z="0.1" />
+                <scale x="0.25" y="0.25" z="0.1" />
             </transformation>
             <materials>
                 <material id="red" />
@@ -352,7 +352,7 @@
         <component id="piece3">
             <transformation>
                 <translate x="1" y="3" z="0.05" />
-                <scale x="0.5" y="0.5" z="0.1" />
+                <scale x="0.25" y="0.25" z="0.1" />
             </transformation>
             <materials>
                 <material id="red" />
@@ -366,7 +366,7 @@
         <component id="piece4">
             <transformation>
                 <translate x="1" y="4" z="0.05" />
-                <scale x="0.5" y="0.5" z="0.1" />
+                <scale x="0.25" y="0.25" z="0.1" />
             </transformation>
             <materials>
                 <material id="red" />
@@ -380,7 +380,7 @@
         <component id="piece5">
             <transformation>
                 <translate x="1" y="6" z="0.05" />
-                <scale x="0.5" y="0.5" z="0.1" />
+                <scale x="0.25" y="0.25" z="0.1" />
             </transformation>
             <materials>
                 <material id="green" />
@@ -394,7 +394,7 @@
         <component id="piece6">
             <transformation>
                 <translate x="1" y="7" z="0.05" />
-                <scale x="0.5" y="0.5" z="0.1" />
+                <scale x="0.25" y="0.25" z="0.1" />
             </transformation>
             <materials>
                 <material id="green" />
@@ -408,7 +408,7 @@
         <component id="piece7">
             <transformation>
                 <translate x="1" y="8" z="0.05" />
-                <scale x="0.5" y="0.5" z="0.1" />
+                <scale x="0.25" y="0.25" z="0.1" />
             </transformation>
             <materials>
                 <material id="green" />
@@ -422,7 +422,7 @@
         <component id="piece8">
             <transformation>
                 <translate x="1" y="9" z="0.05" />
-                <scale x="0.5" y="0.5" z="0.1" />
+                <scale x="0.25" y="0.25" z="0.1" />
             </transformation>
             <materials>
                 <material id="green" />
