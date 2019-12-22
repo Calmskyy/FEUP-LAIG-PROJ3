@@ -36,7 +36,7 @@ class XMLscene extends CGFscene {
         this.gl.depthFunc(this.gl.LEQUAL);
 
         this.scaleFactor = 1;
-        this.displayAxis = false;
+        this.displayAxis = true;
         this.selectedView = 0;
         this.selectedTheme = 0;
 

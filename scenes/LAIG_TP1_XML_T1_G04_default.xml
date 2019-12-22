@@ -74,38 +74,21 @@
         <texture id="wood" file="scenes/images/wood.jpg" />
         <texture id="grass" file="scenes/images/grass.jpg" />
         <texture id="plant" file="scenes/images/plant.jpg" />
+        <texture id="board" file="scenes/images/board.png" />
     </textures>
 
     <materials>
-        <material id="carRed" shininess="10">
+        <material id="red" shininess="10">
             <emission r="0.0" g="0.0" b="0.0" a="1.0" />
             <ambient r="0.24" g="0.05" b="0.04" a="1.0" />
             <diffuse r="0.96" g="0.2" b="0.16" a="1.0" />
             <specular r="0" g="0" b="0" a="0" /> 
-        </material>
-        <material id="semaphoreRed" shininess="10">
-            <emission r="0.86" g="0.08" b="0.08" a="1.0" />
-            <ambient r="0.22" g="0.02" b="0.06" a="1.0" />
-            <diffuse r="0.86" g="0.08" b="0.08" a="1.0" />
-            <specular r="0" g="0" b="0" a="0" /> 
-        </material>
-        <material id="semaphoreDarkRed" shininess="10">
-            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
-            <ambient r="0.03" g="0.0" b="0.0" a="1.0" />
-            <diffuse r="0.1" g="0.0" b="0.0" a="1.0" />
-            <specular r="0" g="0" b="0" a="0" />                       
         </material>
         <material id="green" shininess="10">
             <emission r="0.0" g="1.0" b="0.0" a="1.0" />
             <ambient r="0.0" g="0.2" b="0.0" a="1.0" />
             <diffuse r="0.0" g="1.0" b="0.0" a="1.0" />
             <specular r="0" g="0" b="0" a="0" /> 
-        </material>
-        <material id="darkGreen" shininess="10">
-            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
-            <ambient r="0.0" g="0.03" b="0.0" a="1.0" />
-            <diffuse r="0.0" g="0.1" b="0.0" a="1.0" />
-            <specular r="0" g="0" b="0" a="0" />             
         </material>
         <material id="grassGreen" shininess="10">
             <emission r="0.0" g="0.0" b="0.0" a="1.0" />
@@ -218,8 +201,8 @@
     </animations>
 
     <primitives>
-        <primitive id="rectangle">
-            <rectangle x1="-4" y1="0" x2="4" y2="3" />
+        <primitive id="surface">
+            <rectangle x1="0" y1="0" x2="5" y2="5" />
         </primitive>
         <primitive id="plane"> 
             <plane npartsU="5" npartsV="8" />
@@ -251,7 +234,7 @@
             <triangle x1="-3" y1="2.2" z1="3" x2="-2"  y2="3.2"  z2="3" x3="-2" y3="2.2" z3="3" />
         </primitive>
         <primitive id="sphere">
-            <sphere radius="2.15" slices="20" stacks="20"/>
+            <sphere radius="1" slices="20" stacks="20"/>
         </primitive>
         <primitive id="torus">
             <torus inner="1" outer="3" slices="10" loops="10"/>
@@ -264,25 +247,187 @@
     <components>
         <component id="default_root">
             <transformation>
-                <translate x="0" y="0" z="0" />
+                <transformationref id="noTransform"/>
             </transformation>
             <materials>
-                <material id="carRed" />
+                <material id="red" />
             </materials>
             <texture id="none" />
             <children>
-                <componentref id="test" />
+                <componentref id="board" />
             </children>
         </component>
 
-        <component id="test">
+        <component id="board">
             <transformation>
-                <translate x="0" y="0.01" z="0" />
+                <translate x="0" y="0" z="10" />
+                <rotate axis="y" angle="90" />
+                <scale x="2" y="2" z="1" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="grass" length_s="10" length_t="10"/>
+            <texture id="none" />
+            <children>
+                <componentref id="board-tiles" />
+                <componentref id="tray" />
+            </children>
+        </component>
+
+        <component id="board-tiles">
+            <transformation>
+                <transformationref id="noTransform"/>
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="board" length_s="5" length_t="5"/>
+            <children>
+                <primitiveref id="surface" />
+            </children>
+        </component>
+
+        <component id="tray">
+            <transformation>
+                <translate x="-6" y="-2.5" z="0" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="wood" length_s="5" length_t="5"/>
+            <children>
+                <componentref id="wood-surface" />
+                <componentref id="piece1" />
+                <componentref id="piece2" />
+                <componentref id="piece3" />
+                <componentref id="piece4" />
+                <componentref id="piece5" />
+                <componentref id="piece6" />
+                <componentref id="piece7" />
+                <componentref id="piece8" />
+            </children>
+        </component>
+
+        <component id="wood-surface">
+            <transformation>
+                <scale x="0.5" y="2" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="wood" length_s="5" length_t="5"/>
+            <children>
+                <primitiveref id="surface" />
+            </children>
+        </component>
+
+        <component id="piece1">
+            <transformation>
+                <translate x="1" y="1" z="0.05" />
+                <scale x="0.5" y="0.5" z="0.1" />
+            </transformation>
+            <materials>
+                <material id="red" />
+            </materials>
+            <texture id="grass" length_s="5" length_t="5"/>
+            <children>
+                <primitiveref id="sphere" />
+            </children>
+        </component>
+
+        <component id="piece2">
+            <transformation>
+                <translate x="1" y="2" z="0.05" />
+                <scale x="0.5" y="0.5" z="0.1" />
+            </transformation>
+            <materials>
+                <material id="red" />
+            </materials>
+            <texture id="grass" length_s="5" length_t="5"/>
+            <children>
+                <primitiveref id="sphere" />
+            </children>
+        </component>
+
+        <component id="piece3">
+            <transformation>
+                <translate x="1" y="3" z="0.05" />
+                <scale x="0.5" y="0.5" z="0.1" />
+            </transformation>
+            <materials>
+                <material id="red" />
+            </materials>
+            <texture id="grass" length_s="5" length_t="5"/>
+            <children>
+                <primitiveref id="sphere" />
+            </children>
+        </component>
+
+        <component id="piece4">
+            <transformation>
+                <translate x="1" y="4" z="0.05" />
+                <scale x="0.5" y="0.5" z="0.1" />
+            </transformation>
+            <materials>
+                <material id="red" />
+            </materials>
+            <texture id="grass" length_s="5" length_t="5"/>
+            <children>
+                <primitiveref id="sphere" />
+            </children>
+        </component>
+
+        <component id="piece5">
+            <transformation>
+                <translate x="1" y="6" z="0.05" />
+                <scale x="0.5" y="0.5" z="0.1" />
+            </transformation>
+            <materials>
+                <material id="green" />
+            </materials>
+            <texture id="grass" length_s="5" length_t="5"/>
+            <children>
+                <primitiveref id="sphere" />
+            </children>
+        </component>
+
+        <component id="piece6">
+            <transformation>
+                <translate x="1" y="7" z="0.05" />
+                <scale x="0.5" y="0.5" z="0.1" />
+            </transformation>
+            <materials>
+                <material id="green" />
+            </materials>
+            <texture id="grass" length_s="5" length_t="5"/>
+            <children>
+                <primitiveref id="sphere" />
+            </children>
+        </component>
+
+        <component id="piece7">
+            <transformation>
+                <translate x="1" y="8" z="0.05" />
+                <scale x="0.5" y="0.5" z="0.1" />
+            </transformation>
+            <materials>
+                <material id="green" />
+            </materials>
+            <texture id="grass" length_s="5" length_t="5"/>
+            <children>
+                <primitiveref id="sphere" />
+            </children>
+        </component>
+
+        <component id="piece8">
+            <transformation>
+                <translate x="1" y="9" z="0.05" />
+                <scale x="0.5" y="0.5" z="0.1" />
+            </transformation>
+            <materials>
+                <material id="green" />
+            </materials>
+            <texture id="grass" length_s="5" length_t="5"/>
             <children>
                 <primitiveref id="sphere" />
             </children>

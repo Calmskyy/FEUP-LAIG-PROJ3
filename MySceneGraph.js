@@ -607,9 +607,6 @@ class MySceneGraph {
     parseMaterials(materialsNode) {
         var children = materialsNode.children;
 
-        var grandChildren = [];
-        var nodeNames = [];
-
         // Any number of materials.
         for (var i = 0; i < children.length; i++) {
 
@@ -1417,7 +1414,6 @@ class MySceneGraph {
         if (XML.primitives[nodeID] === undefined) {
             var newMatrix = mat4.create();
             //console.log(XML);
-            //console.log(nodeID);
             newMatrix = mat4.multiply(newMatrix, matrix, XML.components[nodeID]["transformations"]);
             var children = XML.components[nodeID]["children"];
 
