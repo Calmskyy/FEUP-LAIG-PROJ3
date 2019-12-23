@@ -22,8 +22,7 @@ class MySceneGraph {
     constructor(filenames, scene) {
         this.loadedOk = null;
 
-        this.mPresses = 0;
-
+        this.pieceSelections = [false, false, false, false, false, false, false, false];
         // Establish bidirectional references between scene and graph.
         this.scene = scene;
         scene.graph = this;
@@ -67,7 +66,7 @@ class MySceneGraph {
                 var filename = filenames[key];
                 this.reader.open('scenes/' + filename, this);
                 this.content[key] = [];
-                this.themes[i] = {name: key, XML: null};
+                this.themes[i] = { name: key, XML: null };
                 sceneThemes[i] = key;
                 i++;
             }
@@ -1393,13 +1392,6 @@ class MySceneGraph {
     }
 
     /**
-     * Increments counter that controls material selection.
-     */
-    processMPress() {
-        this.mPresses++;
-    }
-
-    /**
      * Parses the Graph correspondent to the scene.
      * @param XML Specific XML being used.
      * @param nodeID ID of the node being currently parsed.
@@ -1421,9 +1413,20 @@ class MySceneGraph {
                 newMatrix = mat4.multiply(newMatrix, newMatrix, XML.components[nodeID]["animation"].apply());
 
             var materials = XML.components[nodeID]["materials"];
-            var currentMaterial = materials[this.mPresses % materials.length];
-            if (currentMaterial == "inherit")
-                currentMaterial = material;
+            var currentMaterial;
+            var tempstr = nodeID.substring(0, 5);
+            if (tempstr == "piece") {
+                tempstr = nodeID.substring(5, 6);
+                if (this.pieceSelections[parseInt(tempstr) - 1] == true)
+                currentMaterial = materials[1];
+                else
+                currentMaterial = materials[0];
+            }
+            else {
+                var currentMaterial = materials[0];
+                if (currentMaterial == "inherit")
+                    currentMaterial = material;
+            }
 
             var textureDetails = XML.components[nodeID]["texture"];
             var currentTexture = textureDetails[0];
@@ -1449,8 +1452,11 @@ class MySceneGraph {
         }
         //if is primitive
         else {
-            this.pickIndex++;
-            this.scene.registerForPick(this.pickIndex, XML.primitives[nodeID]);
+            var tempstr = nodeID.substring(0, 5);
+            if (tempstr == "piece") {
+                this.pickIndex++;
+                this.scene.registerForPick(this.pickIndex, XML.primitives[nodeID]);
+            }
             this.scene.multMatrix(matrix);
             if (texture != "none") {
                 material.setTexture(texture);
@@ -1471,8 +1477,7 @@ class MySceneGraph {
         this.pickIndex = 0;
         var index = this.scene.selectedTheme;
         var rootTexture = this.themes[index].XML.components[this.idRoot[this.themes[index].name]]["texture"];
-        var selectedMaterial = this.mPresses % this.themes[index].XML.components[this.idRoot[this.themes[index].name]]["materials"].length;
-        var rootMaterial = this.themes[index].XML.components[this.idRoot[this.themes[index].name]]["materials"][selectedMaterial];
+        var rootMaterial = this.themes[index].XML.components[this.idRoot[this.themes[index].name]]["materials"][0];
         this.processNode(this.themes[index].XML, this.idRoot[this.themes[index].name], mat4.create(), rootMaterial, rootTexture);
     }
 }

@@ -73,6 +73,7 @@
         <texture id="glass" file="scenes/images/glass.jpg" />
         <texture id="wood" file="scenes/images/wood.jpg" />
         <texture id="grass" file="scenes/images/grass.jpg" />
+        <texture id="piece" file="scenes/images/piece.jpg" />
         <texture id="plant" file="scenes/images/plant.jpg" />
         <texture id="board" file="scenes/images/board.png" />
     </textures>
@@ -233,7 +234,7 @@
         <primitive id="triangle">
             <triangle x1="-3" y1="2.2" z1="3" x2="-2"  y2="3.2"  z2="3" x3="-2" y3="2.2" z3="3" />
         </primitive>
-        <primitive id="sphere">
+        <primitive id="piece">
             <sphere radius="1" slices="20" stacks="20"/>
         </primitive>
         <primitive id="torus">
@@ -328,10 +329,11 @@
             </transformation>
             <materials>
                 <material id="red" />
+                <material id="yellow" />
             </materials>
-            <texture id="grass" length_s="5" length_t="5"/>
+            <texture id="piece" length_s="5" length_t="5"/>
             <children>
-                <primitiveref id="sphere" />
+                <primitiveref id="piece" />
             </children>
         </component>
 
@@ -342,10 +344,11 @@
             </transformation>
             <materials>
                 <material id="red" />
+                <material id="yellow" />
             </materials>
-            <texture id="grass" length_s="5" length_t="5"/>
+            <texture id="piece" length_s="5" length_t="5"/>
             <children>
-                <primitiveref id="sphere" />
+                <primitiveref id="piece" />
             </children>
         </component>
 
@@ -356,10 +359,11 @@
             </transformation>
             <materials>
                 <material id="red" />
+                <material id="yellow" />
             </materials>
-            <texture id="grass" length_s="5" length_t="5"/>
+            <texture id="piece" length_s="5" length_t="5"/>
             <children>
-                <primitiveref id="sphere" />
+                <primitiveref id="piece" />
             </children>
         </component>
 
@@ -370,10 +374,11 @@
             </transformation>
             <materials>
                 <material id="red" />
+                <material id="yellow" />
             </materials>
-            <texture id="grass" length_s="5" length_t="5"/>
+            <texture id="piece" length_s="5" length_t="5"/>
             <children>
-                <primitiveref id="sphere" />
+                <primitiveref id="piece" />
             </children>
         </component>
 
@@ -384,10 +389,11 @@
             </transformation>
             <materials>
                 <material id="green" />
+                <material id="yellow" />
             </materials>
-            <texture id="grass" length_s="5" length_t="5"/>
+            <texture id="piece" length_s="5" length_t="5"/>
             <children>
-                <primitiveref id="sphere" />
+                <primitiveref id="piece" />
             </children>
         </component>
 
@@ -398,10 +404,11 @@
             </transformation>
             <materials>
                 <material id="green" />
+                <material id="yellow" />
             </materials>
-            <texture id="grass" length_s="5" length_t="5"/>
+            <texture id="piece" length_s="5" length_t="5"/>
             <children>
-                <primitiveref id="sphere" />
+                <primitiveref id="piece" />
             </children>
         </component>
 
@@ -412,10 +419,11 @@
             </transformation>
             <materials>
                 <material id="green" />
+                <material id="yellow" />
             </materials>
-            <texture id="grass" length_s="5" length_t="5"/>
+            <texture id="piece" length_s="5" length_t="5"/>
             <children>
-                <primitiveref id="sphere" />
+                <primitiveref id="piece" />
             </children>
         </component>
 
@@ -426,10 +434,11 @@
             </transformation>
             <materials>
                 <material id="green" />
+                <material id="yellow" />
             </materials>
-            <texture id="grass" length_s="5" length_t="5"/>
+            <texture id="piece" length_s="5" length_t="5"/>
             <children>
-                <primitiveref id="sphere" />
+                <primitiveref id="piece" />
             </children>
         </component>
     </components>
