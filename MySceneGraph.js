@@ -1392,6 +1392,15 @@ class MySceneGraph {
     }
 
     /**
+     * Generate animation from a given piece to a given board spot.
+     * @param 
+     */
+    generateAnimation(pieceID) {
+        
+    }
+
+
+    /**
      * Parses the Graph correspondent to the scene.
      * @param XML Specific XML being used.
      * @param nodeID ID of the node being currently parsed.

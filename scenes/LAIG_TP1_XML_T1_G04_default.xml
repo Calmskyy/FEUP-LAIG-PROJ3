@@ -203,7 +203,10 @@
 
     <primitives>
         <primitive id="surface">
-            <rectangle x1="0" y1="0" x2="5" y2="5" />
+            <rectangle x1="0" y1="0" x2="4" y2="4" />
+        </primitive>
+        <primitive id="tile">
+            <rectangle x1="-1" y1="-1" x2="1" y2="1" />
         </primitive>
         <primitive id="plane"> 
             <plane npartsU="5" npartsV="8" />
@@ -263,13 +266,14 @@
             <transformation>
                 <translate x="0" y="0" z="10" />
                 <rotate axis="y" angle="90" />
-                <scale x="4" y="4" z="1" />
+                <scale x="6" y="6" z="1" />
             </transformation>
             <materials>
-                <material id="inherit" />
+                <material id="white" />
             </materials>
-            <texture id="none" />
+            <texture id="board" length_s="4" length_t="4"/>
             <children>
+                <primitiveref id="surface" />
                 <componentref id="board-tiles" />
                 <componentref id="tray" />
             </children>
@@ -280,14 +284,388 @@
                 <transformationref id="noTransform"/>
             </transformation>
             <materials>
-                <material id="white" />
+                <material id="yellow" />
             </materials>
-            <texture id="board" length_s="5" length_t="5"/>
+            <texture id="none"/>
             <children>
-                <primitiveref id="surface" />
+                <componentref id="tile1" />
+                <componentref id="tile2" />
+                <componentref id="tile3" />
+                <componentref id="tile4" />
+                <componentref id="tile5" />
+                <componentref id="tile6" />
+                <componentref id="tile7" />
+                <componentref id="tile8" />
+                <componentref id="tile9" />
+                <componentref id="tile10" />
+                <componentref id="tile11" />
+                <componentref id="tile12" />
+                <componentref id="tile13" />
+                <componentref id="tile14" />
+                <componentref id="tile15" />
+                <componentref id="tile16" />
+                <componentref id="tile17" />
+                <componentref id="tile18" />
+                <componentref id="tile19" />
+                <componentref id="tile20" />
+                <componentref id="tile21" />
+                <componentref id="tile22" />
+                <componentref id="tile23" />
+                <componentref id="tile24" />
+                <componentref id="tile25" />
             </children>
         </component>
 
+        <component id="tile1">
+            <transformation>
+                <translate x="3.3334" y="0.6667" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile2">
+            <transformation>
+                <translate x="3.3334" y="1.3334" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile3">
+            <transformation>
+                <translate x="3.3334" y="2" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile4">
+            <transformation>
+                <translate x="3.3334" y="2.6667" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile5">
+            <transformation>
+                <translate x="3.3334" y="3.3334" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile6">
+            <transformation>
+                <translate x="2.6667" y="0.6667" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile7">
+            <transformation>
+                <translate x="2.6667" y="1.3334" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile8">
+            <transformation>
+                <translate x="2.6667" y="2" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile9">
+            <transformation>
+                <translate x="2.6667" y="2.6667" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile10">
+            <transformation>
+                <translate x="2.6667" y="3.3334" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile11">
+            <transformation>
+                <translate x="2" y="0.6667" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile12">
+            <transformation>
+                <translate x="2" y="1.3334" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile13">
+            <transformation>
+                <translate x="2" y="2" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile14">
+            <transformation>
+                <translate x="2" y="2.6667" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile15">
+            <transformation>
+                <translate x="2" y="3.3334" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile16">
+            <transformation>
+                <translate x="1.3334" y="0.6667" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile17">
+            <transformation>
+                <translate x="1.3334" y="1.3334" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile18">
+            <transformation>
+                <translate x="1.3334" y="2" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile19">
+            <transformation>
+                <translate x="1.3334" y="2.6667" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile20">
+            <transformation>
+                <translate x="1.3334" y="3.3337" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile21">
+            <transformation>
+                <translate x="0.6667" y="0.6667" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile22">
+            <transformation>
+                <translate x="0.6667" y="1.3334" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile23">
+            <transformation>
+                <translate x="0.6667" y="2" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile24">
+            <transformation>
+                <translate x="0.6667" y="2.6667" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+
+        <component id="tile25">
+            <transformation>
+                <translate x="0.6667" y="3.3334" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="tile" />
+            </children>
+        </component>
+        
         <component id="tray">
             <transformation>
                 <translate x="-6" y="-2.5" z="0" />
@@ -295,7 +673,7 @@
             <materials>
                 <material id="white" />
             </materials>
-            <texture id="wood" length_s="5" length_t="5"/>
+            <texture id="piece" length_s="5" length_t="5"/>
             <children>
                 <componentref id="wood-surface" />
                 <componentref id="piece1" />
@@ -311,12 +689,12 @@
 
         <component id="wood-surface">
             <transformation>
-                <scale x="0.5" y="2" z="1" />
+                <scale x="0.5" y="2.5" z="1" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="wood" length_s="5" length_t="5"/>
+            <texture id="wood" length_s="4" length_t="4"/>
             <children>
                 <primitiveref id="surface" />
             </children>
@@ -331,7 +709,7 @@
                 <material id="red" />
                 <material id="yellow" />
             </materials>
-            <texture id="piece" length_s="5" length_t="5"/>
+            <texture id="inherit"/>
             <children>
                 <primitiveref id="piece" />
             </children>
@@ -346,7 +724,7 @@
                 <material id="red" />
                 <material id="yellow" />
             </materials>
-            <texture id="piece" length_s="5" length_t="5"/>
+            <texture id="inherit"/>
             <children>
                 <primitiveref id="piece" />
             </children>
@@ -361,7 +739,7 @@
                 <material id="red" />
                 <material id="yellow" />
             </materials>
-            <texture id="piece" length_s="5" length_t="5"/>
+            <texture id="inherit"/>
             <children>
                 <primitiveref id="piece" />
             </children>
@@ -376,7 +754,7 @@
                 <material id="red" />
                 <material id="yellow" />
             </materials>
-            <texture id="piece" length_s="5" length_t="5"/>
+            <texture id="inherit"/>
             <children>
                 <primitiveref id="piece" />
             </children>
@@ -391,7 +769,7 @@
                 <material id="green" />
                 <material id="yellow" />
             </materials>
-            <texture id="piece" length_s="5" length_t="5"/>
+            <texture id="inherit"/>
             <children>
                 <primitiveref id="piece" />
             </children>
@@ -406,7 +784,7 @@
                 <material id="green" />
                 <material id="yellow" />
             </materials>
-            <texture id="piece" length_s="5" length_t="5"/>
+            <texture id="inherit"/>
             <children>
                 <primitiveref id="piece" />
             </children>
@@ -421,7 +799,7 @@
                 <material id="green" />
                 <material id="yellow" />
             </materials>
-            <texture id="piece" length_s="5" length_t="5"/>
+            <texture id="inherit"/>
             <children>
                 <primitiveref id="piece" />
             </children>
@@ -436,7 +814,7 @@
                 <material id="green" />
                 <material id="yellow" />
             </materials>
-            <texture id="piece" length_s="5" length_t="5"/>
+            <texture id="inherit"/>
             <children>
                 <primitiveref id="piece" />
             </children>
