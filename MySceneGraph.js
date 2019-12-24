@@ -23,6 +23,9 @@ class MySceneGraph {
         this.loadedOk = null;
 
         this.pieceSelections = [false, false, false, false, false, false, false, false];
+        this.piecePositions = [];
+        this.tilePositions = [];
+        this.positionsLoaded = false;
         // Establish bidirectional references between scene and graph.
         this.scene = scene;
         scene.graph = this;
@@ -1399,6 +1402,15 @@ class MySceneGraph {
         
     }
 
+    /**
+     * Gets the three translation values from a transformation matrix.
+     * @param 
+     */
+    obtainTranslationValues(matrix) {
+        var values = [matrix[12], matrix[13], matrix[14]];
+        return values;
+    }
+
 
     /**
      * Parses the Graph correspondent to the scene.
@@ -1423,10 +1435,20 @@ class MySceneGraph {
 
             var materials = XML.components[nodeID]["materials"];
             var currentMaterial;
-            var tempstr = nodeID.substring(0, 5);
-            if (tempstr == "piece") {
-                tempstr = nodeID.substring(5, 6);
-                if (this.pieceSelections[parseInt(tempstr) - 1] == true)
+            var piecestr = nodeID.substring(0, 5);
+            var piecestr2 = nodeID.substring(5);
+            if (this.positionsLoaded == false) {
+                var tilestr = nodeID.substring(0, 4);
+                var tilestr2 = nodeID.substring(4);
+                if (piecestr == "piece") {
+                    this.piecePositions[parseInt(piecestr2) - 1] = this.obtainTranslationValues(newMatrix);
+                }
+                else if (tilestr == "tile") {
+                    this.tilePositions[parseInt(tilestr2) - 1] = this.obtainTranslationValues(newMatrix);
+                }
+            }
+            if (piecestr == "piece") {
+                if (this.pieceSelections[parseInt(piecestr2) - 1] == true)
                 currentMaterial = materials[1];
                 else
                 currentMaterial = materials[0];
@@ -1488,5 +1510,7 @@ class MySceneGraph {
         var rootTexture = this.themes[index].XML.components[this.idRoot[this.themes[index].name]]["texture"];
         var rootMaterial = this.themes[index].XML.components[this.idRoot[this.themes[index].name]]["materials"][0];
         this.processNode(this.themes[index].XML, this.idRoot[this.themes[index].name], mat4.create(), rootMaterial, rootTexture);
+        this.positionsLoaded = true;
+        console.log(this.tilePositions);
     }
 }
