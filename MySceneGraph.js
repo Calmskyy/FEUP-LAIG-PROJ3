@@ -1398,8 +1398,17 @@ class MySceneGraph {
      * Generate animation from a given piece to a given board spot.
      * @param 
      */
-    generateAnimation(pieceID) {
-        
+    generateAnimation(pieceID, tileID) {
+        console.log(pieceID);
+        console.log(tileID);
+        var tileLocation = this.tilePositions[tileID];
+        var pieceLocation = this.piecePositions[pieceID];
+        var translation = [];
+        translation[0] = pieceLocation[0] - tileLocation[0];
+        translation[1] = pieceLocation[1] - tileLocation[1];
+        translation[2] = pieceLocation[2] - tileLocation[2];
+        var pieceAnimation = new PieceAnimation(this.scene.time, translation);
+        XML.components[nodeID]["animation"] = pieceAnimation;
     }
 
     /**
@@ -1441,14 +1450,14 @@ class MySceneGraph {
                 var tilestr = nodeID.substring(0, 4);
                 var tilestr2 = nodeID.substring(4);
                 if (piecestr == "piece") {
-                    this.piecePositions[parseInt(piecestr2) - 1] = this.obtainTranslationValues(newMatrix);
+                    this.piecePositions[parseInt(piecestr2) + 24] = this.obtainTranslationValues(newMatrix);
                 }
                 else if (tilestr == "tile") {
                     this.tilePositions[parseInt(tilestr2) - 1] = this.obtainTranslationValues(newMatrix);
                 }
             }
             if (piecestr == "piece") {
-                if (this.pieceSelections[parseInt(piecestr2) - 1] == true)
+                if (this.pieceSelections[parseInt(piecestr2) + 24] == true)
                 currentMaterial = materials[1];
                 else
                 currentMaterial = materials[0];
@@ -1484,7 +1493,12 @@ class MySceneGraph {
         //if is primitive
         else {
             var tempstr = nodeID.substring(0, 5);
+            var tilestr = nodeID.substring(0, 4);
             if (tempstr == "piece") {
+                this.pickIndex++;
+                this.scene.registerForPick(this.pickIndex, XML.primitives[nodeID]);
+            }
+            else if (tilestr == "tile") {
                 this.pickIndex++;
                 this.scene.registerForPick(this.pickIndex, XML.primitives[nodeID]);
             }
@@ -1511,6 +1525,5 @@ class MySceneGraph {
         var rootMaterial = this.themes[index].XML.components[this.idRoot[this.themes[index].name]]["materials"][0];
         this.processNode(this.themes[index].XML, this.idRoot[this.themes[index].name], mat4.create(), rootMaterial, rootTexture);
         this.positionsLoaded = true;
-        console.log(this.tilePositions);
     }
 }

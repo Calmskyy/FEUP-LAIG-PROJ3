@@ -17,6 +17,7 @@ class Animation {
 		this.currentTranslate = [0, 0, 0];
 		this.currentScale = [1, 1, 1];
 		this.currentRotate = [0, 0, 0];
+		this.arcOption = "no";
 	};
 
 	/**
@@ -80,7 +81,8 @@ class Animation {
 	 * @param rotate Rotation Matrix to be applied
 	 * @param scale Scaling Matrix to be applied 
 	 */
-	updateAnimation(span, translate, rotate, scale) {
+	updateAnimation(span, translate, rotate, scale, option) {
+		this.arcOption = option;
 		this.span = span * 1000;
 		this.rotate[0] = rotate[0] - this.currentRotate[0];
 		this.rotate[1] = rotate[1] - this.currentRotate[1];
@@ -118,6 +120,8 @@ class Animation {
 
 		out[12] = this.currentTranslate[0] + (translate[0] * animationPercentage);
 		out[13] = this.currentTranslate[1] + (translate[1] * animationPercentage);
+		if (arcOption == "yes")
+			out[13] = out[13] + 5 * Math.sin(animationPercentage * Math.PI);
 		out[14] = this.currentTranslate[2] + (translate[2] * animationPercentage);
 		out[0] = Math.cos(this.currentRotate[1] + (rotateY * animationPercentage)) * Math.cos(this.currentRotate[2] + (rotateZ * animationPercentage)) * this.currentScale[0] * (1 + (scaleXDiff * animationPercentage));
 		out[1] = - (Math.sin(this.currentRotate[2] + (rotateZ * animationPercentage)));

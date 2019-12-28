@@ -267,15 +267,25 @@ class XMLscene extends CGFscene {
                 for (var i = 0; i < this.pickResults.length; i++) {
                     var obj = this.pickResults[i][0];
                     if (obj) {
-                        if (selectionsCleared == false) {
-                            for (var j = 0; j < this.graph.pieceSelections.length; j++) {
-                                this.graph.pieceSelections[j] = false;
+                        console.log(obj.constructor.name);
+                        if (obj.constructor.name == "MySphere") {
+                            if (selectionsCleared == false) {
+                                for (var j = 0; j < this.graph.pieceSelections.length; j++) {
+                                    this.graph.pieceSelections[j] = false;
+                                }
+                                selectionsCleared = true;
                             }
-                            selectionsCleared = true;
+                            console.log("Picked object: " + obj + ", with pick id " + this.pickResults[i][1]);
+                            this.graph.pieceSelections[this.pickResults[i][1] - 1] = true;
                         }
-                        var customId = this.pickResults[i][1];
-                        console.log("Picked object: " + obj + ", with pick id " + customId);
-                        this.graph.pieceSelections[customId - 1] = true;
+                        else if (obj.constructor.name == "MyRectangle") {
+                            for (var j = 0; j < this.graph.pieceSelections.length; j++) {
+                                if (this.graph.pieceSelections[j] == true) {
+                                    this.graph.generateAnimation(j, this.pickResults[i][1]);
+                                }
+                            }
+                            console.log("Picked object: " + obj + ", with pick id " + this.pickResults[i][1]);
+                        }
                     }
                 }
                 this.pickResults.splice(0, this.pickResults.length);

@@ -1,19 +1,15 @@
 /**
- * KeyFrameAnimation
+ * Animation used to move a piece from the tray to the tile
  * @constructor
- * @param instants Instants of the different keyframes
- * @param translates Translation Matrices to be applied
- * @param rotates Rotation Matrices to be applied
- * @param scales Scaling Matrices to be applied
+ * @param instant Instant where the animation begins
+ * @param translate Overall total translation to be applied
  */
-class KeyFrameAnimation extends Animation {
-	constructor(instants, translates, rotates, scales) {
+class PieceAnimation extends Animation {
+	constructor(instant, translate) {
 		super(0, [0, 0, 0], [0, 0, 0], [1, 1, 1]);
 		this.keyFrameIndex = -1;
-		this.translates = translates;
-		this.rotates = rotates;
-		this.scales = scales;
-		this.instants = instants;
+		this.translates = [[0, 0, 0], [0, 10, 0], [translate[0], translate[1] + 10, translate[2]], [0, 0, 0]];
+		this.instants = [instant, instant + 1, instant + 3, instant + 4];
 	};
 
 	/**
@@ -30,10 +26,13 @@ class KeyFrameAnimation extends Animation {
 			var actualKeyFrameIndex = this.keyFrameIndex;
 			this.keyFrameIndex++;
 			if (actualKeyFrameIndex == -1)
-				super.updateAnimation(this.instants[0], this.translates[0], this.rotates[0], this.scales[0], "no");
+				super.updateAnimation(this.instants[0], this.translates[0], [0, 0, 0], [1, 1, 1], "no");
+			else if (keyFrameIndex == 2)
+				super.updateAnimation(this.instants[this.keyFrameIndex] - this.instants[actualKeyFrameIndex], this.translates[this.keyFrameIndex],
+					[0, 0, 0], [1, 1, 1], "yes");
 			else
 				super.updateAnimation(this.instants[this.keyFrameIndex] - this.instants[actualKeyFrameIndex], this.translates[this.keyFrameIndex],
-					this.rotates[this.keyFrameIndex], this.scales[this.keyFrameIndex], "no");
+					[0, 0, 0], [1, 1, 1], "no");
 		}
 	}
 
