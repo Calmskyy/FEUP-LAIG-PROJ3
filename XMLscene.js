@@ -269,9 +269,16 @@ class XMLscene extends CGFscene {
                     var obj = this.pickResults[i][0];
                     if (obj) {
                         if (obj.constructor.name == "MySphere") {
-                            if (this.themes[this.selectedTheme].XML.animations['movement' + this.pickResults[i][1]] != undefined)
-                                if (this.themes[this.selectedTheme].XML.animations['movement' + this.pickResults[i][1]].isFinished() == false)
-                                    continue;
+                            var movementInProgress = false;
+                            for (var j = 1; j < 9; j++) {
+                                if (this.themes[this.selectedTheme].XML.animations['movement' + j] != undefined)
+                                    if (this.themes[this.selectedTheme].XML.animations['movement' + j].isFinished() == false) {
+                                        movementInProgress = true;
+                                        break;
+                                    }
+                            }
+                            if (movementInProgress == true)
+                                continue;
                             if (this.graph.pieceSelections[this.pickResults[i][1] - 1] == true) {
                                 this.graph.pieceSelections[this.pickResults[i][1] - 1] = false;
                                 continue;
