@@ -61,6 +61,8 @@ class Animation {
 			this.currentTranslate[0] += this.translate[0];
 			this.currentTranslate[1] += this.translate[1];
 			this.currentTranslate[2] += this.translate[2];
+			console.log("finished");
+			console.log(this.currentTranslate);
 		}
 		return finished;
 	}
@@ -120,7 +122,7 @@ class Animation {
 
 		out[12] = this.currentTranslate[0] + (translate[0] * animationPercentage);
 		out[13] = this.currentTranslate[1] + (translate[1] * animationPercentage);
-		if (arcOption == "yes")
+		if (this.arcOption == "yes")
 			out[13] = out[13] + 5 * Math.sin(animationPercentage * Math.PI);
 		out[14] = this.currentTranslate[2] + (translate[2] * animationPercentage);
 		out[0] = Math.cos(this.currentRotate[1] + (rotateY * animationPercentage)) * Math.cos(this.currentRotate[2] + (rotateZ * animationPercentage)) * this.currentScale[0] * (1 + (scaleXDiff * animationPercentage));

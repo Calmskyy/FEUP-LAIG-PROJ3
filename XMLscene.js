@@ -241,15 +241,16 @@ class XMLscene extends CGFscene {
 
         if (!this.time) {
             this.time = t;
+            this.startTime = t;
             return;
         }
 
         let deltaTime = t - this.time;
         this.time = t;
         if (this.sceneInited) {
-            for (var key in this.graph.animations) {
-                if (this.graph.animations.hasOwnProperty(key))
-                    this.graph.animations[key].update(deltaTime);
+            for (var key in this.themes[this.selectedTheme].XML.animations) {
+                if (this.themes[this.selectedTheme].XML.animations.hasOwnProperty(key))
+                this.themes[this.selectedTheme].XML.animations[key].update(deltaTime);
             }
         }
     }
@@ -261,30 +262,28 @@ class XMLscene extends CGFscene {
     }
 
     logPicking() {
-        var selectionsCleared = false;
         if (this.pickMode == false) {
             if (this.pickResults != null && this.pickResults.length > 0) {
                 for (var i = 0; i < this.pickResults.length; i++) {
+                    //console.log(this.pickResults[i]);
                     var obj = this.pickResults[i][0];
                     if (obj) {
-                        console.log(obj.constructor.name);
                         if (obj.constructor.name == "MySphere") {
-                            if (selectionsCleared == false) {
-                                for (var j = 0; j < this.graph.pieceSelections.length; j++) {
-                                    this.graph.pieceSelections[j] = false;
-                                }
-                                selectionsCleared = true;
+                            for (var j = 0; j < this.graph.pieceSelections.length; j++) {
+                                this.graph.pieceSelections[j] = false;
                             }
-                            console.log("Picked object: " + obj + ", with pick id " + this.pickResults[i][1]);
+                            //console.log("Picked object: " + obj + ", with pick id " + this.pickResults[i][1]);
                             this.graph.pieceSelections[this.pickResults[i][1] - 1] = true;
                         }
                         else if (obj.constructor.name == "MyRectangle") {
                             for (var j = 0; j < this.graph.pieceSelections.length; j++) {
                                 if (this.graph.pieceSelections[j] == true) {
-                                    this.graph.generateAnimation(j, this.pickResults[i][1]);
+                                    this.graph.pieceSelections[j] = false;
+                                    this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
+                                    break;
                                 }
                             }
-                            console.log("Picked object: " + obj + ", with pick id " + this.pickResults[i][1]);
+                            //console.log("Picked object: " + obj + ", with pick id " + this.pickResults[i][1]);
                         }
                     }
                 }

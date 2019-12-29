@@ -3,13 +3,16 @@
  * @constructor
  * @param instant Instant where the animation begins
  * @param translate Overall total translation to be applied
+ * @param XML XML to update when animation is finished
  */
 class PieceAnimation extends Animation {
-	constructor(instant, translate) {
+	constructor(instant, translate, XML) {
 		super(0, [0, 0, 0], [0, 0, 0], [1, 1, 1]);
+		console.log(instant);
 		this.keyFrameIndex = -1;
-		this.translates = [[0, 0, 0], [0, 10, 0], [translate[0], translate[1] + 10, translate[2]], [0, 0, 0]];
-		this.instants = [instant, instant + 1, instant + 3, instant + 4];
+		this.translates = [[0, 0, 0], [translate[2], translate[1], 0], [translate[2], translate[1], 0], [translate[2], translate[1], 0]];
+		this.instants = [0, 1, 3, 4];
+		this.XML = XML;
 	};
 
 	/**
@@ -27,9 +30,9 @@ class PieceAnimation extends Animation {
 			this.keyFrameIndex++;
 			if (actualKeyFrameIndex == -1)
 				super.updateAnimation(this.instants[0], this.translates[0], [0, 0, 0], [1, 1, 1], "no");
-			else if (keyFrameIndex == 2)
+			else if (this.keyFrameIndex == 2)
 				super.updateAnimation(this.instants[this.keyFrameIndex] - this.instants[actualKeyFrameIndex], this.translates[this.keyFrameIndex],
-					[0, 0, 0], [1, 1, 1], "yes");
+					[0, 0, 0], [1, 1, 1], "no");
 			else
 				super.updateAnimation(this.instants[this.keyFrameIndex] - this.instants[actualKeyFrameIndex], this.translates[this.keyFrameIndex],
 					[0, 0, 0], [1, 1, 1], "no");

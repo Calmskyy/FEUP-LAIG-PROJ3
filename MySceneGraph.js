@@ -816,6 +816,7 @@ class MySceneGraph {
 
             var keyFrameAnimation = new KeyFrameAnimation(instants, translates, rotates, scales);
             this.animations[animationId] = keyFrameAnimation;
+            console.log(keyFrameAnimation);
         }
     }
 
@@ -1398,25 +1399,29 @@ class MySceneGraph {
      * Generate animation from a given piece to a given board spot.
      * @param 
      */
-    generateAnimation(pieceID, tileID) {
+    generateAnimation(pieceID, tileID, theme) {
         console.log(pieceID);
         console.log(tileID);
-        var tileLocation = this.tilePositions[tileID];
-        var pieceLocation = this.piecePositions[pieceID];
+        var tileLocation = this.tilePositions[tileID - 1];
+        var pieceLocation = this.piecePositions[pieceID + 24];
         var translation = [];
-        translation[0] = pieceLocation[0] - tileLocation[0];
-        translation[1] = pieceLocation[1] - tileLocation[1];
-        translation[2] = pieceLocation[2] - tileLocation[2];
-        var pieceAnimation = new PieceAnimation(this.scene.time, translation);
-        XML.components[nodeID]["animation"] = pieceAnimation;
+        translation[0] = (tileLocation[0] - pieceLocation[0]) / pieceLocation[5];
+        translation[1] = (tileLocation[1] - pieceLocation[1] + 0.35) / pieceLocation[4];
+        translation[2] = (tileLocation[2] - pieceLocation[2] - 0.35) / pieceLocation[3];
+        console.log(translation);
+        var pieceAnimation = new PieceAnimation((this.scene.time - this.scene.startTime) / 1000, translation, this.themes[theme].XML);
+        this.themes[theme].XML.components['piece' + pieceID]["animation"] = pieceAnimation;
+        this.themes[theme].XML.animations["movement"] = pieceAnimation;
+        console.log(pieceAnimation);
     }
 
-    /**
-     * Gets the three translation values from a transformation matrix.
+    /** 
+     * Gets the three translation and scaling values from a transformation matrix.
      * @param 
      */
-    obtainTranslationValues(matrix) {
-        var values = [matrix[12], matrix[13], matrix[14]];
+    obtainTranslationScalingValues(matrix) {
+        console.log(matrix);    
+        var values = [matrix[12], matrix[13], matrix[14], matrix[2], matrix[5], matrix[8]];
         return values;
     }
 
@@ -1450,14 +1455,14 @@ class MySceneGraph {
                 var tilestr = nodeID.substring(0, 4);
                 var tilestr2 = nodeID.substring(4);
                 if (piecestr == "piece") {
-                    this.piecePositions[parseInt(piecestr2) + 24] = this.obtainTranslationValues(newMatrix);
+                    this.piecePositions[parseInt(piecestr2) + 24] = this.obtainTranslationScalingValues(newMatrix);
                 }
                 else if (tilestr == "tile") {
-                    this.tilePositions[parseInt(tilestr2) - 1] = this.obtainTranslationValues(newMatrix);
+                    this.tilePositions[parseInt(tilestr2) - 1] = this.obtainTranslationScalingValues(newMatrix);
                 }
             }
             if (piecestr == "piece") {
-                if (this.pieceSelections[parseInt(piecestr2) + 24] == true)
+                if (this.pieceSelections[parseInt(piecestr2) - 1] == true)
                 currentMaterial = materials[1];
                 else
                 currentMaterial = materials[0];
