@@ -250,7 +250,7 @@ class XMLscene extends CGFscene {
         if (this.sceneInited) {
             for (var key in this.themes[this.selectedTheme].XML.animations) {
                 if (this.themes[this.selectedTheme].XML.animations.hasOwnProperty(key))
-                this.themes[this.selectedTheme].XML.animations[key].update(deltaTime);
+                    this.themes[this.selectedTheme].XML.animations[key].update(deltaTime);
             }
         }
     }
@@ -272,7 +272,6 @@ class XMLscene extends CGFscene {
                             for (var j = 0; j < this.graph.pieceSelections.length; j++) {
                                 this.graph.pieceSelections[j] = false;
                             }
-                            //console.log("Picked object: " + obj + ", with pick id " + this.pickResults[i][1]);
                             this.graph.pieceSelections[this.pickResults[i][1] - 1] = true;
                         }
                         else if (obj.constructor.name == "MyRectangle") {
@@ -283,7 +282,6 @@ class XMLscene extends CGFscene {
                                     break;
                                 }
                             }
-                            //console.log("Picked object: " + obj + ", with pick id " + this.pickResults[i][1]);
                         }
                     }
                 }

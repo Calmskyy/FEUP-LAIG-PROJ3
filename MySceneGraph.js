@@ -1405,10 +1405,10 @@ class MySceneGraph {
         var tileLocation = this.tilePositions[tileID - 1];
         var pieceLocation = this.piecePositions[pieceID + 24];
         var translation = [];
-        translation[0] = (tileLocation[0] - pieceLocation[0]) / pieceLocation[5];
+        translation[0] = 5 / pieceLocation[5];
         translation[1] = (tileLocation[1] - pieceLocation[1] + 0.35) / pieceLocation[4];
         translation[2] = (tileLocation[2] - pieceLocation[2] - 0.35) / pieceLocation[3];
-        console.log(translation);
+        //console.log(translation);
         var pieceAnimation = new PieceAnimation((this.scene.time - this.scene.startTime) / 1000, translation, this.themes[theme].XML);
         this.themes[theme].XML.components['piece' + pieceID]["animation"] = pieceAnimation;
         this.themes[theme].XML.animations["movement"] = pieceAnimation;
@@ -1420,7 +1420,6 @@ class MySceneGraph {
      * @param 
      */
     obtainTranslationScalingValues(matrix) {
-        console.log(matrix);    
         var values = [matrix[12], matrix[13], matrix[14], matrix[2], matrix[5], matrix[8]];
         return values;
     }
@@ -1463,9 +1462,9 @@ class MySceneGraph {
             }
             if (piecestr == "piece") {
                 if (this.pieceSelections[parseInt(piecestr2) - 1] == true)
-                currentMaterial = materials[1];
+                    currentMaterial = materials[1];
                 else
-                currentMaterial = materials[0];
+                    currentMaterial = materials[0];
             }
             else {
                 var currentMaterial = materials[0];

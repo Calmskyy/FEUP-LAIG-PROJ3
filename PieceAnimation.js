@@ -8,9 +8,8 @@
 class PieceAnimation extends Animation {
 	constructor(instant, translate, XML) {
 		super(0, [0, 0, 0], [0, 0, 0], [1, 1, 1]);
-		console.log(instant);
 		this.keyFrameIndex = -1;
-		this.translates = [[0, 0, 0], [translate[2], translate[1], 0], [translate[2], translate[1], 0], [translate[2], translate[1], 0]];
+		this.translates = [[0, 0, 0], [0, 0, translate[0]], [translate[2], translate[1], translate[0]], [translate[2], translate[1], 0]];
 		this.instants = [0, 1, 3, 4];
 		this.XML = XML;
 	};
@@ -32,7 +31,7 @@ class PieceAnimation extends Animation {
 				super.updateAnimation(this.instants[0], this.translates[0], [0, 0, 0], [1, 1, 1], "no");
 			else if (this.keyFrameIndex == 2)
 				super.updateAnimation(this.instants[this.keyFrameIndex] - this.instants[actualKeyFrameIndex], this.translates[this.keyFrameIndex],
-					[0, 0, 0], [1, 1, 1], "no");
+					[0, 0, 0], [1, 1, 1], "yes");
 			else
 				super.updateAnimation(this.instants[this.keyFrameIndex] - this.instants[actualKeyFrameIndex], this.translates[this.keyFrameIndex],
 					[0, 0, 0], [1, 1, 1], "no");
