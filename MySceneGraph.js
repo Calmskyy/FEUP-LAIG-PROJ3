@@ -816,7 +816,6 @@ class MySceneGraph {
 
             var keyFrameAnimation = new KeyFrameAnimation(instants, translates, rotates, scales);
             this.animations[animationId] = keyFrameAnimation;
-            console.log(keyFrameAnimation);
         }
     }
 
@@ -1409,10 +1408,10 @@ class MySceneGraph {
         translation[1] = (tileLocation[1] - pieceLocation[1] + 0.35) / pieceLocation[4];
         translation[2] = (tileLocation[2] - pieceLocation[2] - 0.35) / pieceLocation[3];
         //console.log(translation);
-        var pieceAnimation = new PieceAnimation((this.scene.time - this.scene.startTime) / 1000, translation, this.themes[theme].XML);
+        var pieceAnimation = new PieceAnimation(translation);
         this.themes[theme].XML.components['piece' + pieceID]["animation"] = pieceAnimation;
-        this.themes[theme].XML.animations["movement"] = pieceAnimation;
-        console.log(pieceAnimation);
+        this.themes[theme].XML.animations['movement' + pieceID] = pieceAnimation;
+        //console.log(this.themes[theme].XML);
     }
 
     /** 

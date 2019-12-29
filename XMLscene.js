@@ -265,10 +265,17 @@ class XMLscene extends CGFscene {
         if (this.pickMode == false) {
             if (this.pickResults != null && this.pickResults.length > 0) {
                 for (var i = 0; i < this.pickResults.length; i++) {
-                    //console.log(this.pickResults[i]);
+                    console.log(this.pickResults[i]);
                     var obj = this.pickResults[i][0];
                     if (obj) {
                         if (obj.constructor.name == "MySphere") {
+                            if (this.themes[this.selectedTheme].XML.animations['movement' + this.pickResults[i][1]] != undefined)
+                                if (this.themes[this.selectedTheme].XML.animations['movement' + this.pickResults[i][1]].isFinished() == false)
+                                    continue;
+                            if (this.graph.pieceSelections[this.pickResults[i][1] - 1] == true) {
+                                this.graph.pieceSelections[this.pickResults[i][1] - 1] = false;
+                                continue;
+                            }
                             for (var j = 0; j < this.graph.pieceSelections.length; j++) {
                                 this.graph.pieceSelections[j] = false;
                             }

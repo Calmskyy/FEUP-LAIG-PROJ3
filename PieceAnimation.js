@@ -6,12 +6,11 @@
  * @param XML XML to update when animation is finished
  */
 class PieceAnimation extends Animation {
-	constructor(instant, translate, XML) {
+	constructor(translate) {
 		super(0, [0, 0, 0], [0, 0, 0], [1, 1, 1]);
 		this.keyFrameIndex = -1;
-		this.translates = [[0, 0, 0], [0, 0, translate[0]], [translate[2], translate[1], translate[0]], [translate[2], translate[1], 0]];
-		this.instants = [0, 1, 3, 4];
-		this.XML = XML;
+		this.translates = [[0, 0, 0], [0, 0, translate[0]], [translate[2], translate[1], translate[0]], [translate[2], translate[1], 0], [translate[2], translate[1], 0]];
+		this.instants = [0, 1, 3, 4, 4];
 	};
 
 	/**
@@ -44,5 +43,16 @@ class PieceAnimation extends Animation {
 	 */
 	apply() {
 		return super.apply();
+	}
+
+	/**
+	 * @method isFinished
+	 * Returns a boolean value based on whether or not the animation has fully completed.
+	 */
+	isFinished() {
+		if (this.keyFrameIndex >= (this.translates.length - 1))
+			return true;
+		else
+			return false;
 	}
 };
