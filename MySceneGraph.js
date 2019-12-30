@@ -26,6 +26,7 @@ class MySceneGraph {
         this.piecePositions = [];
         this.tilePositions = [];
         this.positionsLoaded = false;
+        this.updatePiecePositions = [false, false, false, false, false, false, false, false];
         // Establish bidirectional references between scene and graph.
         this.scene = scene;
         scene.graph = this;
@@ -1396,7 +1397,9 @@ class MySceneGraph {
 
     /**
      * Generate animation from a given piece to a given board spot.
-     * @param 
+     * @param pieceID The piece that is being moved
+     * @param tileID The tile that the piece is going to be moved to
+     * @param theme The theme currently being used
      */
     generateAnimation(pieceID, tileID, theme) {
         console.log(pieceID);
@@ -1407,7 +1410,6 @@ class MySceneGraph {
         translation[0] = 5 / pieceLocation[5];
         translation[1] = (tileLocation[1] - pieceLocation[1] + 0.35) / pieceLocation[4];
         translation[2] = (tileLocation[2] - pieceLocation[2] - 0.35) / pieceLocation[3];
-        //console.log(translation);
         var pieceAnimation = new PieceAnimation(translation);
         this.themes[theme].XML.components['piece' + pieceID]["animation"] = pieceAnimation;
         this.themes[theme].XML.animations['movement' + pieceID] = pieceAnimation;
@@ -1416,7 +1418,7 @@ class MySceneGraph {
 
     /** 
      * Gets the three translation and scaling values from a transformation matrix.
-     * @param 
+     * @param matrix Transformation matrix to get the values from
      */
     obtainTranslationScalingValues(matrix) {
         var values = [matrix[12], matrix[13], matrix[14], matrix[2], matrix[5], matrix[8]];
@@ -1460,6 +1462,15 @@ class MySceneGraph {
                 }
             }
             if (piecestr == "piece") {
+                if (this.updatePiecePositions[parseInt(piecestr2) - 1] == true) {
+                    var translation = XML.components[nodeID]["animation"].getFinalTranslation();
+                    XML.components[nodeID]["transformations"][12] += translation[0] * XML.components[nodeID]["transformations"][0];
+                    XML.components[nodeID]["transformations"][13] += translation[1] * XML.components[nodeID]["transformations"][5];
+                    XML.components[nodeID]["transformations"][14] += translation[2] * XML.components[nodeID]["transformations"][10];;
+                    XML.components[nodeID]["animation"] = "noAnimation";
+                    this.piecePositions[parseInt(piecestr2) + 24] = this.obtainTranslationScalingValues(newMatrix);
+                    this.updatePiecePositions[parseInt(piecestr2) - 1] = false;
+                }
                 if (this.pieceSelections[parseInt(piecestr2) - 1] == true)
                     currentMaterial = materials[1];
                 else

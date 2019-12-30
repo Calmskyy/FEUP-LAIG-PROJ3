@@ -11,6 +11,7 @@ class PieceAnimation extends Animation {
 		this.keyFrameIndex = -1;
 		this.translates = [[0, 0, 0], [0, 0, translate[0]], [translate[2], translate[1], translate[0]], [translate[2], translate[1], 0], [translate[2], translate[1], 0]];
 		this.instants = [0, 1, 3, 4, 4];
+		this.updatedPosition = false;
 	};
 
 	/**
@@ -54,5 +55,26 @@ class PieceAnimation extends Animation {
 			return true;
 		else
 			return false;
+	}
+
+	/**
+	 * @method updatePosition
+	 * If the finished piece position hasn't been updated yet, update it
+	 */
+	updatePosition() {
+		if (this.updatedPosition == false) {
+			this.updatedPosition = true;
+			return true;
+		}
+		else
+			return false;
+	}
+
+	/**
+	 * @method getFinalTranslation
+	 * Returns the translation performed on the object at the last instant
+	 */
+	getFinalTranslation() {
+		return this.translates[4];
 	}
 };

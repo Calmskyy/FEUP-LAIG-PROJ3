@@ -272,10 +272,10 @@ class XMLscene extends CGFscene {
                             var movementInProgress = false;
                             for (var j = 1; j < 9; j++) {
                                 if (this.themes[this.selectedTheme].XML.animations['movement' + j] != undefined)
-                                    if (this.themes[this.selectedTheme].XML.animations['movement' + j].isFinished() == false) {
+                                    if (this.themes[this.selectedTheme].XML.animations['movement' + j].isFinished() == false)
                                         movementInProgress = true;
-                                        break;
-                                    }
+                                    else if (this.themes[this.selectedTheme].XML.animations['movement' + j].updatePosition() == true)
+                                        this.graph.updatePiecePositions[j - 1] = true;
                             }
                             if (movementInProgress == true)
                                 continue;
