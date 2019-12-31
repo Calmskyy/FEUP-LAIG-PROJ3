@@ -36,6 +36,9 @@ class MyInterface extends CGFinterface {
         this.gui = new dat.GUI();
         this.gui.add(this.scene, 'displayAxis').name('Display Axis');
         this.gui.add(this.scene, 'scaleFactor', 0.1, 15).name('Scale Factor');
+        this.gui.add(this.scene, 'turnTime', 5, 30).name('Turn Time');
+        this.gui.add(this.scene, 'difficulty', this.scene.difficulties).name('Difficulty');
+        this.gui.add(this.scene, 'playingOption', this.scene.playingOptions).name('Game Mode');
     }
 
     processKeyDown(event) {

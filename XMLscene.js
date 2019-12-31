@@ -29,6 +29,10 @@ class XMLscene extends CGFscene {
         this.viewIDs = new Object();
         this.themes = [];
         this.themeIDs = new Object();
+        this.difficulties = ["Easy", "Medium", "Hard"];
+        this.difficulty = "Medium";
+        this.playingOptions = ["Player v Player", "Player v Bot", "Bot v Bot"];
+        this.playingOption = ["Player v Player"];
 
         this.gl.clearDepth(100.0);
         this.gl.enable(this.gl.DEPTH_TEST);
@@ -36,6 +40,7 @@ class XMLscene extends CGFscene {
         this.gl.depthFunc(this.gl.LEQUAL);
 
         this.scaleFactor = 1;
+        this.turnTime = 15;
         this.displayAxis = true;
         this.selectedView = 0;
         this.selectedTheme = 0;
