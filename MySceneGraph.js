@@ -27,6 +27,8 @@ class MySceneGraph {
         this.tilePositions = [];
         this.positionsLoaded = false;
         this.updatePiecePositions = [false, false, false, false, false, false, false, false];
+        this.redTurn = true;
+        this.greenTurn = false;
         // Establish bidirectional references between scene and graph.
         this.scene = scene;
         scene.graph = this;
@@ -1413,6 +1415,14 @@ class MySceneGraph {
         var pieceAnimation = new PieceAnimation(translation);
         this.themes[theme].XML.components['piece' + pieceID]["animation"] = pieceAnimation;
         this.themes[theme].XML.animations['movement' + pieceID] = pieceAnimation;
+        if (this.redTurn == true) {
+            this.redTurn = false;
+            this.greenTurn = true;
+        }
+        else if (this.greenTurn == true) {
+            this.redTurn = true;
+            this.greenTurn = false;
+        }
         //console.log(this.themes[theme].XML);
     }
 

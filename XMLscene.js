@@ -308,6 +308,14 @@ class XMLscene extends CGFscene {
                     var obj = this.pickResults[i][0];
                     if (obj) {
                         if (obj.constructor.name == "MySphere") {
+                            if (this.graph.redTurn == true) {
+                                if (this.pickResults[i][1] > 4)
+                                    continue;
+                            }
+                            else if (this.graph.greenTurn == true) {
+                                if (this.pickResults[i][1] < 5)
+                                    continue;
+                            }
                             var movementInProgress = false;
                             for (var j = 1; j < 9; j++) {
                                 if (this.themes[this.selectedTheme].XML.animations['movement' + j] != undefined)
