@@ -50,6 +50,7 @@ class XMLscene extends CGFscene {
         this.enableLight8 = false;
 
         this.cameras = [];
+        this.updatingCamera = false;
 
         this.axis = new CGFaxis(this);
         this.setUpdatePeriod(1000 / FPS);
@@ -84,7 +85,18 @@ class XMLscene extends CGFscene {
      * Updates the scene camera used upon being changed in the interface.
      */
     updateCamera() {
-        this.camera = this.cameras[this.selectedView];
+        this.updateTicks = 0;
+        this.updatingCamera = true;
+        this.oldCamera = this.camera;
+        this.newCamera = this.cameras[this.selectedView];
+        this.cameraFOVChange = this.newCamera.fov - this.oldCamera.fov;
+        this.cameraNearChange = this.newCamera.near - this.oldCamera.near;
+        this.cameraFarChange = this.newCamera.far - this.oldCamera.far;
+        this.cameraPositionChange = [this.newCamera.position[0] - this.oldCamera.position[0], this.newCamera.position[1] - this.oldCamera.position[1], this.newCamera.position[2] - this.oldCamera.position[2], this.newCamera.position[3] - this.oldCamera.position[3]];
+        this.cameraTargetChange = [this.newCamera.target[0] - this.oldCamera.target[0], this.newCamera.target[1] - this.oldCamera.target[1], this.newCamera.target[2] - this.oldCamera.target[2], this.newCamera.target[3] - this.oldCamera.target[3]];
+        this.cameraDirectionChange = [this.newCamera.direction[0] - this.oldCamera.direction[0], this.newCamera.direction[1] - this.oldCamera.direction[1], this.newCamera.direction[2] - this.oldCamera.direction[2], this.newCamera.direction[3] - this.oldCamera.direction[3]];
+        this.tempCamera = new CGFcamera(0, this.oldCamera.near, this.oldCamera.far, [this.oldCamera.position[0], this.oldCamera.position[1], this.oldCamera.position[2]], [this.oldCamera.target[0], this.oldCamera.target[1], this.oldCamera.target[2]]);
+        this.tempCamera.fov = this.oldCamera.fov;
     }
 
     /**
@@ -226,7 +238,7 @@ class XMLscene extends CGFscene {
 
         this.interface.addThemes();
 
-        this.updateCamera();
+        this.camera = this.cameras[this.selectedView];
     }
 
     /**
@@ -251,6 +263,33 @@ class XMLscene extends CGFscene {
             for (var key in this.themes[this.selectedTheme].XML.animations) {
                 if (this.themes[this.selectedTheme].XML.animations.hasOwnProperty(key))
                     this.themes[this.selectedTheme].XML.animations[key].update(deltaTime);
+            }
+            if (this.updatingCamera == true) {
+                this.updateTicks++;
+                if (this.updateTicks >= 61) {
+                    console.log(this.tempCamera);
+                    console.log(this.newCamera);
+                    this.camera = this.newCamera;
+                    this.updatingCamera = false;
+                    return;
+
+                }
+                this.tempCamera.fov += this.cameraFOVChange / 60;
+                this.tempCamera.near += this.cameraNearChange / 60;
+                this.tempCamera.far += this.cameraFarChange / 60;
+                this.tempCamera.position[0] = this.tempCamera.position[0] + (this.cameraPositionChange[0] / 60);
+                this.tempCamera.position[1] = this.tempCamera.position[1] + (this.cameraPositionChange[1] / 60);
+                this.tempCamera.position[2] = this.tempCamera.position[2] + (this.cameraPositionChange[2] / 60);
+                this.tempCamera.position[3] = this.tempCamera.position[3] + (this.cameraPositionChange[3] / 60);
+                this.tempCamera.target[0] = this.tempCamera.target[0] + (this.cameraTargetChange[0] / 60);
+                this.tempCamera.target[1] = this.tempCamera.target[1] + (this.cameraTargetChange[1] / 60);
+                this.tempCamera.target[2] = this.tempCamera.target[2] + (this.cameraTargetChange[2] / 60);
+                this.tempCamera.target[3] = this.tempCamera.target[3] + (this.cameraTargetChange[3] / 60);
+                this.tempCamera.direction[0] = this.tempCamera.direction[0] + (this.cameraDirectionChange[0] / 60);
+                this.tempCamera.direction[1] = this.tempCamera.direction[1] + (this.cameraDirectionChange[1] / 60);
+                this.tempCamera.direction[2] = this.tempCamera.direction[2] + (this.cameraDirectionChange[2] / 60);
+                this.tempCamera.direction[3] = this.tempCamera.direction[3] + (this.cameraDirectionChange[3] / 60);
+                this.camera = this.tempCamera;
             }
         }
     }
@@ -345,6 +384,6 @@ class XMLscene extends CGFscene {
         this.logPicking();
         this.clearPickRegistration();
         if (this.sceneInited)
-            this.render(this.cameras[this.selectedView])
+            this.render(this.camera)
     }
 }
