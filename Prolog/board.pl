@@ -5,7 +5,7 @@
 :- include('read_input.pl').
 :- dynamic board/1.
 
-board([[' ',' ','.',' ',' '],[' ','.','.','.',' '],['.','.',' ','.','.'],[' ','.','.','.',' '],[' ',' ','.',' ',' ']]).
+board([['0','0','.','0','0'],['0','.','.','.','0'],['.','.','0','.','.'],['0','.','.','.','0'],['0','0','.','0','0']]).
 
 display_line:-
         write('    |---|---|---|---|---|').
@@ -24,7 +24,8 @@ display_board([H|T], N) :-
 display_board_row([]).
 
 display_board_row([H|T]) :-
-        write(H), write(' | '),
+        ((H = '0', write(' ')) ; write(H)),
+        write(' | '),
         display_board_row(T).
 
 player(1) :- write('Player: RED(1)').

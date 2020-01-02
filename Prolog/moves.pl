@@ -36,7 +36,7 @@ setColumn(N, Piece, [X|Rest], [X|More]) :-
 movePiece(Piece, Row, Column, NewRow, NewColumn, BoardIn, BoardOut) :-
         getPiece(Row, Column, BoardIn, P),
         P = Piece,
-        setPiece(Row, Column, ' ',  BoardIn, T),
+        setPiece(Row, Column, '0',  BoardIn, T),
         setPiece(NewRow, NewColumn, Piece, T, BoardOut).
 
 % valid_placements(+BoardIn, -ValidPlacements)
@@ -87,9 +87,9 @@ check_piece(BoardIn, Player, Row, Column) :-
 
 is_empty(BoardIn, Row, Column) :-
         getPiece(Row, Column, BoardIn, P),
-        (P == ' ' ; P == '.').
+        (P == '0' ; P == '.').
 
-initial_board([[' ',' ','.',' ',' '],[' ','.','.','.',' '],['.','.',' ','.','.'],[' ','.','.','.',' '],[' ',' ','.',' ',' ']]).
+initial_board([['0','0','.','0','0'],['0','.','.','.','0'],['.','.','0','.','.'],['0','.','.','.','0'],['0','0','.','0','0']]).
 
 % caso da peca estar num '.' => pode-se movimentar na horizontal/vertical ou para outro '.' adjacente
 valid_move(BoardIn, Row, Column, NewRow, NewColumn) :-
@@ -105,7 +105,7 @@ valid_move(BoardIn, Row, Column, NewRow, NewColumn) :-
 valid_move(_BoardIn, Row, Column, NewRow, NewColumn) :-
         initial_board(InitBoard),
         getPiece(Row, Column, InitBoard, P),
-        P == ' ',
+        P == '0',
         RowDiff is abs(NewRow - Row), RowDiff @< 2,
         ColumnDiff is abs(NewColumn - Column), ColumnDiff @< 2,
         ((ColumnDiff == 1, RowDiff == 0) ; (ColumnDiff == 0, RowDiff == 1)). %movimento vertical/horizontal 

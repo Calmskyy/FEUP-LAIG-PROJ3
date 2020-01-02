@@ -22,6 +22,7 @@ class MySceneGraph {
     constructor(filenames, scene) {
         this.loadedOk = null;
 
+
         this.pieceSelections = [false, false, false, false, false, false, false, false];
         this.piecePositions = [];
         this.tilePositions = [];
@@ -56,6 +57,15 @@ class MySceneGraph {
         this.animations = [];
         this.primitives = [];
         this.components = [];
+
+        //let index = 0;
+        this.pieces = [];
+        //this.pieces = [new MyPiece(scene, -1, -1, 1), new MyPiece(scene, -2, -1, 1), new MyPiece(scene, -3, -1, 1), new MyPiece(scene, -4, -1, 1), new MyPiece(scene, -5, -1, 2), new MyPiece(scene, -6, -1, 2), new MyPiece(scene, -7, -1, 2), new MyPiece(scene, -8, -1, 2)];
+        //this.pieces.forEach(piece => this.scene.registerForPick(index++, piece))
+
+        this.testePiece = new MyPiece(scene, 0, -1, 1);
+        //this.scene.registerForPick(1, this.testePiece)
+        this.pieces.push(this.testePiece);
 
         // File reading 
         this.reader = new CGFXMLreader();
@@ -1476,7 +1486,7 @@ class MySceneGraph {
                     var translation = XML.components[nodeID]["animation"].getFinalTranslation();
                     XML.components[nodeID]["transformations"][12] += translation[0] * XML.components[nodeID]["transformations"][0];
                     XML.components[nodeID]["transformations"][13] += translation[1] * XML.components[nodeID]["transformations"][5];
-                    XML.components[nodeID]["transformations"][14] += translation[2] * XML.components[nodeID]["transformations"][10];;
+                    XML.components[nodeID]["transformations"][14] += translation[2] * XML.components[nodeID]["transformations"][10];
                     XML.components[nodeID]["animation"] = "noAnimation";
                     this.piecePositions[parseInt(piecestr2) + 24] = this.obtainTranslationScalingValues(newMatrix);
                     this.updatePiecePositions[parseInt(piecestr2) - 1] = false;
@@ -1519,12 +1529,10 @@ class MySceneGraph {
             var tempstr = nodeID.substring(0, 5);
             var tilestr = nodeID.substring(0, 4);
             if (tempstr == "piece") {
-                this.pickIndex++;
-                this.scene.registerForPick(this.pickIndex, XML.primitives[nodeID]);
+                this.scene.registerForPick(this.pickIndex++, XML.primitives[nodeID]);
             }
             else if (tilestr == "tile") {
-                this.pickIndex++;
-                this.scene.registerForPick(this.pickIndex, XML.primitives[nodeID]);
+                this.scene.registerForPick(this.pickIndex++, XML.primitives[nodeID]);
             }
             this.scene.multMatrix(matrix);
             if (texture != "none") {
@@ -1543,7 +1551,8 @@ class MySceneGraph {
      * Displays the scene, processing each node, starting in the root node.
      */
     displayScene() {
-        this.pickIndex = 0;
+        this.pickIndex = 1;
+        this.scene.registerForPick(1, this.testePiece);
         var index = this.scene.selectedTheme;
         var rootTexture = this.themes[index].XML.components[this.idRoot[this.themes[index].name]]["texture"];
         var rootMaterial = this.themes[index].XML.components[this.idRoot[this.themes[index].name]]["materials"][0];

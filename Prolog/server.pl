@@ -43,12 +43,12 @@ server_loop(Socket) :-
 		handle_request(Request, MyReply, Status),
 		format('Request: ~q~n',[Request]),
 		format('Reply: ~q~n', [MyReply]),
-		
+
 		% Output Response
 		format(Stream, 'HTTP/1.0 ~p~n', [Status]),
 		format(Stream, 'Access-Control-Allow-Origin: *~n', []),
 		format(Stream, 'Content-Type: text/plain~n~n', []),
-		format(Stream, '~p', [MyReply]),
+		format(Stream, '~q~n', [MyReply]),
 	
 		% write('Finnished Connection'),nl,nl,
 		close_stream(Stream),
@@ -106,7 +106,11 @@ print_header_line(_).
 
 parse_input(start_game(GameType, CPULevel), Response) :-
 	start_game(GameType, CPULevel).
-	
+
+parse_input(place([R,C], BoardIn, BoardOut, Player), Response) :-
+	place([R,C], BoardIn, BoardOut, Player), 
+	Response = BoardOut.
+
 parse_input(start, failure).
 
 
