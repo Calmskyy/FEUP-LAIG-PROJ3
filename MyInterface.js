@@ -18,7 +18,8 @@ class MyInterface extends CGFinterface {
         // init GUI. For more information on the methods, check:
         //  http://workshop.chromeexperiments.com/examples/gui
 
-        this.gui = new dat.GUI();
+        this.sceneGUI = new dat.GUI();
+        this.gameGUI = new dat.GUI();
 
         this.initKeys();
 
@@ -31,14 +32,25 @@ class MyInterface extends CGFinterface {
         this.activeKeys = {};
     }
 
-    initGUI() {
-        this.gui.destroy();
-        this.gui = new dat.GUI();
-        this.gui.add(this.scene, 'displayAxis').name('Display Axis');
-        this.gui.add(this.scene, 'scaleFactor', 0.1, 15).name('Scale Factor');
-        this.gui.add(this.scene, 'turnTime', 5, 30).name('Turn Time');
-        this.gui.add(this.scene, 'difficulty', this.scene.difficulties).name('Difficulty');
-        this.gui.add(this.scene, 'playingOption', this.scene.playingOptions).name('Game Mode');
+    initSceneGUI() {
+        this.sceneGUI.destroy();
+        this.sceneGUI = new dat.GUI();
+        this.sceneGUI.add(this.scene, 'displayAxis').name('Display Axis');
+        this.sceneGUI.add(this.scene, 'scaleFactor', 0.1, 15).name('Scale Factor');
+    }
+
+    initGameGUI() {
+        this.gameGUI.destroy();
+        this.gameGUI = new dat.GUI();
+        this.gameGUI.add(this.scene, 'playingOption', this.scene.playingOptions).name('Game Mode');
+        this.gameGUI.add(this.scene, 'difficulty', this.scene.difficulties).name('Difficulty');
+        this.gameGUI.add(this.scene, 'turnTime', 5, 30).name('Turn Time');
+        this.gameGUI.add(this.scene, 'timeLeft', 0, 30).name('Time Left').listen();
+        this.gameGUI.add(this.scene, "startGame").name('Start Game');
+        this.gameGUI.add(this.scene, "score").name('Score').listen();
+        this.gameGUI.add(this.scene, "undo").name('Undo Turn');
+        // add something to select recorded movies in an array
+        this.gameGUI.add(this.scene, "playMovie").name('Play Movie');
     }
 
     processKeyDown(event) {
@@ -57,11 +69,11 @@ class MyInterface extends CGFinterface {
      * Initializes the view selection upon reading how many views are defined in the XML file.
      */
     addViews() {
-        this.gui.add(this.scene, 'selectedView', this.scene.viewIDs).name('Selected View').onChange(this.scene.updateCamera.bind(this.scene));
+        this.sceneGUI.add(this.scene, 'selectedView', this.scene.viewIDs).name('Selected View').onChange(this.scene.updateCamera.bind(this.scene));
     }
 
     addThemes() {
-        this.gui.add(this.scene, 'selectedTheme', this.scene.themeIDs).name('Selected Theme').onChange(this.scene.updateTheme.bind(this.scene));
+        this.sceneGUI.add(this.scene, 'selectedTheme', this.scene.themeIDs).name('Selected Theme').onChange(this.scene.updateTheme.bind(this.scene));
     }
 
     /**
@@ -71,6 +83,6 @@ class MyInterface extends CGFinterface {
      */
     addLight(i, lightName) {
         var variableName = 'enableLight' + (i + 1);
-        this.gui.add(this.scene, variableName).name(lightName).onChange(this.scene.updateLights.bind(this.scene));
+        this.sceneGUI.add(this.scene, variableName).name(lightName).onChange(this.scene.updateLights.bind(this.scene));
     }
 }

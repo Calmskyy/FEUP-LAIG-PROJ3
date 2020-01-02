@@ -40,10 +40,14 @@ class XMLscene extends CGFscene {
         this.gl.depthFunc(this.gl.LEQUAL);
 
         this.scaleFactor = 1;
-        this.turnTime = 15;
+        this.turnTime = 20;
         this.displayAxis = true;
         this.selectedView = 0;
         this.selectedTheme = 0;
+        this.score = "test123";
+        this.redWins = 0;
+        this.greenWins = 0;
+        this.timeLeft = 20;
 
         this.enableLight1 = false;
         this.enableLight2 = false;
@@ -233,13 +237,15 @@ class XMLscene extends CGFscene {
 
         this.setGlobalAmbientLight(theme.XML["ambient"][0], theme.XML["ambient"][1], theme.XML["ambient"][2], theme.XML["ambient"][3]);
 
-        this.interface.initGUI();
+        this.interface.initSceneGUI();
 
-        this.initLights(theme);
+        this.interface.initGameGUI();
 
         this.initCameras(theme);
 
         this.interface.addViews();
+
+        this.initLights(theme);
 
         this.interface.addThemes();
 
@@ -253,6 +259,27 @@ class XMLscene extends CGFscene {
         this.themes[this.themes.length] = theme;
     }
 
+    /**
+     * 
+     */
+    undo() {
+        console.log("test");
+    }
+
+    /**
+     * 
+     */
+    startGame() {
+        console.log("test2");
+    }
+
+    /**
+     * 
+     */
+    playMovie() {
+        console.log("test3");
+    }
+
     update(t) {
         this.checkKeys();
 
@@ -263,7 +290,13 @@ class XMLscene extends CGFscene {
         }
 
         let deltaTime = t - this.time;
+        if (this.timeLeft > 0) {
+            this.timeLeft -= deltaTime / 1000;
+            if (this.timeLeft < 0)
+                this.timeLeft = 0;
+        }
         this.time = t;
+        this.score = "Red - " + this.redWins + " | " + this.redWins + " - Green";
         if (this.sceneInited) {
             for (var key in this.themes[this.selectedTheme].XML.animations) {
                 if (this.themes[this.selectedTheme].XML.animations.hasOwnProperty(key))
