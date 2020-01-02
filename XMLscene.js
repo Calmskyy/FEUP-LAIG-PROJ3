@@ -270,7 +270,7 @@ class XMLscene extends CGFscene {
      * 
      */
     startGame() {
-        console.log("test2");
+        this.game = new Game(this, "human", "human");
     }
 
     /**

@@ -102,15 +102,11 @@ print_header_line(_).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Require your Prolog Files here
-:- include('board.pl').
-:- include('CPU.pl').
-:- include('minimax.pl').
-:- include('moves.pl').
-:- include('read_input.pl').
 :- include('straight_4.pl').
 
-parse_input(start, success) :-
-	startGame(Board),
+parse_input(start_game(GameType, CPULevel), Response) :-
+	start_game(GameType, CPULevel).
+	
 parse_input(start, failure).
 
 
