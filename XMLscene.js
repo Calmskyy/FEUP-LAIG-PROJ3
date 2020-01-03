@@ -389,13 +389,13 @@ class XMLscene extends CGFscene {
                             for (var j = 0; j < this.graph.pieceSelections.length; j++) {
                                 if (this.graph.pieceSelections[j] == true) {
                                     this.graph.pieceSelections[j] = false;
+
                                     if (this.game == undefined)
                                         continue;
                                     let row = (this.pickResults[i][1] - 8 - 1) % 5 + 1;
                                     let column = Math.floor((this.pickResults[i][1] - 8 - 1) / 5) + 1;
-                                    let player = this.redTurn ? 1 : 2;
                                     console.log("Real cords: %d - %d\n", row, column);
-                                    let player = this.graph.redTurn ? 1 : 2;
+                                    let player = this.redTurn ? 1 : 2;
 
                                     if (this.game.moveCounter >= 8) { //piece movement
                                         let validMove = this.game.movePiece(this.graph.piecePositions[j][0], this.graph.piecePositions[j][1], row, column, player);
@@ -439,6 +439,7 @@ class XMLscene extends CGFscene {
                                     console.log('Pos');
                                     console.log(this.graph.piecePositions[j]);
 
+
                                     break;
                                 }
                             }
@@ -473,10 +474,10 @@ class XMLscene extends CGFscene {
             //     this.game.moveCounter++;
             // }
         }
-        else if (this.game.moveCounter < 8 ) { //piece placement
-            let player = this.graph.redTurn ? 1 : 2;
+        else if (this.game.moveCounter < 8) { //piece placement
             let tile = this.game.placePieceCPU(player, level);
             let tileID = tile + 9;
+            let player = this.redTurn ? 1 : 2;
             let pieceID;
             switch (this.game.moveCounter) {
                 case 0:
@@ -505,31 +506,30 @@ class XMLscene extends CGFscene {
                     break;
             }
             this.graph.generateAnimation(pieceID, tileID, this.selectedTheme);
-            this.game.moveCounter++;
         }
     }
 
     logPicking() {
         switch (this.playingOption) {
             case "Bot v Bot":
-                
+
                 break;
-        
+
             case "Player v Bot":
-                let player = this.graph.redTurn ? 1 : 2;
+                let player = this.redTurn ? 1 : 2;
                 if (player == 1)
-                    this.playerPick();
+                    playerPick();
                 else {
-                    this.cpuPick();
+                    cpuPick();
                 }
                 break;
-            
+
             case "Player v Player":
                 this.playerPick();
                 break;
         }
-        
-        
+
+
     }
 
     /**
