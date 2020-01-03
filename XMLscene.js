@@ -506,7 +506,7 @@ class XMLscene extends CGFscene {
                     break;
             }
             console.log('tile id = %d\n', tileID);  
-            this.graph.generateAnimation(pieceID, tileID, this.selectedTheme);
+            this.graph.generateAnimation(pieceID, tileID - 8, this.selectedTheme);
         }
         if (this.redTurn == true) {
             this.redTurn = false;
@@ -516,6 +516,7 @@ class XMLscene extends CGFscene {
             this.redTurn = true;
             this.greenTurn = false;
         }
+        this.game.moveCounter++;
     }
 
     logPicking() {
