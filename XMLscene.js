@@ -475,9 +475,9 @@ class XMLscene extends CGFscene {
             // }
         }
         else if (this.game.moveCounter < 8) { //piece placement
+            let player = this.redTurn ? 1 : 2;
             let tile = this.game.placePieceCPU(player, level);
             let tileID = tile + 9;
-            let player = this.redTurn ? 1 : 2;
             let pieceID;
             switch (this.game.moveCounter) {
                 case 0:
@@ -505,7 +505,16 @@ class XMLscene extends CGFscene {
                     pieceID = 8;
                     break;
             }
+            console.log('tile id = %d\n', tileID);  
             this.graph.generateAnimation(pieceID, tileID, this.selectedTheme);
+        }
+        if (this.redTurn == true) {
+            this.redTurn = false;
+            this.greenTurn = true;
+        }
+        else if (this.greenTurn == true) {
+            this.redTurn = true;
+            this.greenTurn = false;
         }
     }
 
@@ -516,11 +525,10 @@ class XMLscene extends CGFscene {
                 break;
 
             case "Player v Bot":
-                let player = this.redTurn ? 1 : 2;
-                if (player == 1)
-                    playerPick();
+                if (this.redTurn)
+                    this.playerPick();
                 else {
-                    cpuPick();
+                    this.cpuPick();
                 }
                 break;
 
