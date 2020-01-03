@@ -378,14 +378,32 @@ class XMLscene extends CGFscene {
                                 if (this.graph.pieceSelections[j] == true) {
                                     this.graph.pieceSelections[j] = false;
 
-
-                                    let row = (this.pickResults[i][1] - 8 - 1) % 5;
-                                    let column = Math.floor((this.pickResults[i][1] - 8 - 1) / 5);
+                                    let row = (this.pickResults[i][1] - 8 - 1) % 5 + 1;
+                                    let column = Math.floor((this.pickResults[i][1] - 8 - 1) / 5) + 1;
                                     let player = this.graph.redTurn ? 1 : 2;
                                     console.log("Real cords: %d - %d\n", row, column);
-                                    this.game.placePiece(row + 1, column + 1, player);
 
-                                    this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
+                                    if (this.game.moveCounter >= 8) { //piece movement
+                                        let validMove = this.game.movePiece(this.graph.piecePositions[j][0], this.graph.piecePositions[j][1], row, column, player);
+                                        if (validMove != 0) {
+                                            this.graph.piecePositions[j] = [row, column];
+                                            this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
+                                            this.game.moveCounter++;
+                                        }
+                                    }
+                                    else if (this.game.moveCounter < 8 && this.graph.piecePositions[j][0] == 0) { //piece placement
+                                        let validPlacement = this.game.placePiece(row, column, player);
+                                        if (validPlacement != 0) {
+                                            this.graph.piecePositions[j] = [row, column];
+                                            this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
+                                            this.game.moveCounter++;
+                                        }
+                                    }
+
+                                    console.log('Pos');
+                                    console.log(this.graph.piecePositions[j]);
+
+                                    
                                     break;
                                 }
                             }

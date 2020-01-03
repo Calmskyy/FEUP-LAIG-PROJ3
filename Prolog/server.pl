@@ -108,8 +108,12 @@ parse_input(start_game(GameType, CPULevel), Response) :-
 	start_game(GameType, CPULevel).
 
 parse_input(place([R,C], BoardIn, BoardOut, Player), Response) :-
-	place([R,C], BoardIn, BoardOut, Player), 
-	Response = BoardOut.
+	(place([R,C], BoardIn, BoardOut, Player), Response = BoardOut) ;
+	Response = 1.
+
+parse_input(move([R,C, NR, NC], BoardIn, BoardOut, Player), Response) :-
+	(move([R,C, NR, NC], BoardIn, BoardOut, Player), Response = BoardOut) ;
+	Response = 1.
 
 parse_input(start, failure).
 

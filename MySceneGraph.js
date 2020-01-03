@@ -28,6 +28,8 @@ class MySceneGraph {
         this.tilePositions = [];
         this.positionsLoaded = false;
         this.updatePiecePositions = [false, false, false, false, false, false, false, false];
+        this.piecePositions = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
+
         this.redTurn = true;
         this.greenTurn = false;
         // Establish bidirectional references between scene and graph.
@@ -1414,6 +1416,7 @@ class MySceneGraph {
      * @param theme The theme currently being used
      */
     generateAnimation(pieceID, tileID, theme) {
+        console.log(pieceID);
         console.log(tileID);
         var tileLocation = this.tilePositions[tileID - 1];
         var pieceLocation = this.piecePositions[pieceID + 24];
