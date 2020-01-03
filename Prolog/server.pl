@@ -115,6 +115,10 @@ parse_input(move([R,C, NR, NC], BoardIn, BoardOut, Player), Response) :-
 	(move([R,C, NR, NC], BoardIn, BoardOut, Player), Response = BoardOut) ;
 	Response = 1.
 
+parse_input(game_over(Board, Player), Response) :-
+	(game_over(Board, Player), Response = 0) ;
+	Response = 1.
+
 parse_input(start, failure).
 
 

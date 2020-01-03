@@ -400,6 +400,12 @@ class XMLscene extends CGFscene {
                                         }
                                     }
 
+                                    if (this.game.gameOver) {
+                                        console.log('game over!!')
+                                        this.game.gameOver = false;
+                                        this.graph.repositionPieces();
+                                    }
+
                                     console.log('Pos');
                                     console.log(this.graph.piecePositions[j]);
 

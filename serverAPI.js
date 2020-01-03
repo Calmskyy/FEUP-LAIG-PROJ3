@@ -45,4 +45,11 @@ function movePiece(boardin, row, column, newRow, newColumn, player, callback) {
     makeRequest(requestString, callback);
     console.log('this is the callback %s\n', callback);
 }
+
+function gameOver(board, player, callback) {
+    let requestString = 'game_over(' + board + ','
+    + JSON.stringify(player) + ')';
+
+    makeRequest(requestString, callback);
+}
     

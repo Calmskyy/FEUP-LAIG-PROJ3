@@ -10,7 +10,7 @@ class Game {
 		this.player2 = player2;
 		this.board = "[['0','0','.','0','0'],['0','.','.','.','0'],['.','.','0','.','.'],['0','.','.','.','0'],['0','0','.','0','0']]";
 		this.moveCounter = 0;
-		//startGame('human', 'human', 'false', data => this.initializeBoard(data));
+		this.gameOver = false;
 	};
 
 	updateBoard(data) {
@@ -20,16 +20,26 @@ class Game {
 		console.log(this.board);	
 	}
 
+	handleGameOver(data) {
+		let response = data.target.response;
+		if (response == 0)
+			this.gameOver = true;
+	}
+
 	placePiece(row, column, player) {
 		let boardIn = (' ' + this.board).slice(1);
 		placePiece(this.board, row, column, player,  data => this.updateBoard(data));
+		gameOver(this.board, player, data => this.handleGameOver(data));
 		return boardIn.localeCompare(this.board); 
 	}
 
 	movePiece(row, column, newRow, newColumn, player) {
 		let boardIn = (' ' + this.board).slice(1);
 		movePiece(this.board, row, column, newRow, newColumn, player,  data => this.updateBoard(data));
+		gameOver(this.board, player, data => this.handleGameOver(data));
 		return boardIn.localeCompare(this.board); 
 	}
+
+
 
 };

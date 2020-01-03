@@ -1438,6 +1438,10 @@ class MySceneGraph {
         //console.log(this.themes[theme].XML);
     }
 
+    repositionPieces() {
+        
+    }
+
     /** 
      * Gets the three translation and scaling values from a transformation matrix.
      * @param matrix Transformation matrix to get the values from
