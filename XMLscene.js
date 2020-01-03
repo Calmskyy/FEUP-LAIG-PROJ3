@@ -44,9 +44,11 @@ class XMLscene extends CGFscene {
         this.displayAxis = true;
         this.selectedView = 0;
         this.selectedTheme = 0;
-        this.score = "test123";
+        this.score = "Red - 0 | 0 - Green";
         this.redWins = 0;
         this.greenWins = 0;
+        this.redTurn = true;
+        this.greenTurn = false;
         this.timeLeft = 20;
 
         this.enableLight1 = false;
@@ -263,7 +265,7 @@ class XMLscene extends CGFscene {
      * 
      */
     undo() {
-        console.log("test");
+        console.log(this.game);
     }
 
     /**
@@ -290,13 +292,22 @@ class XMLscene extends CGFscene {
         }
 
         let deltaTime = t - this.time;
-        if (this.timeLeft > 0) {
-            this.timeLeft -= deltaTime / 1000;
-            if (this.timeLeft < 0)
-                this.timeLeft = 0;
+        if (this.game != undefined) {
+            var movement = false;
+            for (var j = 1; j < 9; j++) {
+                if (this.themes[this.selectedTheme].XML.animations['movement' + j] != undefined)
+                    if (this.themes[this.selectedTheme].XML.animations['movement' + j].isFinished() == false)
+                        movement = true;
+            }
+            if (movement == false)
+                if (this.timeLeft > 0) {
+                    this.timeLeft -= deltaTime / 1000;
+                    if (this.timeLeft < 0)
+                        this.timeLeft = 0;
+                }
         }
         this.time = t;
-        this.score = "Red - " + this.redWins + " | " + this.redWins + " - Green";
+        this.score = "Red - " + this.redWins + " | " + this.greenWins + " - Green";
         if (this.sceneInited) {
             for (var key in this.themes[this.selectedTheme].XML.animations) {
                 if (this.themes[this.selectedTheme].XML.animations.hasOwnProperty(key))
@@ -346,11 +357,11 @@ class XMLscene extends CGFscene {
                     var obj = this.pickResults[i][0];
                     if (obj) {
                         if (obj.constructor.name == "MySphere") {
-                            if (this.graph.redTurn == true) {
+                            if (this.redTurn == true) {
                                 if (this.pickResults[i][1] > 4)
                                     continue;
                             }
-                            else if (this.graph.greenTurn == true) {
+                            else if (this.greenTurn == true) {
                                 if (this.pickResults[i][1] < 5)
                                     continue;
                             }
@@ -377,10 +388,11 @@ class XMLscene extends CGFscene {
                             for (var j = 0; j < this.graph.pieceSelections.length; j++) {
                                 if (this.graph.pieceSelections[j] == true) {
                                     this.graph.pieceSelections[j] = false;
-
+                                    if (this.game == undefined)
+                                        continue;
                                     let row = (this.pickResults[i][1] - 8 - 1) % 5 + 1;
                                     let column = Math.floor((this.pickResults[i][1] - 8 - 1) / 5) + 1;
-                                    let player = this.graph.redTurn ? 1 : 2;
+                                    let player = this.redTurn ? 1 : 2;
                                     console.log("Real cords: %d - %d\n", row, column);
 
                                     if (this.game.moveCounter >= 8) { //piece movement
@@ -389,6 +401,7 @@ class XMLscene extends CGFscene {
                                             this.graph.piecePositions[j] = [row, column];
                                             this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
                                             this.game.moveCounter++;
+                                            this.timeLeft = this.turnTime;
                                         }
                                     }
                                     else if (this.game.moveCounter < 8 && this.graph.piecePositions[j][0] == 0) { //piece placement
@@ -397,19 +410,33 @@ class XMLscene extends CGFscene {
                                             this.graph.piecePositions[j] = [row, column];
                                             this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
                                             this.game.moveCounter++;
+                                            this.timeLeft = this.turnTime;
                                         }
                                     }
 
                                     if (this.game.gameOver) {
                                         console.log('game over!!')
                                         this.game.gameOver = false;
-                                        this.graph.repositionPieces();
+                                        if (this.redTurn == true)
+                                            this.redWins++;
+                                        else if (this.greenTurn == true)
+                                            this.greenWins++;
+                                        this.graph.repositionPieces(this.selectedTheme);
+                                        this.game = undefined;
+                                    }
+
+                                    if (this.redTurn == true) {
+                                        this.redTurn = false;
+                                        this.greenTurn = true;
+                                    }
+                                    else if (this.greenTurn == true) {
+                                        this.redTurn = true;
+                                        this.greenTurn = false;
                                     }
 
                                     console.log('Pos');
                                     console.log(this.graph.piecePositions[j]);
 
-                                    
                                     break;
                                 }
                             }
