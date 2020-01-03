@@ -327,7 +327,7 @@
 
         <component id="tile2">
             <transformation>
-                <translate x="3.233" y="1.2932" z="0.05" />
+                <translate x="2.5864" y="0.6466" z="0.05" />
                 <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
@@ -341,7 +341,7 @@
 
         <component id="tile3">
             <transformation>
-                <translate x="3.233" y="1.9398" z="0.05" />
+                <translate x="1.9398" y="0.6466" z="0.05" />
                 <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
@@ -355,7 +355,7 @@
 
         <component id="tile4">
             <transformation>
-                <translate x="3.233" y="2.5864" z="0.05" />
+                <translate x="1.2932" y="0.6466" z="0.05" />
                 <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
@@ -369,7 +369,7 @@
 
         <component id="tile5">
             <transformation>
-                <translate x="3.233" y="3.233" z="0.05" />
+                <translate x="0.6466" y="0.6466" z="0.05" />
                 <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
@@ -383,7 +383,7 @@
 
         <component id="tile6">
             <transformation>
-                <translate x="2.5864" y="0.6466" z="0.05" />
+                <translate x="3.233" y="1.2932" z="0.05" />
                 <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
@@ -411,7 +411,7 @@
 
         <component id="tile8">
             <transformation>
-                <translate x="2.5864" y="1.9398" z="0.05" />
+                <translate x="1.9398" y="1.2932" z="0.05" />
                 <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
@@ -425,7 +425,7 @@
 
         <component id="tile9">
             <transformation>
-                <translate x="2.5864" y="2.5864" z="0.05" />
+                <translate x="1.2932" y="1.2932" z="0.05" />
                 <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
@@ -439,7 +439,7 @@
 
         <component id="tile10">
             <transformation>
-                <translate x="2.5864" y="3.233" z="0.05" />
+                <translate x="0.6466" y="1.2932" z="0.05" />
                 <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
@@ -453,7 +453,7 @@
 
         <component id="tile11">
             <transformation>
-                <translate x="1.9398" y="0.6466" z="0.05" />
+                <translate x="3.233" y="1.9398" z="0.05" />
                 <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
@@ -467,7 +467,7 @@
 
         <component id="tile12">
             <transformation>
-                <translate x="1.9398" y="1.2932" z="0.05" />
+                <translate x="2.5864" y="1.9398" z="0.05" />
                 <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
@@ -495,7 +495,7 @@
 
         <component id="tile14">
             <transformation>
-                <translate x="1.9398" y="2.5864" z="0.05" />
+                <translate x="1.2932" y="1.9398" z="0.05" />
                 <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
@@ -509,7 +509,7 @@
 
         <component id="tile15">
             <transformation>
-                <translate x="1.9398" y="3.233" z="0.05" />
+                <translate x="0.6466" y="1.9398" z="0.05" />
                 <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
@@ -523,7 +523,7 @@
 
         <component id="tile16">
             <transformation>
-                <translate x="1.2932" y="0.6466" z="0.05" />
+                <translate x="3.233" y="2.5864" z="0.05" />
                 <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
@@ -537,7 +537,7 @@
 
         <component id="tile17">
             <transformation>
-                <translate x="1.2932" y="1.2932" z="0.05" />
+                <translate x="2.5864" y="2.5864" z="0.05" />
                 <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
@@ -548,10 +548,10 @@
                 <primitiveref id="tile" />
             </children>
         </component>
-
+        
         <component id="tile18">
             <transformation>
-                <translate x="1.2932" y="1.9398" z="0.05" />
+                <translate x="1.9398" y="2.5864" z="0.05" />
                 <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
@@ -579,7 +579,7 @@
 
         <component id="tile20">
             <transformation>
-                <translate x="1.2932" y="3.233" z="0.05" />
+                <translate x="0.6466" y="2.5864" z="0.05" />
                 <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
@@ -593,7 +593,7 @@
 
         <component id="tile21">
             <transformation>
-                <translate x="0.6466" y="0.6466" z="0.05" />
+                <translate x="3.233" y="3.233" z="0.05" />
                 <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
@@ -607,7 +607,7 @@
 
         <component id="tile22">
             <transformation>
-                <translate x="0.6466" y="1.2932" z="0.05" />
+                <translate x="2.5864" y="3.233" z="0.05" />
                 <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
@@ -621,7 +621,7 @@
 
         <component id="tile23">
             <transformation>
-                <translate x="0.6466" y="1.9398" z="0.05" />
+                <translate x="1.9398" y="3.233" z="0.05" />
                 <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
@@ -635,7 +635,7 @@
 
         <component id="tile24">
             <transformation>
-                <translate x="0.6466" y="2.5864" z="0.05" />
+                <translate x="1.2932" y="3.233" z="0.05" />
                 <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
