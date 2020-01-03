@@ -467,7 +467,7 @@ class XMLscene extends CGFscene {
                 break;
         }
         if (this.game.moveCounter >= 8) { //piece movement
-            // let validMove = this.game.movePiece(this.graph.piecePositions[j][0], this.graph.piecePositions[j][1], row, column, player);
+            let movePositions = this.game.movePieceCPU(player, level);
             // if (validMove != 0) {
             //     this.graph.piecePositions[j] = [row, column];
             //     this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
@@ -522,7 +522,7 @@ class XMLscene extends CGFscene {
     logPicking() {
         switch (this.playingOption) {
             case "Bot v Bot":
-
+                this.cpuPick();
                 break;
 
             case "Player v Bot":
