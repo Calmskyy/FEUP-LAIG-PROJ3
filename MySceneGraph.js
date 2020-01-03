@@ -28,10 +28,8 @@ class MySceneGraph {
         this.tilePositions = [];
         this.positionsLoaded = false;
         this.updatePiecePositions = [false, false, false, false, false, false, false, false];
-        this.piecePositions = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
+        this.piecePositions = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]];
 
-        this.redTurn = true;
-        this.greenTurn = false;
         // Establish bidirectional references between scene and graph.
         this.scene = scene;
         scene.graph = this;
@@ -1427,19 +1425,19 @@ class MySceneGraph {
         var pieceAnimation = new PieceAnimation(translation);
         this.themes[theme].XML.components['piece' + pieceID]["animation"] = pieceAnimation;
         this.themes[theme].XML.animations['movement' + pieceID] = pieceAnimation;
-        if (this.redTurn == true) {
-            this.redTurn = false;
-            this.greenTurn = true;
-        }
-        else if (this.greenTurn == true) {
-            this.redTurn = true;
-            this.greenTurn = false;
-        }
-        //console.log(this.themes[theme].XML);
     }
 
-    repositionPieces() {
-        
+    repositionPieces(theme) {
+        for (var j = 1; j < 9; j++) {
+            this.themes[theme].XML.components['piece' + j]["animation"] = "noAnimation";
+            delete this.themes[theme].XML.animations['movement' + j];
+            this.themes[theme].XML.components['piece' + j]["transformations"][12] = 1;
+            this.themes[theme].XML.components['piece' + j]["transformations"][14] = 0.05;
+            if (j <= 4)
+                this.themes[theme].XML.components['piece' + j]["transformations"][13] = j;
+            else
+                this.themes[theme].XML.components['piece' + j]["transformations"][13] = j + 1;
+        }
     }
 
     /** 
