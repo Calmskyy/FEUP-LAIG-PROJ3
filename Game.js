@@ -40,6 +40,29 @@ class Game {
 		return boardIn.localeCompare(this.board); 
 	}
 
+	getPlacementPosition(board) {
+		let boardIn = (' ' + board).slice(1);
+		let boardOut = (' ' + this.board).slice(1);
+		boardIn = boardIn.replace(/['",\[\]]+/g, '');
+		boardOut = boardOut.replace(/['",\[\]]+/g, '');
+		let index = 0;
+		for (let i = 0; i < boardIn.length; i++) {
+			if (boardIn[i] != boardOut[i]) {
+				index = i;
+				break;
+			}
+		}
+		// let column = (index) % 5 + 1;
+		// let row = Math.floor((index) / 5) + 1;
+		// return [row, column];
+		return index;
+	}
 
+	placePieceCPU(player, level) {
+		let boardIn = (' ' + this.board).slice(1);
+		placePieceCPU(this.board, player, level, data => this.updateBoard(data));
+		gameOver(this.board, player, data => this.handleGameOver(data));
+		return this.getPlacementPosition(boardIn);
+	}
 
 };

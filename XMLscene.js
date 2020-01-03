@@ -32,7 +32,7 @@ class XMLscene extends CGFscene {
         this.difficulties = ["Easy", "Medium", "Hard"];
         this.difficulty = "Medium";
         this.playingOptions = ["Player v Player", "Player v Bot", "Bot v Bot"];
-        this.playingOption = ["Player v Player"];
+        this.playingOption = "Player v Player";
 
         this.gl.clearDepth(100.0);
         this.gl.enable(this.gl.DEPTH_TEST);
@@ -273,6 +273,7 @@ class XMLscene extends CGFscene {
         this.game = new Game(this, "human", "human");
     }
 
+
     /**
      * 
      */
@@ -338,7 +339,7 @@ class XMLscene extends CGFscene {
         }
     }
 
-    logPicking() {
+    playerPick() {
         if (this.pickMode == false) {
             if (this.pickResults != null && this.pickResults.length > 0) {
                 for (var i = 0; i < this.pickResults.length; i++) {
@@ -380,8 +381,8 @@ class XMLscene extends CGFscene {
 
                                     let row = (this.pickResults[i][1] - 8 - 1) % 5 + 1;
                                     let column = Math.floor((this.pickResults[i][1] - 8 - 1) / 5) + 1;
-                                    let player = this.graph.redTurn ? 1 : 2;
                                     console.log("Real cords: %d - %d\n", row, column);
+                                    let player = this.graph.redTurn ? 1 : 2;
 
                                     if (this.game.moveCounter >= 8) { //piece movement
                                         let validMove = this.game.movePiece(this.graph.piecePositions[j][0], this.graph.piecePositions[j][1], row, column, player);
@@ -419,6 +420,88 @@ class XMLscene extends CGFscene {
                 this.pickResults.splice(0, this.pickResults.length);
             }
         }
+    }
+
+    cpuPick() {
+        let level;
+        switch (this.difficulty) {
+            case "Easy":
+                level = 1;
+                break;
+
+            case "Medium":
+                level = 2;
+                break;
+
+            case "Hard":
+                level = 3;
+                break;
+        }
+        if (this.game.moveCounter >= 8) { //piece movement
+            // let validMove = this.game.movePiece(this.graph.piecePositions[j][0], this.graph.piecePositions[j][1], row, column, player);
+            // if (validMove != 0) {
+            //     this.graph.piecePositions[j] = [row, column];
+            //     this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
+            //     this.game.moveCounter++;
+            // }
+        }
+        else if (this.game.moveCounter < 8 ) { //piece placement
+            let player = this.graph.redTurn ? 1 : 2;
+            let tile = this.game.placePieceCPU(player, level);
+            let tileID = tile + 9;
+            let pieceID;
+            switch (this.game.moveCounter) {
+                case 0:
+                    pieceID = 1;
+                    break;
+                case 1:
+                    pieceID = 5;
+                    break;
+                case 2:
+                    pieceID = 2;
+                    break;
+                case 3:
+                    pieceID = 6;
+                    break;
+                case 4:
+                    pieceID = 3;
+                    break;
+                case 5:
+                    pieceID = 7;
+                    break;
+                case 6:
+                    pieceID = 4;
+                    break;
+                case 7:
+                    pieceID = 8;
+                    break;
+            }
+            this.graph.generateAnimation(pieceID, tileID, this.selectedTheme);
+            this.game.moveCounter++;
+        }
+    }
+
+    logPicking() {
+        switch (this.playingOption) {
+            case "Bot v Bot":
+                
+                break;
+        
+            case "Player v Bot":
+                let player = this.graph.redTurn ? 1 : 2;
+                if (player == 1)
+                    this.playerPick();
+                else {
+                    this.cpuPick();
+                }
+                break;
+            
+            case "Player v Player":
+                this.playerPick();
+                break;
+        }
+        
+        
     }
 
     /**

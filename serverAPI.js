@@ -33,6 +33,16 @@ function placePiece(boardin, row, column, player, callback) {
     console.log('this is the callback %s\n', callback);
 }
 
+function placePieceCPU(boardin, player, level, callback) {
+    console.log(JSON.stringify(boardin))
+
+    let requestString = 'getCPUPlacement(' + boardin + ',' +
+    JSON.stringify(player) + ',_,' + level + ')';
+
+    makeRequest(requestString, callback);
+    console.log('this is the callback %s\n', callback);
+}
+
 function movePiece(boardin, row, column, newRow, newColumn, player, callback) {
     console.log(JSON.stringify(boardin))
 

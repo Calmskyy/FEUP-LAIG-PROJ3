@@ -111,6 +111,10 @@ parse_input(place([R,C], BoardIn, BoardOut, Player), Response) :-
 	(place([R,C], BoardIn, BoardOut, Player), Response = BoardOut) ;
 	Response = 1.
 
+parse_input(getCPUPlacement(BoardIn, Player, BoardOut, Level), Response) :-
+	getCPUPlacement(BoardIn, Player, BoardOut, Level),
+	Response = BoardOut.
+
 parse_input(move([R,C, NR, NC], BoardIn, BoardOut, Player), Response) :-
 	(move([R,C, NR, NC], BoardIn, BoardOut, Player), Response = BoardOut) ;
 	Response = 1.
@@ -118,6 +122,7 @@ parse_input(move([R,C, NR, NC], BoardIn, BoardOut, Player), Response) :-
 parse_input(game_over(Board, Player), Response) :-
 	(game_over(Board, Player), Response = 0) ;
 	Response = 1.
+
 
 parse_input(start, failure).
 
