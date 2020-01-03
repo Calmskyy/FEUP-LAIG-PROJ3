@@ -392,8 +392,8 @@ class XMLscene extends CGFscene {
 
                                     if (this.game == undefined)
                                         continue;
-                                    let row = (this.pickResults[i][1] - 8 - 1) % 5 + 1;
-                                    let column = Math.floor((this.pickResults[i][1] - 8 - 1) / 5) + 1;
+                                    let column = (this.pickResults[i][1] - 8 - 1) % 5 + 1;
+                                    let row = Math.floor((this.pickResults[i][1] - 8 - 1) / 5) + 1;
                                     console.log("Real cords: %d - %d\n", row, column);
                                     let player = this.redTurn ? 1 : 2;
 
