@@ -1414,7 +1414,6 @@ class MySceneGraph {
      * @param theme The theme currently being used
      */
     generateAnimation(pieceID, tileID, theme) {
-        console.log(pieceID);
         console.log(tileID);
         var tileLocation = this.tilePositions[tileID - 1];
         var pieceLocation = this.piecePositions[pieceID + 24];

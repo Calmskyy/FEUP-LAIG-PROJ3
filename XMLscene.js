@@ -379,11 +379,11 @@ class XMLscene extends CGFscene {
                                     this.graph.pieceSelections[j] = false;
 
 
-                                    let row = Math.floor((this.pickResults[i][1] - 8) / 5);
-                                    let column = ((this.pickResults[i][1] - 8) % 5);
+                                    let row = (this.pickResults[i][1] - 8 - 1) % 5;
+                                    let column = Math.floor((this.pickResults[i][1] - 8 - 1) / 5);
                                     let player = this.graph.redTurn ? 1 : 2;
                                     console.log("Real cords: %d - %d\n", row, column);
-                                    this.game.placePiece(row + 1, column, player);
+                                    this.game.placePiece(row + 1, column + 1, player);
 
                                     this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
                                     break;
