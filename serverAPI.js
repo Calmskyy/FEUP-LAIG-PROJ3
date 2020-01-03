@@ -56,6 +56,16 @@ function movePiece(boardin, row, column, newRow, newColumn, player, callback) {
     console.log('this is the callback %s\n', callback);
 }
 
+function movePieceCPU(boardin, player, level, callback) {
+    console.log(JSON.stringify(boardin))
+
+    let requestString = 'choose_move(' + boardin + ',' +
+    JSON.stringify(player) + ',_,' + level + ')';
+
+    makeRequest(requestString, callback);
+    console.log('this is the callback %s\n', callback);
+}
+
 function gameOver(board, player, callback) {
     let requestString = 'game_over(' + board + ','
     + JSON.stringify(player) + ')';

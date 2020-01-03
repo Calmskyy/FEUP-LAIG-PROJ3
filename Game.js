@@ -58,11 +58,39 @@ class Game {
 		return index;
 	}
 
+	getMovementPositions(board) {
+		let boardIn = (' ' + board).slice(1);
+		let boardOut = (' ' + this.board).slice(1);
+		boardIn = boardIn.replace(/['",\[\]]+/g, '');
+		boardOut = boardOut.replace(/['",\[\]]+/g, '');
+		let sourceTile;
+		let destTile;
+		for (let i = 0; i < boardIn.length; i++) {
+			if (boardIn[i] != boardOut[i]) {
+				if (boardIn[i] == '0' || boardIn[i] == '.')
+					sourceTile = i;
+				else
+					destTile = i; 
+			}
+		}
+		// let column = (index) % 5 + 1;
+		// let row = Math.floor((index) / 5) + 1;
+		// return [row, column];
+		return [sourceTile, destTile];
+	}
+
 	placePieceCPU(player, level) {
 		let boardIn = (' ' + this.board).slice(1);
 		placePieceCPU(this.board, player, level, data => this.updateBoard(data));
 		gameOver(this.board, player, data => this.handleGameOver(data));
 		return this.getPlacementPosition(boardIn);
+	}
+
+	movePieceCPU(player, level) {
+		let boardIn = (' ' + this.board).slice(1);
+		movePieceCPU(this.board, player, level, data => this.updateBoard(data));
+		gameOver(this.board, player, data => this.handleGameOver(data));
+		return this.getMovementPositions(boardIn);
 	}
 
 };
