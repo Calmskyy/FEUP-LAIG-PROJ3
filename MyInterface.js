@@ -42,11 +42,12 @@ class MyInterface extends CGFinterface {
     initGameGUI() {
         this.gameGUI.destroy();
         this.gameGUI = new dat.GUI();
-        this.gameGUI.add(this.scene, 'playingOption', this.scene.playingOptions).name('Game Mode');
-        this.gameGUI.add(this.scene, 'difficulty', this.scene.difficulties).name('Difficulty');
+        this.gameGUI.add(this.scene, 'playingOption', this.scene.playingOptions).name('Game Mode').onChange(this.scene.updateGameMode.bind(this.scene));
+        this.gameGUI.add(this.scene, 'difficulty', this.scene.difficulties).name('Difficulty').onChange(this.scene.updateDifficulty.bind(this.scene));
         this.gameGUI.add(this.scene, 'turnTime', 5, 30).name('Turn Time');
         this.gameGUI.add(this.scene, 'timeLeft', 0, 30).name('Time Left').listen();
         this.gameGUI.add(this.scene, "startGame").name('Start Game');
+        this.gameGUI.add(this.scene, "forfeit").name('Forfeit');
         this.gameGUI.add(this.scene, "score").name('Score').listen();
         this.gameGUI.add(this.scene, "undo").name('Undo Turn');
         // add something to select recorded movies in an array

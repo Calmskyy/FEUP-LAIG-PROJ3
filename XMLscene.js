@@ -47,7 +47,7 @@ class XMLscene extends CGFscene {
         this.score = "Red - 0 | 0 - Green";
         this.redWins = 0;
         this.greenWins = 0;
-        this.redTurn = true;
+        this.redTurn = false;
         this.greenTurn = false;
         this.timeLeft = 20;
         this.movie = [];
@@ -267,6 +267,48 @@ class XMLscene extends CGFscene {
     /**
      * 
      */
+    updateGameMode() {
+        if (this.game == undefined)
+            return;
+        this.endGame();
+        this.graph.repositionPieces(this.selectedTheme);
+    }
+
+    /**
+     * 
+     */
+    updateDifficulty() {
+        if (this.game == undefined)
+            return;
+        switch (this.playingOption) {
+            case "Bot v Bot":
+                this.game = undefined;
+                break;
+
+            case "Player v Bot":
+                this.game = undefined;
+                this.greenWins++;
+                break;
+
+            case "Player v Player":
+                return;
+        }
+        this.graph.repositionPieces(this.selectedTheme);
+    }
+
+    /**
+     * 
+     */
+    forfeit() {
+        console.log("helo");
+        if (this.game != undefined) {
+            this.endGame();
+        }
+    }
+
+    /**
+     * 
+     */
     undo() {
         console.log(this.game);
     }
@@ -284,17 +326,39 @@ class XMLscene extends CGFscene {
         this.game = new Game(this, "human", "human");
     }
 
+    /**
+     * 
+     */
+    endGame() {
+        this.game = undefined;
+        if (this.redTurn == true) {
+            this.redWins++;
+            this.redTurn = false;
+        }
+        else if (this.greenTurn == true) {
+            this.greenWins++;
+            this.greenTurn = false;
+        }
+    }
+
 
     /**
      * 
      */
     playMovie() {
+        if (this.movie.length == 0)
+            return;
         this.movieAnimation = -3;
         this.graph.repositionPieces(this.selectedTheme);
-        this.game = undefined;
+        if (this.game != undefined) {
+            this.endGame();
+        }
         this.moviePlaying = true;
     }
 
+    /**
+     * 
+     */
     updateMovie() {
         var movementInProgress = false;
         for (var j = 1; j < 9; j++) {
@@ -344,11 +408,9 @@ class XMLscene extends CGFscene {
                 if (this.timeLeft > 0) {
                     this.timeLeft -= deltaTime / 1000;
                     if (this.timeLeft <= 0) {
-                        if (this.redTurn)
-                            this.greenWins++;
-                        else if (this.greenTurn)
-                            this.redWins++;
-                        this.game = undefined;
+                        if (this.game != undefined) {
+                            this.endGame();
+                        }
                     }
                 }
         }
@@ -411,13 +473,7 @@ class XMLscene extends CGFscene {
 
         if (this.game.gameOver) {
             console.log('game over!!')
-            this.game.gameOver = false;
-            this.graph.piecePositions = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]];
-            if (this.redTurn == true)
-                this.redWins++;
-            else if (this.greenTurn == true)
-                this.greenWins++;
-            this.game = undefined;
+            this.endGame();
         }
     }
 

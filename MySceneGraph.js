@@ -1432,6 +1432,7 @@ class MySceneGraph {
             delete this.themes[theme].XML.animations['movement' + j];
             this.themes[theme].XML.components['piece' + j]["transformations"][12] = 1;
             this.themes[theme].XML.components['piece' + j]["transformations"][14] = 0.05;
+            this.piecePositions[j - 1] = [0, 0];
             this.updatePiecePositions[j - 1] = true;
             if (j <= 4)
                 this.themes[theme].XML.components['piece' + j]["transformations"][13] = j;
