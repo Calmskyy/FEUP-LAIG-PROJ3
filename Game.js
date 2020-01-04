@@ -68,14 +68,15 @@ class Game {
 		for (let i = 0; i < boardIn.length; i++) {
 			if (boardIn[i] != boardOut[i]) {
 				if (boardIn[i] == '0' || boardIn[i] == '.')
-					sourceTile = i;
+					destTile = i;
 				else
-					destTile = i; 
+					sourceTile = i; 
 			}
 		}
 		// let column = (index) % 5 + 1;
 		// let row = Math.floor((index) / 5) + 1;
 		// return [row, column];
+		console.log(sourceTile, destTile)
 		return [sourceTile, destTile];
 	}
 

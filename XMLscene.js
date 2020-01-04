@@ -400,6 +400,8 @@ class XMLscene extends CGFscene {
                                     if (this.game.moveCounter >= 8) { //piece movement
                                         let validMove = this.game.movePiece(this.graph.piecePositions[j][0], this.graph.piecePositions[j][1], row, column, player);
                                         if (validMove != 0) {
+                                            console.log('red pos');
+                                            console.log([row, column])
                                             this.graph.piecePositions[j] = [row, column];
                                             this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
                                             this.game.moveCounter++;
@@ -409,6 +411,8 @@ class XMLscene extends CGFscene {
                                     else if (this.game.moveCounter < 8 && this.graph.piecePositions[j][0] == 0) { //piece placement
                                         let validPlacement = this.game.placePiece(row, column, player);
                                         if (validPlacement != 0) {
+                                            console.log('red pos');
+                                            console.log([row, column])
                                             this.graph.piecePositions[j] = [row, column];
                                             this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
                                             this.game.moveCounter++;
@@ -451,6 +455,16 @@ class XMLscene extends CGFscene {
         }
     }
 
+    getPiece(row, column) {
+        console.log([row, column])
+        console.log(this.graph.piecePositions)
+        for(let i = 0; i < 8; i++) {
+            if (this.graph.piecePositions[i][0] == row 
+                && this.graph.piecePositions[i][1] == column)
+                return i;
+        }
+    }
+
     cpuPick() {
         let level;
         switch (this.difficulty) {
@@ -466,16 +480,28 @@ class XMLscene extends CGFscene {
                 level = 3;
                 break;
         }
+        let player = this.redTurn ? 1 : 2;
         if (this.game.moveCounter >= 8) { //piece movement
             let movePositions = this.game.movePieceCPU(player, level);
-            // if (validMove != 0) {
-            //     this.graph.piecePositions[j] = [row, column];
-            //     this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
-            //     this.game.moveCounter++;
-            // }
+            let sourceTile = movePositions[0];
+            let destTile = movePositions[1];
+
+            let sourceCol = (sourceTile) % 5 + 1;
+            let sourceRow = Math.floor((sourceTile) / 5) + 1;
+
+            let destCol = (destTile) % 5 + 1;
+            let destRow = Math.floor((destTile) / 5) + 1;
+
+            let pieceID = this.getPiece(sourceRow, sourceCol);
+            let tileID = destTile + 1;
+
+            console.log(sourceRow, sourceCol, destRow, destCol);
+            console.log(pieceID, tileID);
+
+            this.graph.piecePositions[pieceID] = [destRow, destCol];
+            this.graph.generateAnimation(pieceID + 1, tileID, this.selectedTheme);
         }
         else if (this.game.moveCounter < 8) { //piece placement
-            let player = this.redTurn ? 1 : 2;
             let tile = this.game.placePieceCPU(player, level);
             let tileID = tile + 9;
             let pieceID;
@@ -505,7 +531,10 @@ class XMLscene extends CGFscene {
                     pieceID = 8;
                     break;
             }
-            console.log('tile id = %d\n', tileID);  
+
+            let column = (tile) % 5 + 1;
+            let row = Math.floor(tile / 5) + 1;
+            this.graph.piecePositions[pieceID - 1] = [row, column];
             this.graph.generateAnimation(pieceID, tileID - 8, this.selectedTheme);
         }
         if (this.redTurn == true) {
@@ -522,7 +551,8 @@ class XMLscene extends CGFscene {
     logPicking() {
         switch (this.playingOption) {
             case "Bot v Bot":
-                this.cpuPick();
+                if (this.game != undefined)
+                    this.cpuPick();
                 break;
 
             case "Player v Bot":
