@@ -10,7 +10,7 @@ class PieceAnimation extends Animation {
 		super(0, [0, 0, 0], [0, 0, 0], [1, 1, 1]);
 		this.keyFrameIndex = -1;
 		this.translates = [[0, 0, 0], [0, 0, translate[0]], [translate[2], translate[1], translate[0]], [translate[2], translate[1], 0], [translate[2], translate[1], 0]];
-		this.instants = [0, 1, 3, 4, 4];
+		this.instants = [0, 0.5, 1.5, 2, 2];
 		this.updatedPosition = false;
 	};
 

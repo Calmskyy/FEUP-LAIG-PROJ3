@@ -50,6 +50,9 @@ class XMLscene extends CGFscene {
         this.redTurn = true;
         this.greenTurn = false;
         this.timeLeft = 20;
+        this.movie = [];
+        this.moviePlaying = false;
+        this.movieAnimation = 0;
 
         this.enableLight1 = false;
         this.enableLight2 = false;
@@ -272,6 +275,11 @@ class XMLscene extends CGFscene {
      * 
      */
     startGame() {
+        this.graph.repositionPieces(this.selectedTheme);
+        this.redTurn = true;
+        this.greenTurn = false;
+        this.timeLeft = this.turnTime;
+        this.movie = [];
         this.game = new Game(this, "human", "human");
     }
 
@@ -280,7 +288,35 @@ class XMLscene extends CGFscene {
      * 
      */
     playMovie() {
-        console.log("test3");
+        this.movieAnimation = 0;
+        this.graph.repositionPieces(this.selectedTheme);
+        this.redTurn = true;
+        this.greenTurn = false;
+        this.moviePlaying = true;
+    }
+
+    updateMovie() {
+        var movementInProgress = false;
+        for (var j = 1; j < 9; j++) {
+            if (this.themes[this.selectedTheme].XML.animations['movement' + j] != undefined)
+                if (this.themes[this.selectedTheme].XML.animations['movement' + j].isFinished() == false)
+                    movementInProgress = true;
+                else if (this.themes[this.selectedTheme].XML.animations['movement' + j].updatePosition() == true) {
+                    this.graph.updatePiecePositions[j - 1] = true;
+                    this.movieAnimation++;
+                }
+        }
+        if (movementInProgress == true)
+            return;
+        if (this.movieAnimation >= this.movie.length) {
+            this.moviePlaying = false;
+            return;
+        }
+        var values = this.movie[this.movieAnimation];
+        this.graph.piecePositions[j] = [values[2], values[3]];
+        this.graph.generateAnimation(values[0] + 1, values[1] - 8, this.selectedTheme);
+        console.log(values[0] + 1);
+        console.log(values[1] - 8);
     }
 
     update(t) {
@@ -303,10 +339,17 @@ class XMLscene extends CGFscene {
             if (movement == false)
                 if (this.timeLeft > 0) {
                     this.timeLeft -= deltaTime / 1000;
-                    if (this.timeLeft < 0)
-                        this.timeLeft = 0;
+                    if (this.timeLeft <= 0) {
+                        if (this.redTurn)
+                            this.greenWins++;
+                        else if (this.greenTurn)
+                            this.redWins++;
+                        this.game = undefined;
+                    }
                 }
         }
+        if (this.moviePlaying == true)
+            this.updateMovie();
         this.time = t;
         this.score = "Red - " + this.redWins + " | " + this.greenWins + " - Green";
         if (this.sceneInited) {
@@ -390,8 +433,6 @@ class XMLscene extends CGFscene {
                                 if (this.graph.pieceSelections[j] == true) {
                                     this.graph.pieceSelections[j] = false;
 
-                                    if (this.game == undefined)
-                                        continue;
                                     let column = (this.pickResults[i][1] - 8 - 1) % 5 + 1;
                                     let row = Math.floor((this.pickResults[i][1] - 8 - 1) / 5) + 1;
                                     console.log("Real cords: %d - %d\n", row, column);
@@ -404,6 +445,7 @@ class XMLscene extends CGFscene {
                                             console.log([row, column])
                                             this.graph.piecePositions[j] = [row, column];
                                             this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
+                                            this.movie[this.game.moveCounter] = [j, this.pickResults[i][1], row, column];
                                             this.game.moveCounter++;
                                             this.timeLeft = this.turnTime;
                                         }
@@ -415,6 +457,7 @@ class XMLscene extends CGFscene {
                                             console.log([row, column])
                                             this.graph.piecePositions[j] = [row, column];
                                             this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
+                                            this.movie[this.game.moveCounter] = [j, this.pickResults[i][1], row, column];
                                             this.game.moveCounter++;
                                             this.timeLeft = this.turnTime;
                                         }
@@ -427,7 +470,6 @@ class XMLscene extends CGFscene {
                                             this.redWins++;
                                         else if (this.greenTurn == true)
                                             this.greenWins++;
-                                        this.graph.repositionPieces(this.selectedTheme);
                                         this.game = undefined;
                                     }
 
@@ -458,8 +500,8 @@ class XMLscene extends CGFscene {
     getPiece(row, column) {
         console.log([row, column])
         console.log(this.graph.piecePositions)
-        for(let i = 0; i < 8; i++) {
-            if (this.graph.piecePositions[i][0] == row 
+        for (let i = 0; i < 8; i++) {
+            if (this.graph.piecePositions[i][0] == row
                 && this.graph.piecePositions[i][1] == column)
                 return i;
         }
@@ -482,6 +524,16 @@ class XMLscene extends CGFscene {
         }
         let player = this.redTurn ? 1 : 2;
         if (this.game.moveCounter >= 8) { //piece movement
+            var movementInProgress = false;
+            for (var j = 1; j < 9; j++) {
+                if (this.themes[this.selectedTheme].XML.animations['movement' + j] != undefined)
+                    if (this.themes[this.selectedTheme].XML.animations['movement' + j].isFinished() == false)
+                        movementInProgress = true;
+                    else if (this.themes[this.selectedTheme].XML.animations['movement' + j].updatePosition() == true)
+                        this.graph.updatePiecePositions[j - 1] = true;
+            }
+            if (movementInProgress == true)
+                return;
             let movePositions = this.game.movePieceCPU(player, level);
             let sourceTile = movePositions[0];
             let destTile = movePositions[1];
@@ -500,8 +552,19 @@ class XMLscene extends CGFscene {
 
             this.graph.piecePositions[pieceID] = [destRow, destCol];
             this.graph.generateAnimation(pieceID + 1, tileID, this.selectedTheme);
+            this.movie[this.game.moveCounter] = [pieceID, tileID + 8, destRow, destCol];
         }
         else if (this.game.moveCounter < 8) { //piece placement
+            var movementInProgress = false;
+            for (var j = 1; j < 9; j++) {
+                if (this.themes[this.selectedTheme].XML.animations['movement' + j] != undefined)
+                    if (this.themes[this.selectedTheme].XML.animations['movement' + j].isFinished() == false)
+                        movementInProgress = true;
+                    else if (this.themes[this.selectedTheme].XML.animations['movement' + j].updatePosition() == true)
+                        this.graph.updatePiecePositions[j - 1] = true;
+            }
+            if (movementInProgress == true)
+                return;
             let tile = this.game.placePieceCPU(player, level);
             let tileID = tile + 9;
             let pieceID;
@@ -536,6 +599,7 @@ class XMLscene extends CGFscene {
             let row = Math.floor(tile / 5) + 1;
             this.graph.piecePositions[pieceID - 1] = [row, column];
             this.graph.generateAnimation(pieceID, tileID - 8, this.selectedTheme);
+            this.movie[this.game.moveCounter] = [pieceID - 1, tileID, row, column];
         }
         if (this.redTurn == true) {
             this.redTurn = false;
@@ -549,26 +613,24 @@ class XMLscene extends CGFscene {
     }
 
     logPicking() {
-        switch (this.playingOption) {
-            case "Bot v Bot":
-                if (this.game != undefined)
+        if (this.game != undefined)
+            switch (this.playingOption) {
+                case "Bot v Bot":
                     this.cpuPick();
-                break;
+                    break;
 
-            case "Player v Bot":
-                if (this.redTurn)
+                case "Player v Bot":
+                    if (this.redTurn)
+                        this.playerPick();
+                    else {
+                        this.cpuPick();
+                    }
+                    break;
+
+                case "Player v Player":
                     this.playerPick();
-                else {
-                    this.cpuPick();
-                }
-                break;
-
-            case "Player v Player":
-                this.playerPick();
-                break;
-        }
-
-
+                    break;
+            }
     }
 
     /**

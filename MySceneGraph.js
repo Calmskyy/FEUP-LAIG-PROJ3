@@ -22,9 +22,7 @@ class MySceneGraph {
     constructor(filenames, scene) {
         this.loadedOk = null;
 
-
         this.pieceSelections = [false, false, false, false, false, false, false, false];
-        this.piecePositions = [];
         this.tilePositions = [];
         this.positionsLoaded = false;
         this.updatePiecePositions = [false, false, false, false, false, false, false, false];
@@ -1425,6 +1423,7 @@ class MySceneGraph {
         var pieceAnimation = new PieceAnimation(translation);
         this.themes[theme].XML.components['piece' + pieceID]["animation"] = pieceAnimation;
         this.themes[theme].XML.animations['movement' + pieceID] = pieceAnimation;
+        //console.log(translation);
     }
 
     repositionPieces(theme) {
@@ -1433,6 +1432,7 @@ class MySceneGraph {
             delete this.themes[theme].XML.animations['movement' + j];
             this.themes[theme].XML.components['piece' + j]["transformations"][12] = 1;
             this.themes[theme].XML.components['piece' + j]["transformations"][14] = 0.05;
+            this.updatePiecePositions[j - 1] = true;
             if (j <= 4)
                 this.themes[theme].XML.components['piece' + j]["transformations"][13] = j;
             else
@@ -1487,11 +1487,13 @@ class MySceneGraph {
             }
             if (piecestr == "piece") {
                 if (this.updatePiecePositions[parseInt(piecestr2) - 1] == true) {
-                    var translation = XML.components[nodeID]["animation"].getFinalTranslation();
-                    XML.components[nodeID]["transformations"][12] += translation[0] * XML.components[nodeID]["transformations"][0];
-                    XML.components[nodeID]["transformations"][13] += translation[1] * XML.components[nodeID]["transformations"][5];
-                    XML.components[nodeID]["transformations"][14] += translation[2] * XML.components[nodeID]["transformations"][10];
-                    XML.components[nodeID]["animation"] = "noAnimation";
+                    if (XML.components[nodeID]["animation"] != "noAnimation") {
+                        var translation = XML.components[nodeID]["animation"].getFinalTranslation();
+                        XML.components[nodeID]["transformations"][12] += translation[0] * XML.components[nodeID]["transformations"][0];
+                        XML.components[nodeID]["transformations"][13] += translation[1] * XML.components[nodeID]["transformations"][5];
+                        XML.components[nodeID]["transformations"][14] += translation[2] * XML.components[nodeID]["transformations"][10];
+                        XML.components[nodeID]["animation"] = "noAnimation";
+                    }
                     this.piecePositions[parseInt(piecestr2) + 24] = this.obtainTranslationScalingValues(newMatrix);
                     this.updatePiecePositions[parseInt(piecestr2) - 1] = false;
                 }
@@ -1556,7 +1558,6 @@ class MySceneGraph {
      */
     displayScene() {
         this.pickIndex = 1;
-        this.scene.registerForPick(1, this.testePiece);
         var index = this.scene.selectedTheme;
         var rootTexture = this.themes[index].XML.components[this.idRoot[this.themes[index].name]]["texture"];
         var rootMaterial = this.themes[index].XML.components[this.idRoot[this.themes[index].name]]["materials"][0];

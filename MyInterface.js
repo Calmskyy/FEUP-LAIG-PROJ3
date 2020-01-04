@@ -50,7 +50,7 @@ class MyInterface extends CGFinterface {
         this.gameGUI.add(this.scene, "score").name('Score').listen();
         this.gameGUI.add(this.scene, "undo").name('Undo Turn');
         // add something to select recorded movies in an array
-        this.gameGUI.add(this.scene, "playMovie").name('Play Movie');
+        this.gameGUI.add(this.scene, "playMovie").name('Replay Last Game');
     }
 
     processKeyDown(event) {
