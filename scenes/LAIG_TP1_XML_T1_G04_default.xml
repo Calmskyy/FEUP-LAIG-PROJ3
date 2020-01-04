@@ -79,6 +79,9 @@
         <texture id="plastic" file="scenes/images/plastic.jpg" />
         <texture id="green-mat" file="scenes/images/green-mat.jpg" />
         <texture id="tatami" file="scenes/images/tatami.jpg" />
+        <texture id="wall_paint" file="scenes/images/wall_paint.jpg" />
+        <texture id="sliding_door" file="scenes/images/sliding_door.jpg" />
+        <texture id="lake" file="scenes/images/lake.jpg" />
     </textures>
 
     <materials>
@@ -287,6 +290,217 @@
                 <componentref id="chairs" />
                 <componentref id="floor" />
                 <componentref id="tatami" />
+                <componentref id="lower-walls" />
+                <componentref id="walls" />
+            </children>
+        </component>
+
+        <!--Lower walls-->
+        <component id="walls">
+            <transformation>
+                <translate x="30" y="0" z="0" />
+                <scale x="1.5" y="1" z="1" />
+            </transformation>
+            <materials>
+                <material id="yellow" />
+            </materials>
+            <texture id="wall_paint" length_s="1" length_t="1" />
+            <children>
+                <componentref id="wall1" />
+                <componentref id="wall2" />
+                <componentref id="wall3" />
+                <componentref id="wall4" />
+                <componentref id="wall5" />
+                <componentref id="wall6" />
+            </children>
+        </component>
+
+        <component id="wall1">
+            <transformation>
+                <scale x="30" y="200" z="1" />
+                <translate x="0.5" y="0" z="-100" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="wall_paint" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="wall2">
+            <transformation>
+                <scale x="30" y="200" z="1" />
+                <translate x="0.5" y="0" z="100" />
+                <rotate axis="x" angle="180" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="wall_paint" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="wall3">
+            <transformation>
+                <rotate axis="x" angle="90" />
+                <scale x="30" y="200" z="1" />
+                <translate x="0.5" y="0" z="100" />
+                <rotate axis="x" angle="180" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="wall_paint" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="wall4">
+            <transformation>
+                <translate x="0" y="0" z="70" />
+                <rotate axis="x" angle="90" />
+                <scale x="30" y="60" z="1" />
+                <translate x="0.5" y="0" z="-100" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="sliding_door" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="wall5">
+            <transformation>
+                <translate x="0" y="0" z="-70" />
+                <rotate axis="x" angle="90" />
+                <scale x="30" y="60" z="1" />
+                <translate x="0.5" y="0" z="-100" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="sliding_door" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="wall6">
+            <transformation>
+                <rotate axis="y" angle="90" />
+                <translate x="-40" y="0" z="0" />
+                <rotate axis="x" angle="90" />
+                <scale x="130" y="60" z="1" />
+                <translate x="0.5" y="0" z="-100.1" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="lake" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <!--Lower walls-->
+        <component id="lower-walls">
+            <transformation>
+                <rotate axis="y" angle="0" />
+            </transformation>
+            <materials>
+                <material id="yellow" />
+            </materials>
+            <texture id="wood" length_s="1" length_t="1" />
+            <children>
+                <componentref id="lower1" />
+                <componentref id="lower2" />
+                <componentref id="lower3" />
+                <componentref id="lower4" />
+                <componentref id="lower5" />
+            </children>
+        </component>
+
+        <component id="lower1">
+            <transformation>
+                <scale x="30" y="200" z="1" />
+                <translate x="0.5" y="0" z="-100" />
+            </transformation>
+            <materials>
+                <material id="metalMaterial" />
+            </materials>
+            <texture id="wood" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="lower2">
+            <transformation>
+                <scale x="30" y="200" z="1" />
+                <translate x="0.5" y="0" z="100" />
+                <rotate axis="x" angle="180" />
+            </transformation>
+            <materials>
+                <material id="metalMaterial" />
+            </materials>
+            <texture id="wood" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="lower3">
+            <transformation>
+                <rotate axis="x" angle="90" />
+                <scale x="30" y="200" z="1" />
+                <translate x="0.5" y="0" z="100" />
+                <rotate axis="x" angle="180" />
+            </transformation>
+            <materials>
+                <material id="metalMaterial" />
+            </materials>
+            <texture id="wood" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="lower4">
+            <transformation>
+                <translate x="0" y="0" z="70" />
+                <rotate axis="x" angle="90" />
+                <scale x="30" y="60" z="1" />
+                <translate x="0.5" y="0" z="-100" />
+            </transformation>
+            <materials>
+                <material id="metalMaterial" />
+            </materials>
+            <texture id="wood" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="lower5">
+            <transformation>
+                <translate x="0" y="0" z="-70" />
+                <rotate axis="x" angle="90" />
+                <scale x="30" y="60" z="1" />
+                <translate x="0.5" y="0" z="-100" />
+            </transformation>
+            <materials>
+                <material id="metalMaterial" />
+            </materials>
+            <texture id="wood" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
             </children>
         </component>
         
@@ -304,6 +518,7 @@
                 <primitiveref id="rectangle" />
             </children>
         </component>
+
 
         <component id="tatami">
             <transformation>
