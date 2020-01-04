@@ -22,8 +22,11 @@ class Game {
 
 	handleGameOver(data) {
 		let response = data.target.response;
-		if (response == 0)
+		if (response == 0) {
 			this.gameOver = true;
+			this.board = "[['0','0','.','0','0'],['0','.','.','.','0'],['.','.','0','.','.'],['0','.','.','.','0'],['0','0','.','0','0']]";
+			this.moveCounter = 0;
+		}
 	}
 
 	placePiece(row, column, player) {

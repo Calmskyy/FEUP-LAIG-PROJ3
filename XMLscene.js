@@ -393,6 +393,30 @@ class XMLscene extends CGFscene {
         }
     }
 
+    swapPlayer() {
+        if (this.redTurn == true) {
+            this.redTurn = false;
+            this.greenTurn = true;
+        }
+        else if (this.greenTurn == true) {
+            this.redTurn = true;
+            this.greenTurn = false;
+        }
+
+        this.game.moveCounter++;
+
+        if (this.game.gameOver) {
+            console.log('game over!!')
+            this.game.gameOver = false;
+            this.graph.piecePositions = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]];
+            if (this.redTurn == true)
+                this.redWins++;
+            else if (this.greenTurn == true)
+                this.greenWins++;
+            this.game = undefined;
+        }
+    }
+
     playerPick() {
         if (this.pickMode == false) {
             if (this.pickResults != null && this.pickResults.length > 0) {
@@ -446,8 +470,8 @@ class XMLscene extends CGFscene {
                                             this.graph.piecePositions[j] = [row, column];
                                             this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
                                             this.movie[this.game.moveCounter] = [j, this.pickResults[i][1], row, column];
-                                            this.game.moveCounter++;
                                             this.timeLeft = this.turnTime;
+                                            this.swapPlayer();
                                         }
                                     }
                                     else if (this.game.moveCounter < 8 && this.graph.piecePositions[j][0] == 0) { //piece placement
@@ -458,28 +482,9 @@ class XMLscene extends CGFscene {
                                             this.graph.piecePositions[j] = [row, column];
                                             this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
                                             this.movie[this.game.moveCounter] = [j, this.pickResults[i][1], row, column];
-                                            this.game.moveCounter++;
                                             this.timeLeft = this.turnTime;
+                                            this.swapPlayer();
                                         }
-                                    }
-
-                                    if (this.game.gameOver) {
-                                        console.log('game over!!')
-                                        this.game.gameOver = false;
-                                        if (this.redTurn == true)
-                                            this.redWins++;
-                                        else if (this.greenTurn == true)
-                                            this.greenWins++;
-                                        this.game = undefined;
-                                    }
-
-                                    if (this.redTurn == true) {
-                                        this.redTurn = false;
-                                        this.greenTurn = true;
-                                    }
-                                    else if (this.greenTurn == true) {
-                                        this.redTurn = true;
-                                        this.greenTurn = false;
                                     }
 
                                     console.log('Pos');
@@ -601,15 +606,7 @@ class XMLscene extends CGFscene {
             this.graph.generateAnimation(pieceID, tileID - 8, this.selectedTheme);
             this.movie[this.game.moveCounter] = [pieceID - 1, tileID, row, column];
         }
-        if (this.redTurn == true) {
-            this.redTurn = false;
-            this.greenTurn = true;
-        }
-        else if (this.greenTurn == true) {
-            this.redTurn = true;
-            this.greenTurn = false;
-        }
-        this.game.moveCounter++;
+        this.swapPlayer();
     }
 
     logPicking() {
