@@ -275,6 +275,7 @@ class XMLscene extends CGFscene {
      * 
      */
     startGame() {
+        this.gameDelay = -3;
         this.graph.repositionPieces(this.selectedTheme);
         this.redTurn = true;
         this.greenTurn = false;
@@ -288,10 +289,9 @@ class XMLscene extends CGFscene {
      * 
      */
     playMovie() {
-        this.movieAnimation = 0;
+        this.movieAnimation = -3;
         this.graph.repositionPieces(this.selectedTheme);
-        this.redTurn = true;
-        this.greenTurn = false;
+        this.game = undefined;
         this.moviePlaying = true;
     }
 
@@ -310,6 +310,10 @@ class XMLscene extends CGFscene {
             return;
         if (this.movieAnimation >= this.movie.length) {
             this.moviePlaying = false;
+            return;
+        }
+        if (this.movieAnimation < 0) {
+            this.movieAnimation++;
             return;
         }
         var values = this.movie[this.movieAnimation];
@@ -610,7 +614,11 @@ class XMLscene extends CGFscene {
     }
 
     logPicking() {
-        if (this.game != undefined)
+        if (this.game != undefined) {
+            if (this.gameDelay < 0) {
+                this.gameDelay++;
+                return;
+            }
             switch (this.playingOption) {
                 case "Bot v Bot":
                     this.cpuPick();
@@ -628,6 +636,7 @@ class XMLscene extends CGFscene {
                     this.playerPick();
                     break;
             }
+        }
     }
 
     /**
