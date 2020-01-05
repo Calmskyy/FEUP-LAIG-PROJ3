@@ -51,8 +51,13 @@ class XMLscene extends CGFscene {
         this.greenTurn = false;
         this.timeLeft = 20;
         this.movie = [];
+        this.movies = [];
+        this.selectedMovie = -1;
+        this.movieNames = [];
+        this.gamesPlayed = 0;
+        this.moviesStored = 0;
         this.pieceMoves = [];
-        this.moviePlaying = false;
+        this.moviePlaying = -1;
         this.movieAnimation = 0;
 
         this.enableLight1 = false;
@@ -358,6 +363,8 @@ class XMLscene extends CGFscene {
      * 
      */
     startGame() {
+        if (this.game != undefined)
+            return;
         this.gameDelay = -3;
         this.graph.repositionPieces(this.selectedTheme);
         this.redTurn = true;
@@ -373,6 +380,16 @@ class XMLscene extends CGFscene {
      */
     endGame() {
         this.game = undefined;
+        this.gamesPlayed++;
+        if (this.movie.length != 0) {
+            this.movies[this.moviesStored] = this.movie;
+            if (this.movie.length == 1)
+                this.movieNames[this.moviesStored] = "Game " + this.gamesPlayed + " - " + this.movie.length + " Turn";
+            else
+                this.movieNames[this.moviesStored] = "Game " + this.gamesPlayed + " - " + this.movie.length + " Turns";
+            this.moviesStored++;
+            this.interface.updateMovieSelection();
+        }
         if (this.redTurn == true) {
             this.redWins++;
             this.redTurn = false;
@@ -388,14 +405,17 @@ class XMLscene extends CGFscene {
      * 
      */
     playMovie() {
-        if (this.movie.length == 0)
+        if (this.selectedMovie == -1)
+            return;
+        let movieNumber = parseInt(this.selectedMovie.substring(5, this.selectedMovie.indexOf('-') - 1));
+        if (this.movies[movieNumber - 1].length == 0)
             return;
         this.movieAnimation = -3;
         this.graph.repositionPieces(this.selectedTheme);
         if (this.game != undefined) {
             this.endGame();
         }
-        this.moviePlaying = true;
+        this.moviePlaying = movieNumber - 1;
     }
 
     /**
@@ -414,19 +434,17 @@ class XMLscene extends CGFscene {
         }
         if (movementInProgress == true)
             return;
-        if (this.movieAnimation >= this.movie.length) {
-            this.moviePlaying = false;
+        if (this.movieAnimation >= this.movies[this.moviePlaying].length) {
+            this.moviePlaying = -1;
             return;
         }
         if (this.movieAnimation < 0) {
             this.movieAnimation++;
             return;
         }
-        var values = this.movie[this.movieAnimation];
+        var values = this.movies[this.moviePlaying][this.movieAnimation];
         this.graph.piecePositions[j] = [values[2], values[3]];
         this.graph.generateAnimation(values[0] + 1, values[1] - 8, this.selectedTheme);
-        console.log(values[0] + 1);
-        console.log(values[1] - 8);
     }
 
     update(t) {
@@ -456,7 +474,7 @@ class XMLscene extends CGFscene {
                     }
                 }
         }
-        if (this.moviePlaying == true)
+        if (this.moviePlaying != -1)
             this.updateMovie();
         this.time = t;
         this.score = "Red - " + this.redWins + " | " + this.greenWins + " - Green";

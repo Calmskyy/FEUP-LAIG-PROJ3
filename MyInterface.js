@@ -50,8 +50,8 @@ class MyInterface extends CGFinterface {
         this.gameGUI.add(this.scene, "forfeit").name('Forfeit');
         this.gameGUI.add(this.scene, "score").name('Score').listen();
         this.gameGUI.add(this.scene, "undo").name('Undo Turn');
-        // add something to select recorded movies in an array
-        this.gameGUI.add(this.scene, "playMovie").name('Replay Last Game');
+        this.gameGUI.add(this.scene, "playMovie").name('Replay Selected Game');
+        this.movieSelection = this.gameGUI.add(this.scene, 'selectedMovie', this.scene.movieNames).name('Select Movie');
     }
 
     processKeyDown(event) {
@@ -67,12 +67,23 @@ class MyInterface extends CGFinterface {
     }
 
     /**
+     * 
+     */
+    updateMovieSelection() {
+        this.gameGUI.remove(this.movieSelection);
+        this.movieSelection = this.gameGUI.add(this.scene, 'selectedMovie', this.scene.movieNames).name('Select Movie');
+    }
+
+    /**
      * Initializes the view selection upon reading how many views are defined in the XML file.
      */
     addViews() {
         this.sceneGUI.add(this.scene, 'selectedView', this.scene.viewIDs).name('Selected View').onChange(this.scene.updateCamera.bind(this.scene));
     }
 
+    /**
+     * 
+     */
     addThemes() {
         this.sceneGUI.add(this.scene, 'selectedTheme', this.scene.themeIDs).name('Selected Theme').onChange(this.scene.updateTheme.bind(this.scene));
     }

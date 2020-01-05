@@ -1412,8 +1412,6 @@ class MySceneGraph {
      * @param theme The theme currently being used
      */
     generateAnimation(pieceID, tileID, theme) {
-        console.log(pieceID);
-        console.log(tileID);
         var tileLocation = this.tilePositions[tileID - 1];
         var pieceLocation = this.piecePositions[pieceID + 24];
         var translation = [];
@@ -1542,12 +1540,11 @@ class MySceneGraph {
                 this.scene.registerForPick(this.pickIndex++, XML.primitives[nodeID]);
             }
             this.scene.multMatrix(matrix);
-            if (texture != "none") {
+            if (texture == "none")
+                material.setTexture(null);
+            else {
                 material.setTexture(texture);
                 XML.primitives[nodeID].updateTexCoords(length_s, length_t);
-            }
-            if (texture == "none") {
-                material.setTexture(null);
             }
             material.apply();
             XML.primitives[nodeID].display();
