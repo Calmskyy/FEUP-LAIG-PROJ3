@@ -10,7 +10,7 @@
             <from x="50" y="40" z="-20" />
             <to x="0" y="10" z="-20" />
         </perspective>
-        <perspective id="thirdView" near="0.1" far="500" angle="-58">
+        <perspective id="thirdView" near="0.1" far="500" angle="58">
             <from x="50" y="80" z="-20" />
             <to x="20" y="-50" z="-20" />
         </perspective>

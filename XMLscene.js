@@ -87,7 +87,7 @@ class XMLscene extends CGFscene {
                 var details = theme.XML["cameras"][key];
                 if (details.type == "perspective") {
                     var camera = new CGFcamera(details.angle, details.near, details.far, details.fromCoords, details.toCoords);
-                    if (key == "greenView")
+                    if (key == "greenView" || key == "thirdView")
                         camera._up = [0, -1, 0];
                     this.viewIDs[key] = i;
                     this.cameras[i] = camera;
