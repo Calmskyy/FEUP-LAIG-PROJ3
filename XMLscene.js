@@ -51,7 +51,13 @@ class XMLscene extends CGFscene {
         this.greenTurn = false;
         this.timeLeft = 20;
         this.movie = [];
-        this.moviePlaying = false;
+        this.movies = [];
+        this.selectedMovie = -1;
+        this.movieNames = [];
+        this.gamesPlayed = 0;
+        this.moviesStored = 0;
+        this.pieceMoves = [];
+        this.moviePlaying = -1;
         this.movieAnimation = 0;
 
         this.enableLight1 = false;
@@ -141,6 +147,7 @@ class XMLscene extends CGFscene {
     }
     /**
      * Initializes the scene lights with the values read from the XML file.
+     * @param theme Theme whose lights will be initialized.
      */
     initLights(theme) {
         var i = 0;
@@ -220,6 +227,9 @@ class XMLscene extends CGFscene {
         this.setShininess(10.0);
     }
 
+    /**
+     * Initializes the theme list with the themes that are about to be parsed.
+     */
     saveThemes(sceneThemes) {
         var i = 0;
         for (var j = 0; j < sceneThemes.length; j++) {
@@ -258,14 +268,14 @@ class XMLscene extends CGFscene {
     }
 
     /**
-     * 
+     * Adds a fully parsed theme to the theme list.
      */
     addGraph(theme) {
         this.themes[this.themes.length] = theme;
     }
 
     /**
-     * 
+     * Updates the game mode being used upon being changed in the interface.
      */
     updateGameMode() {
         if (this.game == undefined)
@@ -275,7 +285,7 @@ class XMLscene extends CGFscene {
     }
 
     /**
-     * 
+     * Updates the difficulty being used upon being changed in the interface.
      */
     updateDifficulty() {
         if (this.game == undefined)
@@ -297,40 +307,90 @@ class XMLscene extends CGFscene {
     }
 
     /**
-     * 
+     * Ends the game immediately, after one player surrenders.
      */
     forfeit() {
-        console.log("helo");
         if (this.game != undefined) {
             this.endGame();
         }
     }
 
     /**
-     * 
+     * Updates the current state of the game to the state it was in one turn earlier.
      */
     undo() {
-        console.log(this.game);
+        if (this.game != undefined) {
+            if (this.game.moveCounter == 0)
+                return;
+            if (this.playingOption == "Bot v Bot")
+                return;
+            if(this.checkForMovement() == 1)
+                return;
+            let translation = [];
+            let position = this.pieceMoves[this.game.moveCounter - 1]["position"];
+            this.graph.piecePositions[this.pieceMoves[this.game.moveCounter - 1]["id"] - 1] = position;
+            translation[0] = this.pieceMoves[this.game.moveCounter - 1]["animation"].translates[2][2];
+            translation[1] = -this.pieceMoves[this.game.moveCounter - 1]["animation"].translates[2][1];
+            translation[2] = -this.pieceMoves[this.game.moveCounter - 1]["animation"].translates[2][0];
+            let undoAnimation = new PieceAnimation(translation);
+            this.themes[this.selectedTheme].XML.components['piece' + this.pieceMoves[this.game.moveCounter - 1]["id"]]["animation"] = undoAnimation;
+            this.themes[this.selectedTheme].XML.animations['movement' + this.pieceMoves[this.game.moveCounter - 1]["id"]] = undoAnimation;
+            this.game.undo();
+            if (this.playingOption == "Player v Bot") {
+                position = this.pieceMoves[this.game.moveCounter - 1]["position"];
+                this.graph.piecePositions[this.pieceMoves[this.game.moveCounter - 1]["id"] - 1] = position;
+                translation[0] = this.pieceMoves[this.game.moveCounter - 1]["animation"].translates[2][2];
+                translation[1] = -this.pieceMoves[this.game.moveCounter - 1]["animation"].translates[2][1];
+                translation[2] = -this.pieceMoves[this.game.moveCounter - 1]["animation"].translates[2][0];
+                let undoAnimation2 = new PieceAnimation(translation);
+                this.themes[this.selectedTheme].XML.components['piece' + this.pieceMoves[this.game.moveCounter - 1]["id"]]["animation"] = undoAnimation2;
+                this.themes[this.selectedTheme].XML.animations['movement' + this.pieceMoves[this.game.moveCounter - 1]["id"]] = undoAnimation2;
+                this.game.undo();
+            }
+            else {
+                if (this.redTurn) {
+                    this.redTurn = false;
+                    this.greenTurn = true;
+                }
+                else if (this.greenTurn) {
+                    this.redTurn = true;
+                    this.greenTurn = false;
+                }
+            }
+        }
     }
 
     /**
-     * 
+     * Starts a new game.
      */
     startGame() {
+        if (this.game != undefined)
+            return;
         this.gameDelay = -3;
         this.graph.repositionPieces(this.selectedTheme);
         this.redTurn = true;
         this.greenTurn = false;
         this.timeLeft = this.turnTime;
         this.movie = [];
+        this.pieceMoves = [];
         this.game = new Game(this, "human", "human");
     }
 
     /**
-     * 
+     * Ends the game, saving its sequence of moves and awarding a win to the player that won.
      */
     endGame() {
         this.game = undefined;
+        this.gamesPlayed++;
+        if (this.movie.length != 0) {
+            this.movies[this.moviesStored] = this.movie;
+            if (this.movie.length == 1)
+                this.movieNames[this.moviesStored] = "Game " + this.gamesPlayed + " - " + this.movie.length + " Turn";
+            else
+                this.movieNames[this.moviesStored] = "Game " + this.gamesPlayed + " - " + this.movie.length + " Turns";
+            this.moviesStored++;
+            this.interface.updateMovieSelection();
+        }
         if (this.redTurn == true) {
             this.redWins++;
             this.redTurn = false;
@@ -343,52 +403,45 @@ class XMLscene extends CGFscene {
 
 
     /**
-     * 
+     * Starts playing the currently selected movie.
      */
     playMovie() {
-        if (this.movie.length == 0)
+        if (this.selectedMovie == -1)
+            return;
+        let movieNumber = parseInt(this.selectedMovie.substring(5, this.selectedMovie.indexOf('-') - 1));
+        if (this.movies[movieNumber - 1].length == 0)
             return;
         this.movieAnimation = -3;
         this.graph.repositionPieces(this.selectedTheme);
         if (this.game != undefined) {
             this.endGame();
         }
-        this.moviePlaying = true;
+        this.moviePlaying = movieNumber - 1;
     }
 
     /**
-     * 
+     * Advances the animation of the movie to the next turn, while waiting for each animation to play out fully.
      */
     updateMovie() {
-        var movementInProgress = false;
-        for (var j = 1; j < 9; j++) {
-            if (this.themes[this.selectedTheme].XML.animations['movement' + j] != undefined)
-                if (this.themes[this.selectedTheme].XML.animations['movement' + j].isFinished() == false)
-                    movementInProgress = true;
-                else if (this.themes[this.selectedTheme].XML.animations['movement' + j].updatePosition() == true) {
-                    this.graph.updatePiecePositions[j - 1] = true;
-                    this.movieAnimation++;
-                }
-        }
-        if (movementInProgress == true)
+        var result = this.checkForMovement();
+        if (result == 1)
             return;
-        if (this.movieAnimation >= this.movie.length) {
-            this.moviePlaying = false;
+        else if (result == 2)
+            this.movieAnimation++;
+        if (this.movieAnimation >= this.movies[this.moviePlaying].length) {
+            this.moviePlaying = -1;
             return;
         }
         if (this.movieAnimation < 0) {
             this.movieAnimation++;
             return;
         }
-        var values = this.movie[this.movieAnimation];
+        var values = this.movies[this.moviePlaying][this.movieAnimation];
         this.graph.piecePositions[j] = [values[2], values[3]];
         this.graph.generateAnimation(values[0] + 1, values[1] - 8, this.selectedTheme);
-        console.log(values[0] + 1);
-        console.log(values[1] - 8);
     }
 
     update(t) {
-        this.checkKeys();
 
         if (!this.time) {
             this.time = t;
@@ -398,13 +451,7 @@ class XMLscene extends CGFscene {
 
         let deltaTime = t - this.time;
         if (this.game != undefined) {
-            var movement = false;
-            for (var j = 1; j < 9; j++) {
-                if (this.themes[this.selectedTheme].XML.animations['movement' + j] != undefined)
-                    if (this.themes[this.selectedTheme].XML.animations['movement' + j].isFinished() == false)
-                        movement = true;
-            }
-            if (movement == false)
+            if (this.checkForMovement() != 1)
                 if (this.timeLeft > 0) {
                     this.timeLeft -= deltaTime / 1000;
                     if (this.timeLeft <= 0) {
@@ -414,7 +461,7 @@ class XMLscene extends CGFscene {
                     }
                 }
         }
-        if (this.moviePlaying == true)
+        if (this.moviePlaying != -1)
             this.updateMovie();
         this.time = t;
         this.score = "Red - " + this.redWins + " | " + this.greenWins + " - Green";
@@ -453,13 +500,15 @@ class XMLscene extends CGFscene {
         }
     }
 
-    checkKeys() {
-        if (this.gui.isKeyPressed("KeyM")) {
-            this.graph.processMPress();
-        }
-    }
-
+    /**
+     * Changes the turn to the next player, and checks if a player has won.
+     */
     swapPlayer() {
+        this.game.moveCounter++;
+        if (this.game.gameOver) {
+            this.endGame();
+        }
+
         if (this.redTurn == true) {
             this.redTurn = false;
             this.greenTurn = true;
@@ -468,13 +517,23 @@ class XMLscene extends CGFscene {
             this.redTurn = true;
             this.greenTurn = false;
         }
+    }
 
-        this.game.moveCounter++;
-
-        if (this.game.gameOver) {
-            console.log('game over!!')
-            this.endGame();
+    /**
+     * Checks if any piece has just finished its movement, and if any piece is currently in movement.
+     */
+    checkForMovement() {
+        for (var j = 1; j < 9; j++) {
+            if (this.themes[this.selectedTheme].XML.animations['movement' + j] != undefined)
+                if (this.themes[this.selectedTheme].XML.animations['movement' + j].isFinished() == false) {
+                    return 1;
+                }
+                else if (this.themes[this.selectedTheme].XML.animations['movement' + j].updatePosition() == true) {
+                    this.graph.updatePiecePositions[j - 1] = true;
+                    return 2;
+                }
         }
+        return 0;
     }
 
     playerPick() {
@@ -493,16 +552,6 @@ class XMLscene extends CGFscene {
                                 if (this.pickResults[i][1] < 5)
                                     continue;
                             }
-                            var movementInProgress = false;
-                            for (var j = 1; j < 9; j++) {
-                                if (this.themes[this.selectedTheme].XML.animations['movement' + j] != undefined)
-                                    if (this.themes[this.selectedTheme].XML.animations['movement' + j].isFinished() == false)
-                                        movementInProgress = true;
-                                    else if (this.themes[this.selectedTheme].XML.animations['movement' + j].updatePosition() == true)
-                                        this.graph.updatePiecePositions[j - 1] = true;
-                            }
-                            if (movementInProgress == true)
-                                continue;
                             if (this.graph.pieceSelections[this.pickResults[i][1] - 1] == true) {
                                 this.graph.pieceSelections[this.pickResults[i][1] - 1] = false;
                                 continue;
@@ -527,11 +576,16 @@ class XMLscene extends CGFscene {
                                         if (validMove != 0) {
                                             console.log('red pos');
                                             console.log([row, column])
+                                            let move = [];
+                                            move["position"] = [this.graph.piecePositions[j][0], this.graph.piecePositions[j][1]];
                                             this.graph.piecePositions[j] = [row, column];
-                                            this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
+                                            let animation = this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
+                                            move["animation"] = animation;
+                                            move["id"] = j + 1;
+                                            move["position"] = [row, column];
+                                            this.pieceMoves[this.game.moveCounter] = move;
                                             this.movie[this.game.moveCounter] = [j, this.pickResults[i][1], row, column];
                                             this.timeLeft = this.turnTime;
-                                            this.swapPlayer();
                                         }
                                     }
                                     else if (this.game.moveCounter < 8 && this.graph.piecePositions[j][0] == 0) { //piece placement
@@ -539,11 +593,16 @@ class XMLscene extends CGFscene {
                                         if (validPlacement != 0) {
                                             console.log('red pos');
                                             console.log([row, column])
+                                            let move = [];
+                                            move["position"] = [this.graph.piecePositions[j][0], this.graph.piecePositions[j][1]];
                                             this.graph.piecePositions[j] = [row, column];
-                                            this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
+                                            let animation = this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
+                                            move["animation"] = animation;
+                                            move["id"] = j + 1;
+                                            console.log(this.game.moveCounter);
+                                            this.pieceMoves[this.game.moveCounter] = move;
                                             this.movie[this.game.moveCounter] = [j, this.pickResults[i][1], row, column];
                                             this.timeLeft = this.turnTime;
-                                            this.swapPlayer();
                                         }
                                     }
 
@@ -589,16 +648,6 @@ class XMLscene extends CGFscene {
         }
         let player = this.redTurn ? 1 : 2;
         if (this.game.moveCounter >= 8) { //piece movement
-            var movementInProgress = false;
-            for (var j = 1; j < 9; j++) {
-                if (this.themes[this.selectedTheme].XML.animations['movement' + j] != undefined)
-                    if (this.themes[this.selectedTheme].XML.animations['movement' + j].isFinished() == false)
-                        movementInProgress = true;
-                    else if (this.themes[this.selectedTheme].XML.animations['movement' + j].updatePosition() == true)
-                        this.graph.updatePiecePositions[j - 1] = true;
-            }
-            if (movementInProgress == true)
-                return;
             let movePositions = this.game.movePieceCPU(player, level);
             let sourceTile = movePositions[0];
             let destTile = movePositions[1];
@@ -614,22 +663,17 @@ class XMLscene extends CGFscene {
 
             console.log(sourceRow, sourceCol, destRow, destCol);
             console.log(pieceID, tileID);
+            let move = [];
+            move["position"] = [this.graph.piecePositions[pieceID][0], this.graph.piecePositions[pieceID][1]];
 
             this.graph.piecePositions[pieceID] = [destRow, destCol];
-            this.graph.generateAnimation(pieceID + 1, tileID, this.selectedTheme);
+            let animation = this.graph.generateAnimation(pieceID + 1, tileID, this.selectedTheme);
+            move["animation"] = animation;
+            move["id"] = pieceID + 1;
+            this.pieceMoves[this.game.moveCounter] = move;
             this.movie[this.game.moveCounter] = [pieceID, tileID + 8, destRow, destCol];
         }
         else if (this.game.moveCounter < 8) { //piece placement
-            var movementInProgress = false;
-            for (var j = 1; j < 9; j++) {
-                if (this.themes[this.selectedTheme].XML.animations['movement' + j] != undefined)
-                    if (this.themes[this.selectedTheme].XML.animations['movement' + j].isFinished() == false)
-                        movementInProgress = true;
-                    else if (this.themes[this.selectedTheme].XML.animations['movement' + j].updatePosition() == true)
-                        this.graph.updatePiecePositions[j - 1] = true;
-            }
-            if (movementInProgress == true)
-                return;
             let tile = this.game.placePieceCPU(player, level);
             let tileID = tile + 9;
             let pieceID;
@@ -662,15 +706,24 @@ class XMLscene extends CGFscene {
 
             let column = (tile) % 5 + 1;
             let row = Math.floor(tile / 5) + 1;
+            let move = [];
+            move["position"] = [this.graph.piecePositions[pieceID - 1][0], this.graph.piecePositions[pieceID - 1][1]];
             this.graph.piecePositions[pieceID - 1] = [row, column];
-            this.graph.generateAnimation(pieceID, tileID - 8, this.selectedTheme);
+            let animation = this.graph.generateAnimation(pieceID, tileID - 8, this.selectedTheme);
+            move["animation"] = animation;
+            move["id"] = pieceID;
+            this.pieceMoves[this.game.moveCounter] = move;
             this.movie[this.game.moveCounter] = [pieceID - 1, tileID, row, column];
         }
-        this.swapPlayer();
     }
 
     logPicking() {
         if (this.game != undefined) {
+            var result = this.checkForMovement();
+            if (result == 1)
+                return;
+            else if (result == 2)
+                this.swapPlayer();
             if (this.gameDelay < 0) {
                 this.gameDelay++;
                 return;

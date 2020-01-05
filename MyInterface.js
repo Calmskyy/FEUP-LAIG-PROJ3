@@ -32,6 +32,9 @@ class MyInterface extends CGFinterface {
         this.activeKeys = {};
     }
 
+    /**
+     * Initializes the scene menu.
+     */
     initSceneGUI() {
         this.sceneGUI.destroy();
         this.sceneGUI = new dat.GUI();
@@ -39,6 +42,9 @@ class MyInterface extends CGFinterface {
         this.sceneGUI.add(this.scene, 'scaleFactor', 0.1, 15).name('Scale Factor');
     }
 
+    /**
+     * Initializes the game menu, containing various options/buttons to interact with the game.
+     */
     initGameGUI() {
         this.gameGUI.destroy();
         this.gameGUI = new dat.GUI();
@@ -50,8 +56,8 @@ class MyInterface extends CGFinterface {
         this.gameGUI.add(this.scene, "forfeit").name('Forfeit');
         this.gameGUI.add(this.scene, "score").name('Score').listen();
         this.gameGUI.add(this.scene, "undo").name('Undo Turn');
-        // add something to select recorded movies in an array
-        this.gameGUI.add(this.scene, "playMovie").name('Replay Last Game');
+        this.gameGUI.add(this.scene, "playMovie").name('Replay Selected Game');
+        this.movieSelection = this.gameGUI.add(this.scene, 'selectedMovie', this.scene.movieNames).name('Select Movie');
     }
 
     processKeyDown(event) {
@@ -67,12 +73,23 @@ class MyInterface extends CGFinterface {
     }
 
     /**
+     * Updates the movie selection option to contain the newest movie recorded.
+     */
+    updateMovieSelection() {
+        this.gameGUI.remove(this.movieSelection);
+        this.movieSelection = this.gameGUI.add(this.scene, 'selectedMovie', this.scene.movieNames).name('Select Movie');
+    }
+
+    /**
      * Initializes the view selection upon reading how many views are defined in the XML file.
      */
     addViews() {
         this.sceneGUI.add(this.scene, 'selectedView', this.scene.viewIDs).name('Selected View').onChange(this.scene.updateCamera.bind(this.scene));
     }
 
+    /**
+     * Initializes the theme selection upon reading how many different XML files are loaded.
+     */
     addThemes() {
         this.sceneGUI.add(this.scene, 'selectedTheme', this.scene.themeIDs).name('Selected Theme').onChange(this.scene.updateTheme.bind(this.scene));
     }
