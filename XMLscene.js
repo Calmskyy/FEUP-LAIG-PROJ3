@@ -324,11 +324,8 @@ class XMLscene extends CGFscene {
                 return;
             if (this.playingOption == "Bot v Bot")
                 return;
-            for (var j = 1; j < 9; j++) {
-                if (this.themes[this.selectedTheme].XML.animations['movement' + j] != undefined)
-                    if (this.themes[this.selectedTheme].XML.animations['movement' + j].isFinished() == false)
-                        return;
-            }
+            if(this.checkForMovement() == 1)
+                return;
             let translation = [];
             let position = this.pieceMoves[this.game.moveCounter - 1]["position"];
             this.graph.piecePositions[this.pieceMoves[this.game.moveCounter - 1]["id"] - 1] = position;
@@ -426,18 +423,11 @@ class XMLscene extends CGFscene {
      * Advances the animation of the movie to the next turn, while waiting for each animation to play out fully.
      */
     updateMovie() {
-        var movementInProgress = false;
-        for (var j = 1; j < 9; j++) {
-            if (this.themes[this.selectedTheme].XML.animations['movement' + j] != undefined)
-                if (this.themes[this.selectedTheme].XML.animations['movement' + j].isFinished() == false)
-                    movementInProgress = true;
-                else if (this.themes[this.selectedTheme].XML.animations['movement' + j].updatePosition() == true) {
-                    this.graph.updatePiecePositions[j - 1] = true;
-                    this.movieAnimation++;
-                }
-        }
-        if (movementInProgress == true)
+        var result = this.checkForMovement();
+        if (result == 1)
             return;
+        else if (result == 2)
+            this.movieAnimation++;
         if (this.movieAnimation >= this.movies[this.moviePlaying].length) {
             this.moviePlaying = -1;
             return;
@@ -461,13 +451,7 @@ class XMLscene extends CGFscene {
 
         let deltaTime = t - this.time;
         if (this.game != undefined) {
-            var movement = false;
-            for (var j = 1; j < 9; j++) {
-                if (this.themes[this.selectedTheme].XML.animations['movement' + j] != undefined)
-                    if (this.themes[this.selectedTheme].XML.animations['movement' + j].isFinished() == false)
-                        movement = true;
-            }
-            if (movement == false)
+            if (this.checkForMovement() != 1)
                 if (this.timeLeft > 0) {
                     this.timeLeft -= deltaTime / 1000;
                     if (this.timeLeft <= 0) {
@@ -533,6 +517,23 @@ class XMLscene extends CGFscene {
             this.redTurn = true;
             this.greenTurn = false;
         }
+    }
+
+    /**
+     * Checks if any piece has just finished its movement, and if any piece is currently in movement.
+     */
+    checkForMovement() {
+        for (var j = 1; j < 9; j++) {
+            if (this.themes[this.selectedTheme].XML.animations['movement' + j] != undefined)
+                if (this.themes[this.selectedTheme].XML.animations['movement' + j].isFinished() == false) {
+                    return 1;
+                }
+                else if (this.themes[this.selectedTheme].XML.animations['movement' + j].updatePosition() == true) {
+                    this.graph.updatePiecePositions[j - 1] = true;
+                    return 2;
+                }
+        }
+        return 0;
     }
 
     playerPick() {
@@ -718,19 +719,11 @@ class XMLscene extends CGFscene {
 
     logPicking() {
         if (this.game != undefined) {
-            var movementInProgress = false;
-            for (var j = 1; j < 9; j++) {
-                if (this.themes[this.selectedTheme].XML.animations['movement' + j] != undefined)
-                    if (this.themes[this.selectedTheme].XML.animations['movement' + j].isFinished() == false) {
-                        movementInProgress = true;
-                    }
-                    else if (this.themes[this.selectedTheme].XML.animations['movement' + j].updatePosition() == true) {
-                        this.graph.updatePiecePositions[j - 1] = true;
-                        this.swapPlayer();
-                    }
-            }
-            if (movementInProgress == true)
+            var result = this.checkForMovement();
+            if (result == 1)
                 return;
+            else if (result == 2)
+                this.swapPlayer();
             if (this.gameDelay < 0) {
                 this.gameDelay++;
                 return;

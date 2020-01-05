@@ -1,3 +1,10 @@
+/**
+* Establishes a connection and sends a request to the prolog server.
+* @param requestString Request to be executed on the server.
+* @param onSuccess Function to be called if the request is a success.
+* @param onError Function to be called if the connection fails.
+* @param port Port used to connect to the server.
+*/
 function getPrologRequest(requestString, onSuccess, onError, port)
 {
     var requestPort = port || 8081
@@ -9,18 +16,23 @@ function getPrologRequest(requestString, onSuccess, onError, port)
     request.send();
 }
 
+/**
+* Makes a request to the prolog server.
+* @param request Request to be performed to the server.
+* @param callback Response obtained from the server.
+*/
 function makeRequest(request, callback) {			
     getPrologRequest(request, callback);
 }
 
-function startGame(player1, player2, cpuLevel, callback) {
-    let requestString = 'start_game(' + JSON.stringify(0) + ',' + 
-    JSON.stringify(0) + ')';
-
-    makeRequest(requestString, callback);
-    console.log('this is the callback %s\n', callback);
-}
-
+/**
+* Makes a request to the prolog server to place a piece on the board.
+* @param boardin Board to place the piece on.
+* @param row Row to position the piece in.
+* @param column Column to position the piece in.
+* @param player Player performing the placement.
+* @param callback Response obtained from the server.
+*/
 function placePiece(boardin, row, column, player, callback) {
     console.log(JSON.stringify(boardin))
 
@@ -33,6 +45,13 @@ function placePiece(boardin, row, column, player, callback) {
     console.log('this is the callback %s\n', callback);
 }
 
+/**
+* Makes a request to the prolog server to place a piece on the board, with CPU calculation to decide where to place it.
+* @param boardin Board to place the piece on.
+* @param player Player performing the placement.
+* @param level Difficulty level to use on the calculation.
+* @param callback Response obtained from the server.
+*/
 function placePieceCPU(boardin, player, level, callback) {
     console.log(JSON.stringify(boardin))
 
@@ -43,6 +62,16 @@ function placePieceCPU(boardin, player, level, callback) {
     console.log('this is the callback %s\n', callback);
 }
 
+/**
+* Makes a request to the prolog server to move a piece on the board.
+* @param boardin Board to place the piece on.
+* @param row Row where the piece is located.
+* @param column Column where the piece is located.
+* @param newRow Row to move the piece to.
+* @param newColumn Column to move the piece to.
+* @param player Player performing the placement.
+* @param callback Response obtained from the server.
+*/
 function movePiece(boardin, row, column, newRow, newColumn, player, callback) {
     console.log(JSON.stringify(boardin))
 
@@ -56,6 +85,13 @@ function movePiece(boardin, row, column, newRow, newColumn, player, callback) {
     console.log('this is the callback %s\n', callback);
 }
 
+/**
+* Makes a request to the prolog server to move a piece on the board, with CPU calculation to decide where to place it.
+* @param boardin Board to place the piece on.
+* @param player Player performing the placement.
+* @param level Difficulty level to use on the calculation.
+* @param callback Response obtained from the server.
+*/
 function movePieceCPU(boardin, player, level, callback) {
     console.log(JSON.stringify(boardin))
 
@@ -66,6 +102,12 @@ function movePieceCPU(boardin, player, level, callback) {
     console.log('this is the callback %s\n', callback);
 }
 
+/**
+* Makes a request to the prolog server to check for a game over condition.
+* @param board Board to check for game over.
+* @param player Player performing the check.
+* @param callback Response obtained from the server.
+*/
 function gameOver(board, player, callback) {
     let requestString = 'game_over(' + board + ','
     + JSON.stringify(player) + ')';
