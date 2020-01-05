@@ -524,7 +524,7 @@ class XMLscene extends CGFscene {
         if (this.game.gameOver) {
             this.endGame();
         }
-        
+
         if (this.redTurn == true) {
             this.redTurn = false;
             this.greenTurn = true;
@@ -585,7 +585,6 @@ class XMLscene extends CGFscene {
                                             this.pieceMoves[this.game.moveCounter] = move;
                                             this.movie[this.game.moveCounter] = [j, this.pickResults[i][1], row, column];
                                             this.timeLeft = this.turnTime;
-                                            this.swapPlayer();
                                         }
                                     }
                                     else if (this.game.moveCounter < 8 && this.graph.piecePositions[j][0] == 0) { //piece placement
@@ -599,10 +598,10 @@ class XMLscene extends CGFscene {
                                             let animation = this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
                                             move["animation"] = animation;
                                             move["id"] = j + 1;
+                                            console.log(this.game.moveCounter);
                                             this.pieceMoves[this.game.moveCounter] = move;
                                             this.movie[this.game.moveCounter] = [j, this.pickResults[i][1], row, column];
                                             this.timeLeft = this.turnTime;
-                                            this.swapPlayer();
                                         }
                                     }
 
@@ -715,7 +714,6 @@ class XMLscene extends CGFscene {
             this.pieceMoves[this.game.moveCounter] = move;
             this.movie[this.game.moveCounter] = [pieceID - 1, tileID, row, column];
         }
-        this.swapPlayer();
     }
 
     logPicking() {
@@ -726,8 +724,10 @@ class XMLscene extends CGFscene {
                     if (this.themes[this.selectedTheme].XML.animations['movement' + j].isFinished() == false) {
                         movementInProgress = true;
                     }
-                    else if (this.themes[this.selectedTheme].XML.animations['movement' + j].updatePosition() == true)
+                    else if (this.themes[this.selectedTheme].XML.animations['movement' + j].updatePosition() == true) {
                         this.graph.updatePiecePositions[j - 1] = true;
+                        this.swapPlayer();
+                    }
             }
             if (movementInProgress == true)
                 return;

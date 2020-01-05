@@ -39,7 +39,6 @@ class Game {
 		if (response == 0) {
 			this.gameOver = true;
 			this.board = "[['0','0','.','0','0'],['0','.','.','.','0'],['.','.','0','.','.'],['0','.','.','.','0'],['0','0','.','0','0']]";
-			this.moveCounter = 0;
 			this.boards = [this.board];
 		}
 	}
