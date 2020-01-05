@@ -101,9 +101,6 @@ class Game {
 				break;
 			}
 		}
-		// let column = (index) % 5 + 1;
-		// let row = Math.floor((index) / 5) + 1;
-		// return [row, column];
 		return index;
 	}
 
@@ -127,10 +124,6 @@ class Game {
 					sourceTile = i;
 			}
 		}
-		// let column = (index) % 5 + 1;
-		// let row = Math.floor((index) / 5) + 1;
-		// return [row, column];
-		console.log(sourceTile, destTile)
 		return [sourceTile, destTile];
 	}
 

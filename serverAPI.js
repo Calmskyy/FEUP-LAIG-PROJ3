@@ -34,7 +34,6 @@ function makeRequest(request, callback) {
 * @param callback Response obtained from the server.
 */
 function placePiece(boardin, row, column, player, callback) {
-    console.log(JSON.stringify(boardin))
 
     let requestString = 'place([' + JSON.stringify(row) + ',' +
     JSON.stringify(column) + '],' + boardin +
@@ -42,7 +41,6 @@ function placePiece(boardin, row, column, player, callback) {
     ')';
 
     makeRequest(requestString, callback);
-    console.log('this is the callback %s\n', callback);
 }
 
 /**
@@ -53,13 +51,11 @@ function placePiece(boardin, row, column, player, callback) {
 * @param callback Response obtained from the server.
 */
 function placePieceCPU(boardin, player, level, callback) {
-    console.log(JSON.stringify(boardin))
 
     let requestString = 'getCPUPlacement(' + boardin + ',' +
     JSON.stringify(player) + ',_,' + level + ')';
 
     makeRequest(requestString, callback);
-    console.log('this is the callback %s\n', callback);
 }
 
 /**
@@ -73,7 +69,6 @@ function placePieceCPU(boardin, player, level, callback) {
 * @param callback Response obtained from the server.
 */
 function movePiece(boardin, row, column, newRow, newColumn, player, callback) {
-    console.log(JSON.stringify(boardin))
 
     let requestString = 'move([' + JSON.stringify(row) + ',' +
     JSON.stringify(column) + ',' + JSON.stringify(newRow) + ',' +
@@ -82,7 +77,6 @@ function movePiece(boardin, row, column, newRow, newColumn, player, callback) {
     ')';
 
     makeRequest(requestString, callback);
-    console.log('this is the callback %s\n', callback);
 }
 
 /**
@@ -93,13 +87,11 @@ function movePiece(boardin, row, column, newRow, newColumn, player, callback) {
 * @param callback Response obtained from the server.
 */
 function movePieceCPU(boardin, player, level, callback) {
-    console.log(JSON.stringify(boardin))
 
     let requestString = 'choose_move(' + boardin + ',' +
     JSON.stringify(player) + ',_,' + level + ')';
 
     makeRequest(requestString, callback);
-    console.log('this is the callback %s\n', callback);
 }
 
 /**
