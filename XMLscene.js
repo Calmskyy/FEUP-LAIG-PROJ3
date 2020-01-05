@@ -49,7 +49,7 @@ class XMLscene extends CGFscene {
         this.greenWins = 0;
         this.redTurn = false;
         this.greenTurn = false;
-        this.timeLeft = 20;
+        this.timeLeft = "Not In-Game";
         this.movie = [];
         this.movies = [];
         this.selectedMovie = -1;
@@ -455,6 +455,7 @@ class XMLscene extends CGFscene {
             if (this.checkForMovement() != 1)
                 if (this.timeLeft > 0) {
                     this.timeLeft -= deltaTime / 1000;
+                    this.timeLeft = Math.round(this.timeLeft * 100) / 100;
                     if (this.timeLeft <= 0) {
                         if (this.game != undefined) {
                             this.endGame();
@@ -462,6 +463,8 @@ class XMLscene extends CGFscene {
                     }
                 }
         }
+        else
+            this.timeLeft = "Not In-Game";
         if (this.moviePlaying != -1)
             this.updateMovie();
         this.time = t;
