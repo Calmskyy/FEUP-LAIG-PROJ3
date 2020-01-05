@@ -599,9 +599,15 @@ class XMLscene extends CGFscene {
             }
             if (movementInProgress == true)
                 return;
-            let movePositions = this.game.movePieceCPU(player, level);
-            let sourceTile = movePositions[0];
-            let destTile = movePositions[1];
+
+            console.log(this.movePositions);
+            if (this.movePositions == undefined)
+                this.movePositions = this.game.movePieceCPU(player, level);
+            if (this.game.waitingForResponse == true) {
+                return;
+            }
+            let sourceTile = this.movePositions[0];
+            let destTile = this.movePositions[1];
 
             let sourceCol = (sourceTile) % 5 + 1;
             let sourceRow = Math.floor((sourceTile) / 5) + 1;
@@ -618,6 +624,7 @@ class XMLscene extends CGFscene {
             this.graph.piecePositions[pieceID] = [destRow, destCol];
             this.graph.generateAnimation(pieceID + 1, tileID, this.selectedTheme);
             this.movie[this.game.moveCounter] = [pieceID, tileID + 8, destRow, destCol];
+            this.movePositions = undefined;
         }
         else if (this.game.moveCounter < 8) { //piece placement
             var movementInProgress = false;
@@ -630,8 +637,14 @@ class XMLscene extends CGFscene {
             }
             if (movementInProgress == true)
                 return;
-            let tile = this.game.placePieceCPU(player, level);
-            let tileID = tile + 9;
+
+            console.log(this.tile);
+            if (this.tile == undefined)
+                this.tile = this.game.placePieceCPU(player, level);
+            if (this.game.waitingForResponse == true) {
+                return;
+            }
+            let tileID = this.tile + 9;
             let pieceID;
             switch (this.game.moveCounter) {
                 case 0:
@@ -660,11 +673,12 @@ class XMLscene extends CGFscene {
                     break;
             }
 
-            let column = (tile) % 5 + 1;
-            let row = Math.floor(tile / 5) + 1;
+            let column = (this.tile) % 5 + 1;
+            let row = Math.floor(this.tile / 5) + 1;
             this.graph.piecePositions[pieceID - 1] = [row, column];
             this.graph.generateAnimation(pieceID, tileID - 8, this.selectedTheme);
             this.movie[this.game.moveCounter] = [pieceID - 1, tileID, row, column];
+            this.tile = undefined;
         }
         this.swapPlayer();
     }

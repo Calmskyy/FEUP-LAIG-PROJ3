@@ -10,6 +10,7 @@ class Game {
 		this.player2 = player2;
 		this.board = "[['0','0','.','0','0'],['0','.','.','.','0'],['.','.','0','.','.'],['0','.','.','.','0'],['0','0','.','0','0']]";
 		this.moveCounter = 0;
+		this.waitingForResponse = false;
 		this.gameOver = false;
 	};
 
@@ -17,7 +18,8 @@ class Game {
 		let response = data.target.response;
 		if (response != 1)	
 			this.board = data.target.response;
-		console.log(this.board);	
+		console.log(this.board);
+		this.waitingForResponse = false;	
 	}
 
 	handleGameOver(data) {
@@ -32,6 +34,7 @@ class Game {
 	placePiece(row, column, player) {
 		let boardIn = (' ' + this.board).slice(1);
 		placePiece(this.board, row, column, player,  data => this.updateBoard(data));
+		this.waitingForResponse = true;	
 		gameOver(this.board, player, data => this.handleGameOver(data));
 		return boardIn.localeCompare(this.board); 
 	}
@@ -39,6 +42,7 @@ class Game {
 	movePiece(row, column, newRow, newColumn, player) {
 		let boardIn = (' ' + this.board).slice(1);
 		movePiece(this.board, row, column, newRow, newColumn, player,  data => this.updateBoard(data));
+		this.waitingForResponse = true;	
 		gameOver(this.board, player, data => this.handleGameOver(data));
 		return boardIn.localeCompare(this.board); 
 	}
@@ -85,6 +89,7 @@ class Game {
 
 	placePieceCPU(player, level) {
 		let boardIn = (' ' + this.board).slice(1);
+		this.waitingForResponse = true;	
 		placePieceCPU(this.board, player, level, data => this.updateBoard(data));
 		gameOver(this.board, player, data => this.handleGameOver(data));
 		return this.getPlacementPosition(boardIn);
@@ -92,6 +97,7 @@ class Game {
 
 	movePieceCPU(player, level) {
 		let boardIn = (' ' + this.board).slice(1);
+		this.waitingForResponse = true;	
 		movePieceCPU(this.board, player, level, data => this.updateBoard(data));
 		gameOver(this.board, player, data => this.handleGameOver(data));
 		return this.getMovementPositions(boardIn);
