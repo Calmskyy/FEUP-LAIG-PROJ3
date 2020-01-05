@@ -122,7 +122,7 @@ class Animation {
 		out[13] = this.currentTranslate[1] + (translate[1] * animationPercentage);
 		out[14] = this.currentTranslate[2] + (translate[2] * animationPercentage);
 		if (this.arcOption == "yes")
-			out[14] = out[14] + 150 * Math.sin(animationPercentage * Math.PI);
+			out[14] = out[14] + 30 * Math.sin(animationPercentage * Math.PI);
 		out[0] = Math.cos(this.currentRotate[1] + (rotateY * animationPercentage)) * Math.cos(this.currentRotate[2] + (rotateZ * animationPercentage)) * this.currentScale[0] * (1 + (scaleXDiff * animationPercentage));
 		out[1] = - (Math.sin(this.currentRotate[2] + (rotateZ * animationPercentage)));
 		out[2] = - (Math.sin(this.currentRotate[1] + (rotateY * animationPercentage)));

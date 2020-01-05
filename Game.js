@@ -9,17 +9,18 @@ class Game {
 		this.player1 = player1;
 		this.player2 = player2;
 		this.board = "[['0','0','.','0','0'],['0','.','.','.','0'],['.','.','0','.','.'],['0','.','.','.','0'],['0','0','.','0','0']]";
+		this.boards = [this.board];
 		this.moveCounter = 0;
-		this.waitingForResponse = false;
 		this.gameOver = false;
 	};
 
 	updateBoard(data) {
 		let response = data.target.response;
-		if (response != 1)	
+		if (response != 1) {
 			this.board = data.target.response;
+			this.boards[this.moveCounter + 1] = data.target.response;
+		}
 		console.log(this.board);
-		this.waitingForResponse = false;	
 	}
 
 	handleGameOver(data) {
@@ -28,23 +29,29 @@ class Game {
 			this.gameOver = true;
 			this.board = "[['0','0','.','0','0'],['0','.','.','.','0'],['.','.','0','.','.'],['0','.','.','.','0'],['0','0','.','0','0']]";
 			this.moveCounter = 0;
+			this.boards = [this.board];
 		}
+	}
+
+	undo() {
+		if (this.moveCounter == 0)
+			return;
+		this.moveCounter--;
+		this.board = this.boards[this.moveCounter];
 	}
 
 	placePiece(row, column, player) {
 		let boardIn = (' ' + this.board).slice(1);
-		placePiece(this.board, row, column, player,  data => this.updateBoard(data));
-		this.waitingForResponse = true;	
+		placePiece(this.board, row, column, player, data => this.updateBoard(data));
 		gameOver(this.board, player, data => this.handleGameOver(data));
-		return boardIn.localeCompare(this.board); 
+		return boardIn.localeCompare(this.board);
 	}
 
 	movePiece(row, column, newRow, newColumn, player) {
 		let boardIn = (' ' + this.board).slice(1);
-		movePiece(this.board, row, column, newRow, newColumn, player,  data => this.updateBoard(data));
-		this.waitingForResponse = true;	
+		movePiece(this.board, row, column, newRow, newColumn, player, data => this.updateBoard(data));
 		gameOver(this.board, player, data => this.handleGameOver(data));
-		return boardIn.localeCompare(this.board); 
+		return boardIn.localeCompare(this.board);
 	}
 
 	getPlacementPosition(board) {
@@ -77,7 +84,7 @@ class Game {
 				if (boardIn[i] == '0' || boardIn[i] == '.')
 					destTile = i;
 				else
-					sourceTile = i; 
+					sourceTile = i;
 			}
 		}
 		// let column = (index) % 5 + 1;
@@ -89,7 +96,6 @@ class Game {
 
 	placePieceCPU(player, level) {
 		let boardIn = (' ' + this.board).slice(1);
-		this.waitingForResponse = true;	
 		placePieceCPU(this.board, player, level, data => this.updateBoard(data));
 		gameOver(this.board, player, data => this.handleGameOver(data));
 		return this.getPlacementPosition(boardIn);
@@ -97,7 +103,6 @@ class Game {
 
 	movePieceCPU(player, level) {
 		let boardIn = (' ' + this.board).slice(1);
-		this.waitingForResponse = true;	
 		movePieceCPU(this.board, player, level, data => this.updateBoard(data));
 		gameOver(this.board, player, data => this.handleGameOver(data));
 		return this.getMovementPositions(boardIn);

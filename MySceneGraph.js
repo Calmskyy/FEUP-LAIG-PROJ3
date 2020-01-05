@@ -1423,7 +1423,7 @@ class MySceneGraph {
         var pieceAnimation = new PieceAnimation(translation);
         this.themes[theme].XML.components['piece' + pieceID]["animation"] = pieceAnimation;
         this.themes[theme].XML.animations['movement' + pieceID] = pieceAnimation;
-        //console.log(translation);
+        return pieceAnimation;
     }
 
     repositionPieces(theme) {
