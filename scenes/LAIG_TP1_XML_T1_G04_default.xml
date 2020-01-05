@@ -1,12 +1,12 @@
 <lxs>
     <scene root="default_root" axis_length="5"/>
 
-    <views default="firstView">
-        <perspective id="firstView" near="0.1" far="500" angle="58">
+    <views default="redView">
+        <perspective id="redView" near="0.1" far="500" angle="58">
             <from x="50" y="-10" z="-20" />
             <to x="0" y="30" z="-20" />
         </perspective>
-        <perspective id="secondView" near="0.1" far="500" angle="58">
+        <perspective id="greenView" near="0.1" far="500" angle="58">
             <from x="50" y="50" z="-20" />
             <to x="0" y="-10" z="-20" />
         </perspective>
@@ -200,33 +200,6 @@
     </transformations>
 
     <animations>
-        <animation id ="train-movement">
-            <keyframe instant="0">
-                <translate x="0" y="0" z="0" />
-                <rotate angle_x="0" angle_y="0" angle_z="0" />
-                <scale x="0.01" y="0.01" z="0.01" />
-            </keyframe>
-            <keyframe instant="10">
-                <translate x="0" y="0" z="0" />
-                <rotate angle_x="0" angle_y="0" angle_z="0" />
-                <scale x="0.01" y="0.01" z="0.01" />
-            </keyframe>
-            <keyframe instant="20">
-                <translate x="78" y="0" z="0" />
-                <rotate angle_x="0" angle_y="0" angle_z="0" />
-                <scale x="1" y="1" z="1" />
-            </keyframe>
-            <keyframe instant="25">
-                <translate x="158" y="0" z="0" />
-                <rotate angle_x="0" angle_y="0" angle_z="0" />
-                <scale x="1" y="1" z="1" />
-            </keyframe>
-            <keyframe instant="30">
-                <translate x="178" y="0" z="0" />
-                <rotate angle_x="0" angle_y="0" angle_z="0" />
-                <scale x="0" y="0" z="0" />
-            </keyframe>
-        </animation>
     </animations>
 
     <primitives>

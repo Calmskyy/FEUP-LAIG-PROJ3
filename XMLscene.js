@@ -87,6 +87,8 @@ class XMLscene extends CGFscene {
                 var details = theme.XML["cameras"][key];
                 if (details.type == "perspective") {
                     var camera = new CGFcamera(details.angle, details.near, details.far, details.fromCoords, details.toCoords);
+                    if (key == "greenView")
+                        camera._up = [0, -1, 0];
                     this.viewIDs[key] = i;
                     this.cameras[i] = camera;
                 }
@@ -109,14 +111,10 @@ class XMLscene extends CGFscene {
         this.updatingCamera = true;
         this.oldCamera = this.camera;
         this.newCamera = this.cameras[this.selectedView];
-        this.cameraFOVChange = this.newCamera.fov - this.oldCamera.fov;
-        this.cameraNearChange = this.newCamera.near - this.oldCamera.near;
-        this.cameraFarChange = this.newCamera.far - this.oldCamera.far;
+        this.cameraUpChange = [this.newCamera._up[0] - this.oldCamera._up[0], this.newCamera._up[1] - this.oldCamera._up[1], this.newCamera._up[2] - this.oldCamera._up[2], this.newCamera._up[3] - this.oldCamera._up[3]];
         this.cameraPositionChange = [this.newCamera.position[0] - this.oldCamera.position[0], this.newCamera.position[1] - this.oldCamera.position[1], this.newCamera.position[2] - this.oldCamera.position[2], this.newCamera.position[3] - this.oldCamera.position[3]];
         this.cameraTargetChange = [this.newCamera.target[0] - this.oldCamera.target[0], this.newCamera.target[1] - this.oldCamera.target[1], this.newCamera.target[2] - this.oldCamera.target[2], this.newCamera.target[3] - this.oldCamera.target[3]];
-        this.cameraDirectionChange = [this.newCamera.direction[0] - this.oldCamera.direction[0], this.newCamera.direction[1] - this.oldCamera.direction[1], this.newCamera.direction[2] - this.oldCamera.direction[2], this.newCamera.direction[3] - this.oldCamera.direction[3]];
-        this.tempCamera = new CGFcamera(0, this.oldCamera.near, this.oldCamera.far, [this.oldCamera.position[0], this.oldCamera.position[1], this.oldCamera.position[2]], [this.oldCamera.target[0], this.oldCamera.target[1], this.oldCamera.target[2]]);
-        this.tempCamera.fov = this.oldCamera.fov;
+        this.tempCamera = new CGFcamera(this.oldCamera.fov, this.oldCamera.near, this.oldCamera.far, [this.oldCamera.position[0], this.oldCamera.position[1], this.oldCamera.position[2]], [this.oldCamera.target[0], this.oldCamera.target[1], this.oldCamera.target[2]]);
     }
 
     /**
@@ -324,7 +322,7 @@ class XMLscene extends CGFscene {
                 return;
             if (this.playingOption == "Bot v Bot")
                 return;
-            if(this.checkForMovement() == 1)
+            if (this.checkForMovement() == 1)
                 return;
             let translation = [];
             let position = this.pieceMoves[this.game.moveCounter - 1]["position"];
@@ -364,6 +362,9 @@ class XMLscene extends CGFscene {
      * Starts a new game.
      */
     startGame() {
+        console.log(this.camera);
+        console.log(this.cameras);
+        return;
         if (this.game != undefined)
             return;
         this.gameDelay = -3;
@@ -476,23 +477,27 @@ class XMLscene extends CGFscene {
                     this.camera = this.newCamera;
                     this.updatingCamera = false;
                     return;
-
                 }
-                this.tempCamera.fov += this.cameraFOVChange / 60;
-                this.tempCamera.near += this.cameraNearChange / 60;
-                this.tempCamera.far += this.cameraFarChange / 60;
-                this.tempCamera.position[0] = this.tempCamera.position[0] + (this.cameraPositionChange[0] / 60);
-                this.tempCamera.position[1] = this.tempCamera.position[1] + (this.cameraPositionChange[1] / 60);
-                this.tempCamera.position[2] = this.tempCamera.position[2] + (this.cameraPositionChange[2] / 60);
-                this.tempCamera.position[3] = this.tempCamera.position[3] + (this.cameraPositionChange[3] / 60);
-                this.tempCamera.target[0] = this.tempCamera.target[0] + (this.cameraTargetChange[0] / 60);
-                this.tempCamera.target[1] = this.tempCamera.target[1] + (this.cameraTargetChange[1] / 60);
-                this.tempCamera.target[2] = this.tempCamera.target[2] + (this.cameraTargetChange[2] / 60);
-                this.tempCamera.target[3] = this.tempCamera.target[3] + (this.cameraTargetChange[3] / 60);
-                this.tempCamera.direction[0] = this.tempCamera.direction[0] + (this.cameraDirectionChange[0] / 60);
-                this.tempCamera.direction[1] = this.tempCamera.direction[1] + (this.cameraDirectionChange[1] / 60);
-                this.tempCamera.direction[2] = this.tempCamera.direction[2] + (this.cameraDirectionChange[2] / 60);
-                this.tempCamera.direction[3] = this.tempCamera.direction[3] + (this.cameraDirectionChange[3] / 60);
+                else if (this.updateTicks < 31) {
+                    this.tempCamera._up[0] = this.tempCamera._up[0] + this.cameraUpChange[0] / 60;
+                    this.tempCamera._up[1] = this.tempCamera._up[1] + this.cameraUpChange[1] / 60;
+                    console.log(this.tempCamera._up[1]);
+                    this.tempCamera._up[2] = this.tempCamera._up[2] + this.cameraUpChange[2] / 60;
+                    let newPos = [];
+                    newPos[0] = this.tempCamera.position[0] + (this.cameraPositionChange[0] / 30);
+                    newPos[1] = this.tempCamera.position[1] + (this.cameraPositionChange[1] / 30);
+                    newPos[2] = this.tempCamera.position[2] + (this.cameraPositionChange[2] / 30);
+                    newPos[3] = this.tempCamera.position[3] + (this.cameraPositionChange[3] / 30);
+                    this.tempCamera.setPosition(newPos);
+                }
+                else {
+                    let newTarget = [];
+                    newTarget[0] = this.tempCamera.target[0] + (this.cameraTargetChange[0] / 30);
+                    newTarget[1] = this.tempCamera.target[1] + (this.cameraTargetChange[1] / 30);
+                    newTarget[2] = this.tempCamera.target[2] + (this.cameraTargetChange[2] / 30);
+                    newTarget[3] = this.tempCamera.target[3] + (this.cameraTargetChange[3] / 30);
+                    this.tempCamera.setTarget(newTarget);
+                }
                 this.camera = this.tempCamera;
             }
         }
