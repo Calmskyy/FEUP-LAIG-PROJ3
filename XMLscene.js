@@ -366,9 +366,6 @@ class XMLscene extends CGFscene {
      * Starts a new game.
      */
     startGame() {
-        console.log(this.camera);
-        console.log(this.cameras);
-        return;
         if (this.game != undefined)
             return;
         this.gameDelay = -3;
