@@ -115,7 +115,9 @@ class XMLscene extends CGFscene {
         this.cameraPositionChange = [this.newCamera.position[0] - this.oldCamera.position[0], this.newCamera.position[1] - this.oldCamera.position[1], this.newCamera.position[2] - this.oldCamera.position[2], this.newCamera.position[3] - this.oldCamera.position[3]];
         this.cameraTargetChange = [this.newCamera.target[0] - this.oldCamera.target[0], this.newCamera.target[1] - this.oldCamera.target[1], this.newCamera.target[2] - this.oldCamera.target[2], this.newCamera.target[3] - this.oldCamera.target[3]];
         this.tempCamera = new CGFcamera(this.oldCamera.fov, this.oldCamera.near, this.oldCamera.far, [this.oldCamera.position[0], this.oldCamera.position[1], this.oldCamera.position[2]], [this.oldCamera.target[0], this.oldCamera.target[1], this.oldCamera.target[2]]);
-        this.tempCamera._up = this.oldCamera._up;
+        this.tempCamera._up[0] = this.oldCamera._up[0];
+        this.tempCamera._up[1] = this.oldCamera._up[1];
+        this.tempCamera._up[2] = this.oldCamera._up[2];
     }
 
     /**
@@ -477,7 +479,9 @@ class XMLscene extends CGFscene {
                 this.updateTicks++;
                 if (this.updateTicks >= 61) {
                     this.camera = new CGFcamera(this.newCamera.fov, this.newCamera.near, this.newCamera.far, this.newCamera.position, this.newCamera.target);
-                    this.camera._up = this.newCamera._up;
+                    this.camera._up[0] = this.newCamera._up[0];
+                    this.camera._up[1] = this.newCamera._up[1];
+                    this.camera._up[2] = this.newCamera._up[2];
                     this.updatingCamera = false;
                     return;
                 }
