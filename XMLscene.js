@@ -534,6 +534,9 @@ class XMLscene extends CGFscene {
         return 0;
     }
 
+    /**
+     * Calls necessary functions to get a Player move
+     */
     playerPick() {
         if (this.pickMode == false) {
             if (this.pickResults != null && this.pickResults.length > 0) {
@@ -610,6 +613,11 @@ class XMLscene extends CGFscene {
         }
     }
 
+    /**
+     * Gets a piece from a specific position on the board
+     * @param row 
+     * @param column 
+     */
     getPiece(row, column) {
         for (let i = 0; i < 8; i++) {
             if (this.graph.piecePositions[i][0] == row
@@ -618,6 +626,9 @@ class XMLscene extends CGFscene {
         }
     }
 
+    /**
+     * Calls necessary functions to get a CPU move
+     */
     cpuPick() {
         let level;
         switch (this.difficulty) {
