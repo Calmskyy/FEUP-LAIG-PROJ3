@@ -82,6 +82,10 @@
         <texture id="wall_paint" file="scenes/images/wall_paint.jpg" />
         <texture id="sliding_door" file="scenes/images/sliding_door.jpg" />
         <texture id="lake" file="scenes/images/lake.jpg" />
+        <texture id="art1" file="scenes/images/art1.jpg" />
+        <texture id="art2" file="scenes/images/art2.jpg" />
+        <texture id="art3" file="scenes/images/art3.jpg" />
+        <texture id="lamp" file="scenes/images/lamp.jpg" />
     </textures>
 
     <materials>
@@ -292,6 +296,198 @@
                 <componentref id="tatami" />
                 <componentref id="lower-walls" />
                 <componentref id="walls" />
+                <componentref id="wall-art1" />
+                <componentref id="wall-art2" />
+                <componentref id="wall-art3" />
+                <componentref id="lamp" />
+            </children>
+        </component>
+
+        <!--Lamp -->
+        <component id="lamp">
+            <transformation>
+                <translate x="0" y="17.5" z="-50" />
+                <rotate axis="y" angle="90" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="board" length_s="4" length_t="4"/>
+            <children>
+                <componentref id="lamp-base" />
+                <componentref id="lamp-base2" />
+                <componentref id="lamp-base3" />
+                <componentref id="lamp-leg1" />
+                <componentref id="lamp-leg2" />
+                <componentref id="lamp-leg3" />
+                <componentref id="lamp-leg4" />
+                <componentref id="lamp-body" />
+            </children>
+        </component>
+
+        <component id="lamp-base">
+            <transformation>
+                <scale x="10" y="10" z="1" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="wood" length_s="1" length_t="1"/>
+            <children>
+                <componentref id="cube" />
+            </children>
+        </component>
+
+        <component id="lamp-base2">
+            <transformation>
+                <translate x="0" y="0" z="13" />
+                <scale x="10" y="10" z="1" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="wood" length_s="1" length_t="1"/>
+            <children>
+                <componentref id="cube" />
+            </children>
+        </component>
+
+        <component id="lamp-base3">
+            <transformation>
+                <translate x="0" y="0" z="25.5" />
+                <scale x="10" y="10" z="1" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="wood" length_s="1" length_t="1"/>
+            <children>
+                <componentref id="cube" />
+            </children>
+        </component>
+
+        <component id="lamp-body">
+            <transformation>
+                <translate x="0" y="0" z="19.25" />
+                <scale x="10" y="10" z="11.25" />
+            </transformation>
+            <materials>
+                <material id="yellow" />
+            </materials>
+            <texture id="lamp" length_s="1" length_t="1"/>
+            <children>
+                <componentref id="cube" />
+            </children>
+        </component>
+
+        <component id="lamp-leg1">
+            <transformation>
+                <translate x="4.3" y="4.3" z="0" />
+                <scale x="1" y="1" z="50" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="wood" length_s="4" length_t="4"/>
+            <children>
+                <componentref id="cube" />
+            </children>
+        </component>
+
+        <component id="lamp-leg2">
+            <transformation>
+                <translate x="-4.3" y="-4.3" z="0" />
+                <scale x="1" y="1" z="50" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="wood" length_s="4" length_t="4"/>
+            <children>
+                <componentref id="cube" />
+            </children>
+        </component>
+
+        <component id="lamp-leg3">
+            <transformation>
+                <translate x="-4.3" y="4.3" z="0" />
+                <scale x="1" y="1" z="50" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="wood" length_s="4" length_t="4"/>
+            <children>
+                <componentref id="cube" />
+            </children>
+        </component>
+
+        <component id="lamp-leg4">
+            <transformation>
+                <translate x="4.3" y="-4.3" z="0" />
+                <scale x="1" y="1" z="50" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="wood" length_s="4" length_t="4"/>
+            <children>
+                <componentref id="cube" />
+            </children>
+        </component>
+
+        <!--Wall art -->
+        <component id="wall-art1">
+            <transformation>
+                <rotate axis="y" angle="-90" />
+                <rotate axis="x" angle="90" />
+                <translate x="50" y="-50" z="0" />
+                <scale x="30" y="20" z="1" />
+                <translate x="0" y="0" z="99.9" />
+                <rotate axis="x" angle="180" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="art1" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="wall-art2">
+            <transformation>
+                <rotate axis="y" angle="-90" />
+                <rotate axis="x" angle="90" />
+                <translate x="-10" y="-50" z="0" />
+                <scale x="30" y="20" z="1" />
+                <translate x="0" y="0" z="99.9" />
+                <rotate axis="x" angle="180" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="art2" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="wall-art3">
+            <transformation>
+                <rotate axis="y" angle="-90" />
+                <rotate axis="x" angle="90" />
+                <translate x="-65" y="-50" z="0" />
+                <scale x="30" y="20" z="1" />
+                <translate x="0" y="0" z="99.9" />
+                <rotate axis="x" angle="180" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="art3" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
             </children>
         </component>
 
@@ -1296,11 +1492,36 @@
             </materials>
             <texture id="piece" length_s="5" length_t="5"/>
             <children>
-                <componentref id="wood-surface" />
+                <componentref id="red-pieces" />
+                <componentref id="green-pieces" />
+            </children>
+        </component>
+
+        <component id="red-pieces">
+            <transformation>
+                <translate x="5.5" y="1" z="0" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="piece" length_s="1" length_t="1"/>
+            <children>
                 <componentref id="piece1" />
                 <componentref id="piece2" />
                 <componentref id="piece3" />
                 <componentref id="piece4" />
+            </children>
+        </component>
+
+        <component id="green-pieces">
+            <transformation>
+                <translate x="5.5" y="6" z="0" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="piece" length_s="1" length_t="1"/>
+            <children>
                 <componentref id="piece5" />
                 <componentref id="piece6" />
                 <componentref id="piece7" />
@@ -1308,23 +1529,10 @@
             </children>
         </component>
 
-        <component id="wood-surface">
-            <transformation>
-                <scale x="0.5" y="2.5" z="1" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="wood" length_s="4" length_t="4"/>
-            <children>
-                <primitiveref id="surface" />
-            </children>
-        </component>
-
         <component id="piece1">
             <transformation>
                 <translate x="1" y="1" z="0.05" />
-                <scale x="0.2" y="0.2" z="0.1" />
+                <scale x="0.2" y="0.2" z="0.4" />
             </transformation>
             <materials>
                 <material id="red" />
@@ -1338,8 +1546,8 @@
 
         <component id="piece2">
             <transformation>
-                <translate x="1" y="2" z="0.05" />
-                <scale x="0.2" y="0.2" z="0.1" />
+                <translate x="2" y="1" z="0.05" />
+                <scale x="0.2" y="0.2" z="0.4" />
             </transformation>
             <materials>
                 <material id="red" />
@@ -1353,8 +1561,8 @@
 
         <component id="piece3">
             <transformation>
-                <translate x="1" y="3" z="0.05" />
-                <scale x="0.2" y="0.2" z="0.1" />
+                <translate x="3" y="1" z="0.05" />
+                <scale x="0.2" y="0.2" z="0.4" />
             </transformation>
             <materials>
                 <material id="red" />
@@ -1368,8 +1576,8 @@
 
         <component id="piece4">
             <transformation>
-                <translate x="1" y="4" z="0.05" />
-                <scale x="0.2" y="0.2" z="0.1" />
+                <translate x="4" y="1" z="0.05" />
+                <scale x="0.2" y="0.2" z="0.4" />
             </transformation>
             <materials>
                 <material id="red" />
@@ -1383,8 +1591,8 @@
 
         <component id="piece5">
             <transformation>
-                <translate x="1" y="6" z="0.05" />
-                <scale x="0.2" y="0.2" z="0.1" />
+                <translate x="1" y="1" z="0.05" />
+                <scale x="0.2" y="0.2" z="0.4" />
             </transformation>
             <materials>
                 <material id="green" />
@@ -1398,8 +1606,8 @@
 
         <component id="piece6">
             <transformation>
-                <translate x="1" y="7" z="0.05" />
-                <scale x="0.2" y="0.2" z="0.1" />
+                <translate x="2" y="1" z="0.05" />
+                <scale x="0.2" y="0.2" z="0.4" />
             </transformation>
             <materials>
                 <material id="green" />
@@ -1413,8 +1621,8 @@
 
         <component id="piece7">
             <transformation>
-                <translate x="1" y="8" z="0.05" />
-                <scale x="0.2" y="0.2" z="0.1" />
+                <translate x="3" y="1" z="0.05" />
+                <scale x="0.2" y="0.2" z="0.4" />
             </transformation>
             <materials>
                 <material id="green" />
@@ -1428,8 +1636,8 @@
 
         <component id="piece8">
             <transformation>
-                <translate x="1" y="9" z="0.05" />
-                <scale x="0.2" y="0.2" z="0.1" />
+                <translate x="4" y="1" z="0.05" />
+                <scale x="0.2" y="0.2" z="0.4" />
             </transformation>
             <materials>
                 <material id="green" />
@@ -1460,6 +1668,7 @@
         </component>
         <component id="retangle1">
             <transformation>
+                <rotate axis="x" angle="90" />
                 <translate x="-0.5" y="0" z="0" />
                 <rotate axis="y" angle="-90" />
             </transformation>

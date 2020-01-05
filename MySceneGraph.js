@@ -1430,14 +1430,14 @@ class MySceneGraph {
         for (var j = 1; j < 9; j++) {
             this.themes[theme].XML.components['piece' + j]["animation"] = "noAnimation";
             delete this.themes[theme].XML.animations['movement' + j];
-            this.themes[theme].XML.components['piece' + j]["transformations"][12] = 1;
+            this.themes[theme].XML.components['piece' + j]["transformations"][13] = 1;
             this.themes[theme].XML.components['piece' + j]["transformations"][14] = 0.05;
             this.piecePositions[j - 1] = [0, 0];
             this.updatePiecePositions[j - 1] = true;
             if (j <= 4)
-                this.themes[theme].XML.components['piece' + j]["transformations"][13] = j;
+                this.themes[theme].XML.components['piece' + j]["transformations"][12] = j;
             else
-                this.themes[theme].XML.components['piece' + j]["transformations"][13] = j + 1;
+                this.themes[theme].XML.components['piece' + j]["transformations"][12] = j - 4;
         }
     }
 
