@@ -56,15 +56,6 @@ class MySceneGraph {
         this.primitives = [];
         this.components = [];
 
-        //let index = 0;
-        this.pieces = [];
-        //this.pieces = [new MyPiece(scene, -1, -1, 1), new MyPiece(scene, -2, -1, 1), new MyPiece(scene, -3, -1, 1), new MyPiece(scene, -4, -1, 1), new MyPiece(scene, -5, -1, 2), new MyPiece(scene, -6, -1, 2), new MyPiece(scene, -7, -1, 2), new MyPiece(scene, -8, -1, 2)];
-        //this.pieces.forEach(piece => this.scene.registerForPick(index++, piece))
-
-        this.testePiece = new MyPiece(scene, 0, -1, 1);
-        //this.scene.registerForPick(1, this.testePiece)
-        this.pieces.push(this.testePiece);
-
         // File reading 
         this.reader = new CGFXMLreader();
 

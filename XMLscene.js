@@ -473,8 +473,6 @@ class XMLscene extends CGFscene {
             if (this.updatingCamera == true) {
                 this.updateTicks++;
                 if (this.updateTicks >= 61) {
-                    console.log(this.tempCamera);
-                    console.log(this.newCamera);
                     this.camera = this.newCamera;
                     this.updatingCamera = false;
                     return;
@@ -540,7 +538,6 @@ class XMLscene extends CGFscene {
         if (this.pickMode == false) {
             if (this.pickResults != null && this.pickResults.length > 0) {
                 for (var i = 0; i < this.pickResults.length; i++) {
-                    console.log(this.pickResults[i]);
                     var obj = this.pickResults[i][0];
                     if (obj) {
                         if (obj.constructor.name == "MySphere") {
@@ -568,14 +565,11 @@ class XMLscene extends CGFscene {
 
                                     let column = (this.pickResults[i][1] - 8 - 1) % 5 + 1;
                                     let row = Math.floor((this.pickResults[i][1] - 8 - 1) / 5) + 1;
-                                    console.log("Real cords: %d - %d\n", row, column);
                                     let player = this.redTurn ? 1 : 2;
 
                                     if (this.game.moveCounter >= 8) { //piece movement
                                         let validMove = this.game.movePiece(this.graph.piecePositions[j][0], this.graph.piecePositions[j][1], row, column, player);
                                         if (validMove != 0) {
-                                            console.log('red pos');
-                                            console.log([row, column])
                                             let move = [];
                                             move["position"] = [this.graph.piecePositions[j][0], this.graph.piecePositions[j][1]];
                                             this.graph.piecePositions[j] = [row, column];
@@ -591,23 +585,18 @@ class XMLscene extends CGFscene {
                                     else if (this.game.moveCounter < 8 && this.graph.piecePositions[j][0] == 0) { //piece placement
                                         let validPlacement = this.game.placePiece(row, column, player);
                                         if (validPlacement != 0) {
-                                            console.log('red pos');
-                                            console.log([row, column])
                                             let move = [];
                                             move["position"] = [this.graph.piecePositions[j][0], this.graph.piecePositions[j][1]];
                                             this.graph.piecePositions[j] = [row, column];
                                             let animation = this.graph.generateAnimation(j + 1, this.pickResults[i][1] - 8, this.selectedTheme);
                                             move["animation"] = animation;
                                             move["id"] = j + 1;
-                                            console.log(this.game.moveCounter);
                                             this.pieceMoves[this.game.moveCounter] = move;
                                             this.movie[this.game.moveCounter] = [j, this.pickResults[i][1], row, column];
                                             this.timeLeft = this.turnTime;
                                         }
                                     }
 
-                                    console.log('Pos');
-                                    console.log(this.graph.piecePositions[j]);
 
 
                                     break;
@@ -622,8 +611,6 @@ class XMLscene extends CGFscene {
     }
 
     getPiece(row, column) {
-        console.log([row, column])
-        console.log(this.graph.piecePositions)
         for (let i = 0; i < 8; i++) {
             if (this.graph.piecePositions[i][0] == row
                 && this.graph.piecePositions[i][1] == column)
@@ -661,8 +648,6 @@ class XMLscene extends CGFscene {
             let pieceID = this.getPiece(sourceRow, sourceCol);
             let tileID = destTile + 1;
 
-            console.log(sourceRow, sourceCol, destRow, destCol);
-            console.log(pieceID, tileID);
             let move = [];
             move["position"] = [this.graph.piecePositions[pieceID][0], this.graph.piecePositions[pieceID][1]];
 
