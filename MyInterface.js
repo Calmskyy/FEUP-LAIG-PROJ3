@@ -32,6 +32,9 @@ class MyInterface extends CGFinterface {
         this.activeKeys = {};
     }
 
+    /**
+     * Initializes the scene menu.
+     */
     initSceneGUI() {
         this.sceneGUI.destroy();
         this.sceneGUI = new dat.GUI();
@@ -39,6 +42,9 @@ class MyInterface extends CGFinterface {
         this.sceneGUI.add(this.scene, 'scaleFactor', 0.1, 15).name('Scale Factor');
     }
 
+    /**
+     * Initializes the game menu, containing various options/buttons to interact with the game.
+     */
     initGameGUI() {
         this.gameGUI.destroy();
         this.gameGUI = new dat.GUI();
@@ -67,7 +73,7 @@ class MyInterface extends CGFinterface {
     }
 
     /**
-     * 
+     * Updates the movie selection option to contain the newest movie recorded.
      */
     updateMovieSelection() {
         this.gameGUI.remove(this.movieSelection);
@@ -82,7 +88,7 @@ class MyInterface extends CGFinterface {
     }
 
     /**
-     * 
+     * Initializes the theme selection upon reading how many different XML files are loaded.
      */
     addThemes() {
         this.sceneGUI.add(this.scene, 'selectedTheme', this.scene.themeIDs).name('Selected Theme').onChange(this.scene.updateTheme.bind(this.scene));

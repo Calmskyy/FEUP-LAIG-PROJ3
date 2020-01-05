@@ -1,9 +1,7 @@
 /**
  * Animation used to move a piece from the tray to the tile
  * @constructor
- * @param instant Instant where the animation begins
  * @param translate Overall total translation to be applied
- * @param XML XML to update when animation is finished
  */
 class PieceAnimation extends Animation {
 	constructor(translate) {

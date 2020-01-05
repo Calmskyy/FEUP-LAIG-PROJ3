@@ -1407,9 +1407,9 @@ class MySceneGraph {
 
     /**
      * Generate animation from a given piece to a given board spot.
-     * @param pieceID The piece that is being moved
-     * @param tileID The tile that the piece is going to be moved to
-     * @param theme The theme currently being used
+     * @param pieceID The piece that is being moved.
+     * @param tileID The tile that the piece is going to be moved to.
+     * @param theme Theme currently in use.
      */
     generateAnimation(pieceID, tileID, theme) {
         var tileLocation = this.tilePositions[tileID - 1];
@@ -1424,6 +1424,10 @@ class MySceneGraph {
         return pieceAnimation;
     }
 
+    /** 
+     * Repositions all the pieces back to their starting position.
+     * @param theme Theme currently in use.
+     */
     repositionPieces(theme) {
         for (var j = 1; j < 9; j++) {
             this.themes[theme].XML.components['piece' + j]["animation"] = "noAnimation";
@@ -1463,7 +1467,6 @@ class MySceneGraph {
         //if is component
         if (XML.primitives[nodeID] === undefined) {
             var newMatrix = mat4.create();
-            //console.log(XML);
             newMatrix = mat4.multiply(newMatrix, matrix, XML.components[nodeID]["transformations"]);
             var children = XML.components[nodeID]["children"];
 

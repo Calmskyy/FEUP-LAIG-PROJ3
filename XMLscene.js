@@ -147,6 +147,7 @@ class XMLscene extends CGFscene {
     }
     /**
      * Initializes the scene lights with the values read from the XML file.
+     * @param theme Theme whose lights will be initialized.
      */
     initLights(theme) {
         var i = 0;
@@ -226,6 +227,9 @@ class XMLscene extends CGFscene {
         this.setShininess(10.0);
     }
 
+    /**
+     * Initializes the theme list with the themes that are about to be parsed.
+     */
     saveThemes(sceneThemes) {
         var i = 0;
         for (var j = 0; j < sceneThemes.length; j++) {
@@ -264,14 +268,14 @@ class XMLscene extends CGFscene {
     }
 
     /**
-     * 
+     * Adds a fully parsed theme to the theme list.
      */
     addGraph(theme) {
         this.themes[this.themes.length] = theme;
     }
 
     /**
-     * 
+     * Updates the game mode being used upon being changed in the interface.
      */
     updateGameMode() {
         if (this.game == undefined)
@@ -281,7 +285,7 @@ class XMLscene extends CGFscene {
     }
 
     /**
-     * 
+     * Updates the difficulty being used upon being changed in the interface.
      */
     updateDifficulty() {
         if (this.game == undefined)
@@ -303,7 +307,7 @@ class XMLscene extends CGFscene {
     }
 
     /**
-     * 
+     * Ends the game immediately, after one player surrenders.
      */
     forfeit() {
         if (this.game != undefined) {
@@ -312,7 +316,7 @@ class XMLscene extends CGFscene {
     }
 
     /**
-     * 
+     * Updates the current state of the game to the state it was in one turn earlier.
      */
     undo() {
         if (this.game != undefined) {
@@ -360,7 +364,7 @@ class XMLscene extends CGFscene {
     }
 
     /**
-     * 
+     * Starts a new game.
      */
     startGame() {
         if (this.game != undefined)
@@ -376,7 +380,7 @@ class XMLscene extends CGFscene {
     }
 
     /**
-     * 
+     * Ends the game, saving its sequence of moves and awarding a win to the player that won.
      */
     endGame() {
         this.game = undefined;
@@ -402,7 +406,7 @@ class XMLscene extends CGFscene {
 
 
     /**
-     * 
+     * Starts playing the currently selected movie.
      */
     playMovie() {
         if (this.selectedMovie == -1)
@@ -419,7 +423,7 @@ class XMLscene extends CGFscene {
     }
 
     /**
-     * 
+     * Advances the animation of the movie to the next turn, while waiting for each animation to play out fully.
      */
     updateMovie() {
         var movementInProgress = false;
@@ -448,7 +452,6 @@ class XMLscene extends CGFscene {
     }
 
     update(t) {
-        this.checkKeys();
 
         if (!this.time) {
             this.time = t;
@@ -513,13 +516,15 @@ class XMLscene extends CGFscene {
         }
     }
 
-    checkKeys() {
-        if (this.gui.isKeyPressed("KeyM")) {
-            this.graph.processMPress();
-        }
-    }
-
+    /**
+     * Changes the turn to the next player, and checks if a player has won.
+     */
     swapPlayer() {
+        this.game.moveCounter++;
+        if (this.game.gameOver) {
+            this.endGame();
+        }
+        
         if (this.redTurn == true) {
             this.redTurn = false;
             this.greenTurn = true;
@@ -527,13 +532,6 @@ class XMLscene extends CGFscene {
         else if (this.greenTurn == true) {
             this.redTurn = true;
             this.greenTurn = false;
-        }
-
-        this.game.moveCounter++;
-
-        if (this.game.gameOver) {
-            console.log('game over!!')
-            this.endGame();
         }
     }
 

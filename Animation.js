@@ -80,6 +80,7 @@ class Animation {
 	 * @param translate Translation Matrix to be applied
 	 * @param rotate Rotation Matrix to be applied
 	 * @param scale Scaling Matrix to be applied 
+	 * @param option Whether or not the animation should be done in an arc
 	 */
 	updateAnimation(span, translate, rotate, scale, option) {
 		this.arcOption = option;
@@ -110,6 +111,15 @@ class Animation {
 		return actualTransformation;
 	}
 
+	/**
+	 * @method createMatrix
+	 * Creates the transformation matrix to be applied to the object.
+	 * @param out Matrix being created.
+	 * @param animationPercentage Current animation percentage done.
+	 * @param scale Scaling to be applied.
+	 * @param rotate Rotation to be applied.
+	 * @param translate Translation to be applied.
+	 */
 	createMatrix(out, animationPercentage, scale, rotate, translate) {
 		var scaleXDiff = scale[0] - 1;
 		var scaleYDiff = scale[1] - 1;
