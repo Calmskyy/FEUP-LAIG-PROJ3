@@ -90,8 +90,8 @@
 
     <materials>
         <material id="red" shininess="10">
-            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
-            <ambient r="0.24" g="0.05" b="0.04" a="1.0" />
+            <emission r="1" g="0.0" b="0.0" a="1.0" />
+            <ambient r="1" g="0.05" b="0.04" a="1.0" />
             <diffuse r="0.96" g="0.2" b="0.16" a="1.0" />
             <specular r="0" g="0" b="0" a="0" /> 
         </material>

@@ -94,53 +94,40 @@
 
     <textures>
         <texture id="metal" file="scenes/images/metal.jpg" />
-        <texture id="tire" file="scenes/images/tire.jpg" />
-        <texture id="headlight" file="scenes/images/headlight.jpg" />
         <texture id="glass" file="scenes/images/glass.jpg" />
-        <texture id="car" file="scenes/images/car_painting.jpg" />
-        <texture id="road" file="scenes/images/road.jpg" />
-        <texture id="sidewalk" file="scenes/images/sidewalk.jpg" />
-        <texture id="gravel" file="scenes/images/gravel.jpg" />
         <texture id="wood" file="scenes/images/wood.jpg" />
-        <texture id="gate-box" file="scenes/images/gate_box.jpg" />
-        <texture id="gate" file="scenes/images/gate.jpg" />
-        <texture id="thomas" file="scenes/images/thomas.jpg" />
         <texture id="grass" file="scenes/images/grass.jpg" />
-        <texture id="bars" file="scenes/images/bars.jpg" />
-        <texture id="trunk" file="scenes/images/trunk.jpg" />
+        <texture id="piece" file="scenes/images/piece.jpg" />
         <texture id="plant" file="scenes/images/plant.jpg" />
+        <texture id="board" file="scenes/images/board.png" />
+        <texture id="plastic" file="scenes/images/plastic.jpg" />
+        <texture id="green-mat" file="scenes/images/green-mat.jpg" />
+        <texture id="tatami" file="scenes/images/tatami.jpg" />
+        <texture id="wall_paint" file="scenes/images/wall_paint.jpg" />
+        <texture id="sliding_door" file="scenes/images/sliding_door.jpg" />
+        <texture id="lake" file="scenes/images/lake.jpg" />
+        <texture id="art1" file="scenes/images/art1.jpg" />
+        <texture id="art2" file="scenes/images/art2.jpg" />
+        <texture id="art3" file="scenes/images/art3.jpg" />
+        <texture id="lamp" file="scenes/images/lamp.jpg" />
+        <texture id="floor" file="scenes/images/floor.jpg" />
+        <texture id="door" file="scenes/images/door.jpg" />
+        <texture id="black-board" file="scenes/images/black-board.jpg" />
+        <texture id="window" file="scenes/images/window.jpg" />
     </textures>
 
     <materials>
-        <material id="carRed" shininess="10">
-            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
-            <ambient r="0.24" g="0.05" b="0.04" a="1.0" />
+                <material id="red" shininess="10">
+            <emission r="1" g="0.0" b="0.0" a="1.0" />
+            <ambient r="1" g="0.05" b="0.04" a="1.0" />
             <diffuse r="0.96" g="0.2" b="0.16" a="1.0" />
             <specular r="0" g="0" b="0" a="0" /> 
-        </material>
-        <material id="semaphoreRed" shininess="10">
-            <emission r="0.86" g="0.08" b="0.08" a="1.0" />
-            <ambient r="0.22" g="0.02" b="0.06" a="1.0" />
-            <diffuse r="0.86" g="0.08" b="0.08" a="1.0" />
-            <specular r="0" g="0" b="0" a="0" /> 
-        </material>
-        <material id="semaphoreDarkRed" shininess="10">
-            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
-            <ambient r="0.03" g="0.0" b="0.0" a="1.0" />
-            <diffuse r="0.1" g="0.0" b="0.0" a="1.0" />
-            <specular r="0" g="0" b="0" a="0" />                       
         </material>
         <material id="green" shininess="10">
             <emission r="0.0" g="1.0" b="0.0" a="1.0" />
             <ambient r="0.0" g="0.2" b="0.0" a="1.0" />
             <diffuse r="0.0" g="1.0" b="0.0" a="1.0" />
             <specular r="0" g="0" b="0" a="0" /> 
-        </material>
-        <material id="darkGreen" shininess="10">
-            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
-            <ambient r="0.0" g="0.03" b="0.0" a="1.0" />
-            <diffuse r="0.0" g="0.1" b="0.0" a="1.0" />
-            <specular r="0" g="0" b="0" a="0" />             
         </material>
         <material id="grassGreen" shininess="10">
             <emission r="0.0" g="0.0" b="0.0" a="1.0" />
@@ -190,21 +177,9 @@
             <diffuse r="0.8" g="0.8" b="0.8" a="1.0" />
             <specular r="0" g="0" b="0" a="0" />             
         </material>
-        <material id="darkGray" shininess="0">
-            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
-            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
-            <diffuse r="0.2" g="0.2" b="0.2" a="1.0" />
-            <specular r="0" g="0" b="0" a="1.0" />
-        </material>
-        <material id="pavement" shininess="0">
-            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
-            <ambient r="0.04" g="0.05" b="0.07" a="1.0" />
-            <diffuse r="0.16" g="0.2" b="0.26" a="1.0" />
-            <specular r="0" g="0" b="0" a="0" /> 
-        </material>
         <material id="white" shininess="10">
-            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
-            <ambient r="0.25" g="0.25" b="0.24" a="1.0" />
+            <emission r="0.5" g="0.5" b="0.5" a="1.0" />
+            <ambient r="0.75" g="0.75" b="0.75" a="1.0" />
             <diffuse r="1.0" g="1.0" b="0.98" a="1.0" />
             <specular r="0" g="0" b="0" a="0" />             
         </material>
@@ -219,6 +194,30 @@
             <ambient r="0.14" g="0.07" b="0.02" a="1.0" />
             <diffuse r="0.55" g="0.27" b="0.07" a="1.0" />
             <specular r="0" g="0" b="0" a="0" />             
+        </material>
+                <material id="woodMaterial" shininess="1">
+            <emission r="0.8" g="0.5" b="0" a="1.0" />
+            <ambient r="0.8" g="0.5" b="0" a="1.0" />
+            <diffuse r="0.8" g="0.0" b="0.0" a="1.0" />
+            <specular r="0.2" g="0.5" b="0.0" a="1.0" />
+        </material>
+        <material id="glassMaterial" shininess="0.088">
+            <emission r="0.01" g="0.01" b="0.01" a="1.0" />
+            <ambient r="0.25" g="0.207" b="0.207" a="1.0" />
+            <diffuse r="1" g="0.83" b="0.83" a="1.0" />
+            <specular r="0.3" g="0.3" b="0.3" a="1.0" />
+        </material>
+        <material id="metalMaterial" shininess="0.6">
+            <emission r="0.30" g="0.3" b="0.3" a="1.0" />
+            <ambient r="0.25" g="0.25" b="0.25" a="1.0" />
+            <diffuse r="0.4" g="0.4" b="0.4" a="1.0" />
+            <specular r="0.77" g="0.77" b="0.77" a="1.0" />
+        </material>
+        <material id="whiterubberMaterial" shininess="0.78">
+            <emission r="0.5" g="0.5" b="0.5" a="1.0" />
+            <ambient r="0.05" g="0.05" b="0.05" a="1.0" />
+            <diffuse r="0.5" g="0.5" b="0.5" a="1.0" />
+            <specular r="0.7" g="0.7" b="0.7" a="1.0" />
         </material>
     </materials>
 
@@ -1120,94 +1119,30 @@
                 <controlpoint x="2" y="3.2" z="4.0"/>
             </patch>
         </primitive>
-        <primitive id="tree-trunk">
+        <primitive id="cylinder2">
             <cylinder2 base="0.3" top="0.3" height="3" slices="10" stacks="5"/>
         </primitive>
-        <primitive id="sidewalk-box-bottom">
-            <rectangle x1="-4" y1="0" x2="4" y2="3" />
-        </primitive>
-        <primitive id="sidewalk-box-side">
-            <rectangle x1="-4" y1="0" x2="4" y2="1" />
-        </primitive>
-        <primitive id="sidewalk-box-front">
-            <rectangle x1="0" y1="0" x2="3" y2="1" />
-        </primitive>
-        <primitive id="sidewalk-box-hood">
-            <rectangle x1="0" y1="0" x2="3" y2="2" />
-        </primitive>
-        <primitive id="top-side">
-            <rectangle x1="0" y1="0" x2="2" y2="1" />
-        </primitive>
-        <primitive id="back-window">
-            <rectangle x1="0" y1="0" x2="3" y2="1.4142" />
-        </primitive>
-        <primitive id="front-window">
-            <rectangle x1="0" y1="0" x2="3" y2="2.2361" />
-        </primitive>
-        <primitive id="semaphore-box-top">
-            <rectangle x1="-0.25" y1="-0.25" x2="0.25" y2="0.25" />
-        </primitive>
-        <primitive id="semaphore-box-side">
-            <rectangle x1="-0.25" y1="-0.75" x2="0.25" y2="0.75" />
-        </primitive>
-        <primitive id="back-triangle">
+        <primitive id="triangle">
             <triangle x1="-3" y1="2.2" z1="3" x2="-2"  y2="3.2"  z2="3" x3="-2" y3="2.2" z3="3" />
         </primitive>
-        <primitive id="front-triangle">
-            <triangle x1="0" y1="2.2" z1="3" x2="0"  y2="3.2"  z2="3" x3="2" y3="2.2" z3="3" />
+        <primitive id="piece">
+            <sphere radius="1" slices="20" stacks="20"/>
         </primitive>
-        <primitive id="rim">
-            <sphere radius="2.15" slices="20" stacks="20"/>
-        </primitive>
-        <primitive id="semaphore-light">
-            <sphere radius="0.2" slices="20" stacks="20"/>
-        </primitive>
-        <primitive id="headlight">
-            <sphere radius="0.30" slices="20" stacks="20"/>
-        </primitive>
-        <primitive id="smoke">
-            <sphere radius="0.3" slices="20" stacks="20"/>
-        </primitive>
-        <primitive id="tire">
+        <primitive id="torus">
             <torus inner="1" outer="3" slices="10" loops="10"/>
         </primitive>
-        <primitive id="axis">
+        <primitive id="cylinder">
             <cylinder base="1" top="1" height="3" slices="10" stacks="5"/>
         </primitive>
-        <primitive id="pipe">
-            <cylinder base="0.18" top="0.15" height="0.4" slices="10" stacks="5"/>
+        <primitive id="rectangle">
+            <rectangle x1="-0.5" y1="-0.5" x2="0.5" y2="0.5" />
+        </primitive> 
+        <primitive id="surface">
+            <rectangle x1="0" y1="0" x2="4" y2="4" />
         </primitive>
-        <primitive id="post">
-            <cylinder base="0.1" top="0.1" height="7.5" slices="10" stacks="5"/>
-        </primitive>
-        <primitive id="asphalt">
-            <rectangle x1="-10" y1="-5" x2="17.5" y2="7" />
-        </primitive>
-        <primitive id="stripe">
-            <rectangle x1="0" y1="0.5" x2="1.5" y2="0.75" />
-        </primitive>
-        <primitive id="asphalt2">
-            <rectangle x1="17.5" y1="-40" x2="29.5" y2="15" />
-        </primitive>
-        <primitive id="gate-sphere1">
-            <sphere radius="0.40" slices="20" stacks="20"/>
-        </primitive>
-        <primitive id="gate-cylinder1">
-            <cylinder base="0.15" top="0.15" height="6" slices="10" stacks="5"/>
-        </primitive>
-        <primitive id="train-cylinder">
-            <cylinder base="1.45" top="1.45" height="9" slices="20" stacks="5"/>
-        </primitive>
-        <primitive id="chimney">
-            <cylinder base="0.4" top="0.4" height="1.5" slices="20" stacks="5"/>
-        </primitive>
-        <primitive id="train-sphere">
-            <sphere radius="1.45" slices="20" stacks="20"/>
-        </primitive>
-        <primitive id="grass-field">
-            <rectangle x1="-10.4" y1="-30" x2="57.5" y2="52.5" />
-        </primitive>
-        
+        <primitive id="tile">
+            <rectangle x1="0" y1="0" x2="2" y2="2" />
+        </primitive>       
     </primitives>
 
     <components>
@@ -1217,2859 +1152,1358 @@
                 <transformationref id="noTransform" />
             </transformation>
             <materials>
-                <material id="carRed" />
-            </materials>
-            <texture id="none" />
-            <children>
-                <componentref id="streets" />
-                <componentref id="base" />
-                <componentref id="trees" />
-                <componentref id="grass-patches" />
-            </children>
-        </component>
-
-        <component id="grass-patches">
-            <transformation>
-                <translate x="0" y="0" z="0" />
-            </transformation>
-            <materials>
-                <material id="tree" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="grass-patch1" />
-                <componentref id="grass-patch2" />               
-                <componentref id="grass-patch3" />               
-                <componentref id="grass-patch4" />               
-                <componentref id="grass-patch5" />   
-                <componentref id="grass-patch6" />               
-                <componentref id="grass-patch7" />               
-                <componentref id="grass-patch8" />               
-                <componentref id="grass-patch9" />               
-                <componentref id="grass-patch10" />               
-            </children>
-        </component>
-
-        <component id="grass-patch1">
-            <transformation>
-                <translate x="-5" y="0" z="-26" />
-                <scale x="0.3" y="0.3" z="0.3" />
-                <rotate axis="y" angle="20" />
-            </transformation>
-            <materials>
-                <material id="treetopGreen" />
-            </materials>
-            <texture id="plant" length_s="1" length_t="1" />
-            <children>
-                <componentref id="grass-1" />
-                <componentref id="grass-2" />               
-                <componentref id="grass-3" /> 
-                <componentref id="grass-4" />  
-                <componentref id="grass-5" />               
-            </children>
-        </component>
-
-        <component id="grass-patch2">
-            <transformation>
-                <translate x="0" y="0" z="-50" />
-                <scale x="0.3" y="0.3" z="0.3" />
-                <rotate axis="y" angle="50" />
-            </transformation>
-            <materials>
-                <material id="treetopGreen" />
-            </materials>
-            <texture id="plant" length_s="1" length_t="1" />
-            <children>
-                <componentref id="grass-1" />
-                <componentref id="grass-2" />               
-                <componentref id="grass-3" /> 
-                <componentref id="grass-4" />  
-                <componentref id="grass-5" />               
-            </children>
-        </component>
-
-        <component id="grass-patch3">
-            <transformation>
-                <translate x="1" y="0" z="-35" />
-                <scale x="0.3" y="0.3" z="0.3" />
-                <rotate axis="y" angle="85" />
-            </transformation>
-            <materials>
-                <material id="treetopGreen" />
-            </materials>
-            <texture id="plant" length_s="1" length_t="1" />
-            <children>
-                <componentref id="grass-1" />
-                <componentref id="grass-2" />               
-                <componentref id="grass-3" /> 
-                <componentref id="grass-4" />  
-                <componentref id="grass-5" />               
-            </children>
-        </component>
-
-        <component id="grass-patch4">
-            <transformation>
-                <translate x="15" y="0" z="-40" />
-                <scale x="0.3" y="0.3" z="0.3" />
-                <rotate axis="y" angle="120" />
-            </transformation>
-            <materials>
-                <material id="treetopGreen" />
-            </materials>
-            <texture id="plant" length_s="1" length_t="1" />
-            <children>
-                <componentref id="grass-1" />
-                <componentref id="grass-2" />               
-                <componentref id="grass-3" /> 
-                <componentref id="grass-4" />  
-                <componentref id="grass-5" />               
-            </children>
-        </component>
-
-        <component id="grass-patch5">
-            <transformation>
-                <translate x="17" y="0" z="-17" />
-                <scale x="0.3" y="0.3" z="0.3" />
-                <rotate axis="y" angle="160" />
-            </transformation>
-            <materials>
-                <material id="treetopGreen" />
-            </materials>
-            <texture id="plant" length_s="1" length_t="1" />
-            <children>
-                <componentref id="grass-1" />
-                <componentref id="grass-2" />               
-                <componentref id="grass-3" /> 
-                <componentref id="grass-4" />  
-                <componentref id="grass-5" />               
-            </children>
-        </component>
-
-        <component id="grass-patch6">
-            <transformation>
-                <translate x="40" y="0" z="-26" />
-                <scale x="0.3" y="0.3" z="0.3" />
-                <rotate axis="y" angle="20" />
-            </transformation>
-            <materials>
-                <material id="treetopGreen" />
-            </materials>
-            <texture id="plant" length_s="1" length_t="1" />
-            <children>
-                <componentref id="grass-1" />
-                <componentref id="grass-2" />               
-                <componentref id="grass-3" /> 
-                <componentref id="grass-4" />  
-                <componentref id="grass-5" />               
-            </children>
-        </component>
-
-        <component id="grass-patch7">
-            <transformation>
-                <translate x="34" y="0" z="-50" />
-                <scale x="0.3" y="0.3" z="0.3" />
-                <rotate axis="y" angle="50" />
-            </transformation>
-            <materials>
-                <material id="treetopGreen" />
-            </materials>
-            <texture id="plant" length_s="1" length_t="1" />
-            <children>
-                <componentref id="grass-1" />
-                <componentref id="grass-2" />               
-                <componentref id="grass-3" /> 
-                <componentref id="grass-4" />  
-                <componentref id="grass-5" />               
-            </children>
-        </component>
-
-        <component id="grass-patch8">
-            <transformation>
-                <translate x="30" y="0" z="-35" />
-                <scale x="0.3" y="0.3" z="0.3" />
-                <rotate axis="y" angle="85" />
-            </transformation>
-            <materials>
-                <material id="treetopGreen" />
-            </materials>
-            <texture id="plant" length_s="1" length_t="1" />
-            <children>
-                <componentref id="grass-1" />
-                <componentref id="grass-2" />               
-                <componentref id="grass-3" /> 
-                <componentref id="grass-4" />  
-                <componentref id="grass-5" />               
-            </children>
-        </component>
-
-        <component id="grass-patch9">
-            <transformation>
-                <translate x="55" y="0" z="-45" />
-                <scale x="0.3" y="0.3" z="0.3" />
-                <rotate axis="y" angle="120" />
-            </transformation>
-            <materials>
-                <material id="treetopGreen" />
-            </materials>
-            <texture id="plant" length_s="1" length_t="1" />
-            <children>
-                <componentref id="grass-1" />
-                <componentref id="grass-2" />               
-                <componentref id="grass-3" /> 
-                <componentref id="grass-4" />  
-                <componentref id="grass-5" />               
-            </children>
-        </component>
-
-        <component id="grass-patch10">
-            <transformation>
-                <translate x="37" y="0" z="-15" />
-                <scale x="0.3" y="0.3" z="0.3" />
-                <rotate axis="y" angle="160" />
-            </transformation>
-            <materials>
-                <material id="treetopGreen" />
-            </materials>
-            <texture id="plant" length_s="1" length_t="1" />
-            <children>
-                <componentref id="grass-1" />
-                <componentref id="grass-2" />               
-                <componentref id="grass-3" /> 
-                <componentref id="grass-4" />  
-                <componentref id="grass-5" />               
-            </children>
-        </component>
-
-        <component id="grass-1">
-            <transformation>
-                <translate x="0" y="0" z="0" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit" />
-            <children>
-                <primitiveref id="grass-patch-1" /> 
-                <primitiveref id="grass-patch-2" />             
-            </children>
-        </component>
-
-        <component id="grass-2">
-            <transformation>
-                <rotate axis="x" angle="-90" />
-                <translate x="0" y="0" z="0" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit" />
-            <children>
-                <primitiveref id="grass-patch-1" /> 
-                <primitiveref id="grass-patch-2" />             
-            </children>
-        </component>
-
-        <component id="grass-3">
-            <transformation>
-                <rotate axis="y" angle="-40" />
-                <translate x="0" y="0" z="0" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit" />
-            <children>
-                <primitiveref id="grass-patch-1" /> 
-                <primitiveref id="grass-patch-2" />             
-            </children>
-        </component>
-
-        <component id="grass-4">
-            <transformation>
-                <rotate axis="x" angle="-75" />
-                <rotate axis="y" angle="-90" />
-                <translate x="0" y="0" z="0" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit" />
-            <children>
-                <primitiveref id="grass-patch-1" /> 
-                <primitiveref id="grass-patch-2" />             
-            </children>
-        </component>
-
-        <component id="grass-5">
-            <transformation>
-                <rotate axis="y" angle="-25" />
-                <rotate axis="x" angle="-90" />
-                <translate x="0" y="0" z="0" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit" />
-            <children>
-                <primitiveref id="grass-patch-1" /> 
-                <primitiveref id="grass-patch-2" />             
-            </children>
-        </component>
-
-        <component id="trees">
-            <transformation>
-                <translate x="0" y="0" z="0" />
-            </transformation>
-            <materials>
-                <material id="tree" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treesGroup1" />
-                <componentref id="treesGroup2" />
-                <componentref id="pineTree1" />  
-                <componentref id="pineTree2" />
-                <componentref id="pineTree3" />                
-                <componentref id="pineTree4" />                
-                <componentref id="pineTree5" /> 
-                <componentref id="pineTree6" />                
-                <componentref id="pineTree7" />                
-                <componentref id="pineTree8" />                
-                <componentref id="pineTree9" />                
-                <componentref id="pineTree10" />                
-            </children>
-        </component>
-
-        <component id="treesGroup1">
-            <transformation>
-                <translate x="0" y="0" z="0" />
-            </transformation>
-            <materials>
-                <material id="tree" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="tree1" />
-                <componentref id="tree2" />
-                <componentref id="tree3" />
-                <componentref id="tree4" />
-                <componentref id="tree5" />
-                <componentref id="tree6" />
-                <componentref id="tree7" />
-                <componentref id="tree8" />
-                <componentref id="tree9" />
-                <componentref id="tree10" />
-                <componentref id="tree11" />
-                <componentref id="tree12" />
-                <componentref id="tree13" />
-                <componentref id="tree14" />
-            </children>
-        </component>
-
-        <component id="pineTree1">
-            <transformation>
-                <translate x="10" y="0" z="-40" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="pinetreetop1" />
-            </children>
-        </component>
-
-        <component id="pineTree2">
-            <transformation>
-                <translate x="5" y="0" z="-30" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="pinetreetop1" />
-            </children>
-        </component>
-
-        <component id="pineTree3">
-            <transformation>
-                <translate x="-4" y="0" z="-20" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="pinetreetop1" />
-            </children>
-        </component>
-
-        <component id="pineTree4">
-            <transformation>
-                <translate x="-5" y="0" z="-45" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="pinetreetop1" />
-            </children>
-        </component>
-
-        <component id="pineTree5">
-            <transformation>
-                <translate x="12" y="0" z="-24" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="pinetreetop1" />
-            </children>
-        </component>
-
-        <component id="pineTree6">
-            <transformation>
-                <translate x="43" y="0" z="-30" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="pinetreetop1" />
-            </children>
-        </component>
-
-        <component id="pineTree7">
-            <transformation>
-                <translate x="36" y="0" z="-34" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="pinetreetop1" />
-            </children>
-        </component>
-
-        <component id="pineTree8">
-            <transformation>
-                <translate x="47" y="0" z="-45" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="pinetreetop1" />
-            </children>
-        </component>
-
-        <component id="pineTree9">
-            <transformation>
-                <translate x="35" y="0" z="-21" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="pinetreetop1" />
-            </children>
-        </component>
-
-        <component id="pineTree10">
-            <transformation>
-                <translate x="50" y="0" z="-20" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="pinetreetop1" />
-            </children>
-        </component>
-
-        <component id="treesGroup2">
-            <transformation>
-                <translate x="0" y="0" z="-22" />
-            </transformation>
-            <materials>
-                <material id="tree" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="tree1" />
-                <componentref id="tree2" />
-                <componentref id="tree3" />
-                <componentref id="tree4" />
-                <componentref id="tree5" />
-                <componentref id="tree6" />
-                <componentref id="tree7" />
-                <componentref id="tree8" />
-                <componentref id="tree9" />
-                <componentref id="tree10" />
-                <componentref id="tree11" />
-                <componentref id="tree12" />
-                <componentref id="tree13" />
-                <componentref id="tree14" />
-            </children>
-        </component>
-
-        <component id="tree1">
-            <transformation>
-                <translate x="10" y="0" z="10" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="treetop1" />
-            </children>
-        </component>
-
-        <component id="tree2">
-            <transformation>
-                <translate x="6" y="0" z="10" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="treetop1" />
-            </children>
-        </component>
-
-        <component id="tree3">
-            <transformation>
-                <translate x="2" y="0" z="10" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="treetop1" />
-            </children>
-        </component>
-
-        <component id="tree4">
-            <transformation>
-                <translate x="-2" y="0" z="10" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="treetop1" />
-            </children>
-        </component>
-
-        <component id="tree5">
-            <transformation>
-                <translate x="-6" y="0" z="10" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="treetop1" />
-            </children>
-        </component>
-
-        <component id="tree6">
-            <transformation>
-                <translate x="-10" y="0" z="10" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="treetop1" />
-            </children>
-        </component>
-
-        <component id="tree7">
-            <transformation>
-                <translate x="14" y="0" z="10" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="treetop1" />
-            </children>
-        </component>
-
-        <component id="tree8">
-            <transformation>
-                <translate x="32" y="0" z="10" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="treetop1" />
-            </children>
-        </component>
-
-        <component id="tree9">
-            <transformation>
-                <translate x="36" y="0" z="10" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="treetop1" />
-            </children>
-        </component>
-
-        <component id="tree10">
-            <transformation>
-                <translate x="40" y="0" z="10" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="treetop1" />
-            </children>
-        </component>
-
-        <component id="tree11">
-            <transformation>
-                <translate x="44" y="0" z="10" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="treetop1" />
-            </children>
-        </component>
-
-        <component id="tree12">
-            <transformation>
-                <translate x="48" y="0" z="10" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="treetop1" />
-            </children>
-        </component>
-
-        <component id="tree13">
-            <transformation>
-                <translate x="52" y="0" z="10" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="treetop1" />
-            </children>
-        </component>
-
-        <component id="tree14">
-            <transformation>
-                <translate x="56" y="0" z="10" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="treetop1" />
-            </children>
-        </component>
-
-        <component id="tree15">
-            <transformation>
-                <translate x="60" y="0" z="10" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treetrunk1" />
-                <componentref id="treetop1" />
-            </children>
-        </component>
-
-        <component id="treetrunk1">
-            <transformation>
-                <rotate axis="x" angle="-90" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="trunk" length_s="1" length_t="1"/>
-            <children>
-                <primitiveref id="tree-trunk" />
-            </children>
-        </component>
-
-        <component id="treetop1">
-            <transformation>
-                <translate x="0" y="3" z="0" />
-                <rotate axis="x" angle="-90" />
-            </transformation>
-            <animationref id="wind-leaf-animation" />
-            <materials>
-                <material id="treetopGreen" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="treeside1" />
-                <componentref id="treeside2" />
-            </children>
-        </component>
-
-
-        <component id="treeside2">
-            <transformation>
-                <translate x="0" y="0" z="0" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="tree-side" />
-            </children>
-        </component>
-
-        <component id="treeside1">
-            <transformation>
-                <translate x="0" y="0" z="0" />
-                <rotate axis="z" angle="180" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="tree-side" />
-            </children>
-        </component>
-
-        <component id="pinetreetop1">
-            <transformation>
-                <translate x="0" y="3" z="0" />
-                <rotate axis="x" angle="-90" />
-            </transformation>
-            <animationref id="wind-pinetree-animation" />
-            <materials>
-                <material id="treetopGreen" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="pinetreeside1" />
-                <componentref id="pinetreeside2" />
-            </children>
-        </component>
-
-
-        <component id="pinetreeside2">
-            <transformation>
-                <translate x="0" y="0" z="0" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <primitiveref id="pinetree-side" />
-            </children>
-        </component>
-
-        <component id="pinetreeside1">
-            <transformation>
-                <translate x="0" y="0" z="0" />
-                <rotate axis="z" angle="180" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="grass" length_s="1" length_t="1"/>
-            <children>
-                <primitiveref id="pinetree-side" />
-            </children>
-        </component>
-
-        <component id="base">
-            <transformation>
-                <translate x="0" y="-0.01" z="0" />
-                <rotate axis="x" angle="-90" />
-            </transformation>
-            <materials>
-                <material id="grassGreen" />
-            </materials>
-            <texture id="grass" length_s="10" length_t="10"/>
-            <children>
-                <primitiveref id="grass-field" />
-            </children>
-        </component>
-
-        <component id="streets">
-            <transformation>
-                <transformationref id="noTransform" />
-            </transformation>
-            <materials>
-                <material id="carRed" />
-            </materials>
-            <texture id="none" />
-            <children>
-                <componentref id="street1" />
-                <componentref id="street2" />
-                <componentref id="train-trail" />
-            </children>
-        </component>
-
-        <component id="street1">
-            <transformation>
-                <transformationref id="noTransform" />
-            </transformation>
-            <materials>
-                <material id="carRed" />
-            </materials>
-            <texture id="none" />
-            <children>
-                <componentref id="road" />
-                <componentref id="cars" />  
-                <componentref id="gate" />
-            </children>
-        </component>
-
-        <component id="gate">
-            <transformation>
-                <transformationref id="noTransform" />             
-            </transformation>
-            <materials>
-                <material id="gray" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <componentref id="gate-arm" />
-                <componentref id="gate-base" />
-            </children>
-        </component>
-
-        <component id="gate-base">
-            <transformation>
-                <scale x="2.3" y="2" z="2.3" />
-                <translate x="8" y="-7.5" z="-3.5" />
-                <rotate axis="x" angle="-90" />              
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="gate-box" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="gate-box" />
-            </children>
-        </component>
-
-        <component id="gate-arm">
-            <transformation>
-                <translate x="17.8" y="2.3" z="-8.1" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="gate" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="gate-axis1" />
-                <componentref id="arm1" />
-                <componentref id="arm2" />
-            </children>
-        </component>
-
-        <component id="arm1">
-            <transformation>
-                <rotate axis="x" angle="-45"/>
-                <translate x="-0.1" y="0" z="0" />
-            </transformation>
-            <animationref id="rotating-arm" />
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <primitiveref id="gate-cylinder1" />
-            </children>
-        </component>
-
-        <component id="arm2">
-            <transformation>
-                <translate x="-0.1" y="4.3" z="4.4" />
-            </transformation>
-            <animationref id="translating-arm" />
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <primitiveref id="gate-cylinder1" />
-                <componentref id="gate-axis2" />
-            </children>
-        </component>
-
-        <component id="gate-axis1">
-            <transformation>
-                <transformationref id="noTransform"/>
-            </transformation>
-            <materials>
-                <material id="darkGray" />
-            </materials>
-            <texture id="metal" length_s="1" length_t="1"/>
-            <children>
-                <primitiveref id="gate-sphere1" />
-            </children>
-        </component>
-
-        <component id="gate-axis2">
-            <transformation>
-                <scale x="0.8" y="0.8" z="0.8" />
-            </transformation>
-            <materials>
-                <material id="darkGray" />
-            </materials>
-            <texture id="metal" length_s="1" length_t="1"/>
-            <children>
-                <primitiveref id="gate-sphere1" />
-            </children>
-        </component>
-
-        <component id="street2">
-            <transformation>
-                <rotate axis="y" angle="-180" />
-                <translate x="-47" y="0" z="2.5" />
-            </transformation>
-            <materials>
-                <material id="carRed" />
-            </materials>
-            <texture id="none" />
-            <children>
-                <componentref id="road" />
-                <componentref id="gate" />
-            </children>
-        </component>
-
-        <component id="road">
-            <transformation>
-                <rotate axis="x" angle="0" />   
-            </transformation>
-            <materials>
-                <material id="pavement" />
                 <material id="white" />
             </materials>
-            <texture id="road" length_s="27.5" length_t="12"/>
-            <children>
-                <componentref id="pavement" />
-                <componentref id="stripes" />
-                <componentref id="semaphore" />
-                <componentref id="sidewalk" />
-            </children>
-        </component>
-
-        <component id="pavement">
-            <transformation>
-                <rotate axis="x" angle="-90" />  
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <primitiveref id="asphalt" />
-            </children>
-        </component>
-
-
-        <component id="train-trail">
-            <transformation>
-                <translate x="24.5" y="0" z="0" />  
-            </transformation>
-            <materials>
-                <material id="sidewalk" />
-            </materials>
-            <texture id="sidewalk" length_s="0.5" length_t="3"/>
-            <children>
-                <componentref id="train" />
-                <componentref id="trail" />
-            </children>
-        </component>
-
-        <component id="train">
-            <transformation>
-                <translate x="-2.4" y="0" z="100" />
-                <rotate axis="y" angle="90" />
-            </transformation>
-            <animationref id="train-movement" />
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <componentref id="train-tires" />
-                <componentref id="train-box" />
-                <componentref id="train-top-box" />
-                <componentref id="train-top-top-box" />
-                <componentref id="train-neck" />
-                <componentref id="train-head" />
-                <componentref id="train-chimney" />
-                <componentref id="train-smoke" />
-                <componentref id="train-front3" />
-            </children>
-        </component>
-
-        <component id="train-front3">
-            <transformation> 
-                <translate x="8" y="1.46" z="1.5" /> 
-                <rotate axis="y" angle="-90" />  
-                <rotate axis="x" angle="180" />  
-                <scale x="0.6" y="0.5" z="0.4" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="bars" length_s="1" length_t="1" />
-            <children>
-                <componentref id="train-front1" />
-                <componentref id="train-front2" />
-            </children>
-        </component>
-
-        <component id="train-front1">
-            <transformation> 
-                <translate x="0" y="0" z="0" />   
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <primitiveref id="train-front-1" />
-            </children>
-        </component>
-
-        <component id="train-front2">
-            <transformation> 
-                <translate x="0" y="0" z="0" />   
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <primitiveref id="train-front-2" />
-            </children>
-        </component>
-
-        <component id="train-smoke">
-            <transformation>
-                <translate x="5" y="7.2" z="1.5" />      
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <componentref id="train-smoke1" />
-                <componentref id="train-smoke2" />
-                <componentref id="train-smoke3" />
-            </children>
-        </component>
-
-
-        <component id="train-tires">
-            <transformation>
-                <transformationref id="noTransform" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <componentref id="train-tire1" />
-                <componentref id="train-tire2" />
-                <componentref id="train-tire3" />
-                <componentref id="train-tire4" />
-                <componentref id="train-tire5" />
-                <componentref id="train-tire6" />
-            </children>
-        </component>
-
-        <component id="trail">
-            <transformation>
-                <scale x="1" y="1" z="3" />
-                <rotate axis="y" angle="90" />  
-            </transformation>
-            <materials>
-                <material id="sidewalk" />
-            </materials>
-            <texture id="sidewalk" length_s="0.5" length_t="3"/>
-            <children>
-                <componentref id="pavement" />
-                <componentref id="trails" />
-                <componentref id="boards" />
-            </children>
-        </component>
-
-        <component id="boards">
-            <transformation>
-                <rotate axis="y" angle="90" />
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="board1" />
-                <componentref id="board2" />
-                <componentref id="board3" />
-                <componentref id="board4" />
-                <componentref id="board5" />
-                <componentref id="board6" />
-                <componentref id="board7" />
-                <componentref id="board8" />
-                <componentref id="board9" />
-                <componentref id="board10" />
-                <componentref id="board11" />
-                <componentref id="board12" />
-                <componentref id="board13" />
-                <componentref id="board14" />
-                <componentref id="board15" />
-                <componentref id="board16" />
-                <componentref id="board17" />
-                <componentref id="board18" />
-                <componentref id="board19" />
-                <componentref id="board20" />
-                <componentref id="board21" />
-                <componentref id="board22" />
-                <componentref id="board23" />
-                <componentref id="board24" />
-                <componentref id="board25" />
-                <componentref id="board26" />
-                <componentref id="board27" />
-                <componentref id="board28" />
-            </children>
-        </component>
-
-        <component id="board1">
-            <transformation>
-                <translate x="0.8" y="0" z="-9" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board2">
-            <transformation>
-                <translate x="0.8" y="0" z="-8.5" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board3">
-            <transformation>
-                <translate x="0.8" y="0" z="-6.9" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board4">
-            <transformation>
-                <translate x="0.8" y="0" z="-6.4" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board5">
-            <transformation>
-                <translate x="0.8" y="0" z="-4.8" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board6">
-            <transformation>
-                <translate x="0.8" y="0" z="-4.3" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board7">
-            <transformation>
-                <translate x="0.8" y="0" z="-2.7" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board8">
-            <transformation>
-                <translate x="0.8" y="0" z="-2.2" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board9">
-            <transformation>
-                <translate x="0.8" y="0" z="-0.6" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board10">
-            <transformation>
-                <translate x="0.8" y="0" z="-0.1" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board11">
-            <transformation>
-                <translate x="0.8" y="0" z="0.9" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board12">
-            <transformation>
-                <translate x="0.8" y="0" z="1.4" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board13">
-            <transformation>
-                <translate x="0.8" y="0" z="2.5" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board14">
-            <transformation>
-                <translate x="0.8" y="0" z="3" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board15">
-            <transformation>
-                <translate x="0.8" y="0" z="4.6" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board16">
-            <transformation>
-                <translate x="0.8" y="0" z="5.1" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board17">
-            <transformation>
-                <translate x="0.8" y="0" z="6.7" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board18">
-            <transformation>
-                <translate x="0.8" y="0" z="7.2" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board19">
-            <transformation>
-                <translate x="0.8" y="0" z="8.8" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board20">
-            <transformation>
-                <translate x="0.8" y="0" z="9.3" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board21">
-            <transformation>
-                <translate x="0.8" y="0" z="10.9" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board22">
-            <transformation>
-                <translate x="0.8" y="0" z="11.4" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board23">
-            <transformation>
-                <translate x="0.8" y="0" z="13" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board24">
-            <transformation>
-                <translate x="0.8" y="0" z="13.5" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board25">
-            <transformation>
-                <translate x="0.8" y="0" z="14.6" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board26">
-            <transformation>
-                <translate x="0.8" y="0" z="15.1" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board27">
-            <transformation>
-                <translate x="0.8" y="0" z="16.7" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board28">
-            <transformation>
-                <translate x="0.8" y="0" z="17.2" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board29">
-            <transformation>
-                <translate x="0.8" y="0" z="18.8" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="board30">
-            <transformation>
-                <translate x="0.8" y="0" z="19.3" />        
-                <scale x="0.6" y="0.1" z="0.07" />   
-            </transformation>
-            <materials>
-                <material id="brown" />
-            </materials>
-            <texture id="wood" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-
-        <component id="trails">
-            <transformation>
-                <translate x="3.70" y="0" z="0.35" />
-                <scale x="3.45" y="0.2" z="0.2" />           
-            </transformation>
-            <materials>
-                <material id="darkGray" />
-            </materials>
-            <texture id="metal" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="stripes">
-            <transformation>
-                <rotate axis="x" angle="-90" />  
-                <translate x="-7.5" y="0.7" z="0.01" />
-            </transformation>
-            <materials>
-                <material id="white" />
-                <material id="pavement" />
-            </materials>
             <texture id="none" />
             <children>
-                <componentref id="stripe1" />
-                <componentref id="stripe2" />
-                <componentref id="stripe3" />
-                <componentref id="stripe4" />
-                <componentref id="stripe5" />
+                <componentref id="table1" />
+                <componentref id="table2" />
+                <componentref id="table3" />
+                <componentref id="table4" />
+                <componentref id="table5" />
+                <componentref id="table6" />
+                <componentref id="lower-walls" />
+                <componentref id="walls" />
+                <componentref id="floor" />
+                <componentref id="black-board" />
+                <componentref id="window1" />
+                <componentref id="window2" />
+                <componentref id="window3" />
+                <componentref id="board" />
             </children>
         </component>
 
-        <component id="stripe1">
+        <!--CHAIRS-->
+        <component id="chairs">
             <transformation>
-                <transformationref id="noTransform" />
+                <translate x="0" y="-3" z="3.5" />
+                <scale x="1" y="8" z="1" />
+                <translate x="-1.6" y="0" z="-5.5" />
+                <rotate axis="z" angle="0" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="none" />
+            <texture id="wood" length_s="1" length_t="1" />
             <children>
-                <primitiveref id="stripe" />
+                <componentref id="chair1" />
+                <componentref id="chair2" />
             </children>
         </component>
 
-        <component id="stripe2">
+        <component id="chair">
             <transformation>
-                <translate x="5" y="0" z="0" />
+                <translate x="0" y="-3" z="3.5" />
+                <scale x="1" y="8" z="1" />
+                <translate x="-1.6" y="0" z="-5.5" />
+                <rotate axis="z" angle="0" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="none" />
+            <texture id="wood" length_s="1" length_t="1" />
             <children>
-                <primitiveref id="stripe" />
+                <componentref id="chair1" />
             </children>
         </component>
 
-        <component id="stripe3">
+                <!--Chair1-->
+        <component id="chair1">
             <transformation>
-                <translate x="10" y="0" z="0" />
+                <translate x="-3.5" y="0" z="1" />
             </transformation>
             <materials>
-                <material id="inherit" />
+                <material id="metalMaterial" />
             </materials>
-            <texture id="none" />
+            <texture id="inherit" length_s="1" length_t="1" />
             <children>
-                <primitiveref id="stripe" />
-            </children>
+                <componentref id="seat1" />
+                <componentref id="backrest1" />
+                <componentref id="chairLegs" />
+        </children>
         </component>
 
-        <component id="stripe4">
+        <component id="seat1">
             <transformation>
-                <translate x="15" y="0" z="0" />
+                <translate x="1" y="1.7" z="1" />
+                <scale x="2.2" y="0.2" z="2.2" />
             </transformation>
             <materials>
-                <material id="inherit" />
+                <material id="whiterubberMaterial" />
+                <material id="demoMaterial" />
+                <material id="glassMaterial" />
             </materials>
-            <texture id="none" />
+            <texture id="inherit" length_s="1" length_t="1"/>
             <children>
-                <primitiveref id="stripe" />
+                <componentref id="cube" />
             </children>
         </component>
-
-        <component id="stripe5">
+        <component id="backrest1">
             <transformation>
-                <translate x="20" y="0" z="0" />
+                <translate x="-0.2" y="2.7" z="1" />
+                <rotate axis="z" angle="100" />
+                <scale x="2.2" y="0.2" z="2.2" />
             </transformation>
             <materials>
-                <material id="inherit" />
+                <material id="whiterubberMaterial" />
+                <material id="demoMaterial" />
+                <material id="glassMaterial" />
             </materials>
-            <texture id="none" />
+            <texture id="inherit" length_s="1" length_t="1" />
             <children>
-                <primitiveref id="stripe" />
-            </children>
-        </component>
-
-        <component id="semaphore">
-            <transformation>
-                <translate x="14" y="0" z="6" />
-                <rotate axis="y" angle="90" />
-                <rotate axis="x" angle="-90" />
-            </transformation>
-            <materials>
-                <material id="gray" />
-                <material id="darkGray" />
-            </materials>
-            <texture id="metal" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="semaphore-base" />
-                <componentref id="semaphore-box" />
-            </children>
-        </component>
-
-        <component id="semaphore-base">
-            <transformation>
-                <transformationref id="noTransform" />              
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <primitiveref id="post" />
-            </children>
-        </component>
-
-
-        <component id="train-top-top-box">
-            <transformation>
-                <translate x="-0.605" y="5" z="-15" />             
-                <scale x="8" y="4" z="2" />             
-            </transformation>
-            <materials>
-                <material id="lightBlue" />
-            </materials>
-            <texture id="metal" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="semaphore-bottom" />
-                <componentref id="semaphore-top" />
-                <componentref id="semaphore-front" />
-                <componentref id="semaphore-back" />
-                <componentref id="semaphore-left" />
-                <componentref id="semaphore-right" />
-            </children>
-        </component>
-
-        <component id="train-top-box">
-            <transformation>
-                <translate x="1.4" y="3" z="-14.6" />             
-                <scale x="16" y="6" z="1.95" />             
-            </transformation>
-            <materials>
-                <material id="carRed" />
-            </materials>
-            <texture id="metal" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="semaphore-bottom" />
-                <componentref id="semaphore-top" />
-                <componentref id="semaphore-front" />
-                <componentref id="semaphore-back" />
-                <componentref id="semaphore-left" />
-                <componentref id="semaphore-right" />
-            </children>
-        </component>
-
-        <component id="semaphore-box">
-            <transformation>
-                <transformationref id="noTransform" />             
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <componentref id="semaphore-bottom" />
-                <componentref id="semaphore-top" />
-                <componentref id="semaphore-front" />
-                <componentref id="semaphore-back" />
-                <componentref id="semaphore-left" />
-                <componentref id="semaphore-right" />
-                <componentref id="semaphore-red-light" />
-                <componentref id="semaphore-red-light2" />
-                <componentref id="semaphore-yellow-light" />
-                <componentref id="semaphore-yellow-light2" />
-                <componentref id="semaphore-green-light" />
-                <componentref id="semaphore-green-light2" />
-            </children>
-        </component>
-
-        <component id="gate-box">
-            <transformation>
-                <transformationref id="noTransform" />             
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <componentref id="semaphore-bottom" />
-                <componentref id="semaphore-top" />
-                <componentref id="semaphore-front" />
-                <componentref id="semaphore-back" />
-                <componentref id="semaphore-left" />
-                <componentref id="semaphore-right" />
-            </children>
-        </component>
-
-        <component id="semaphore-green-light">
-            <transformation>
-                <translate x="0" y="0.25" z="7.76" />
-            </transformation>
-            <materials>
-                <material id="green" />
-            </materials>
-            <texture id="none" />
-            <children>
-                <primitiveref id="semaphore-light" />
-            </children>
-        </component>
-
-        <component id="semaphore-green-light2">
-            <transformation>
-                <translate x="0" y="0.25" z="7.76" />
-            </transformation>
-            <animationref id="green-animation" />
-            <materials>
-                <material id="darkGreen" />
-            </materials>
-            <texture id="none" />
-            <children>
-                <primitiveref id="semaphore-light" />
-            </children>
-        </component>
-
-        <component id="semaphore-yellow-light">
-            <transformation>
-                <translate x="0" y="0.25" z="8.26" />
-            </transformation>
-            <materials>
-                <material id="darkYellow" />
-            </materials>
-            <texture id="none" />
-            <children>
-                <primitiveref id="semaphore-light" />
-            </children>
-        </component>
-
-        <component id="semaphore-yellow-light2">
-            <transformation>
-                <translate x="0" y="0.25" z="8.26" />
-            </transformation>
-            <animationref id="yellow-animation" />
-            <materials>
-                <material id="yellow" />
-            </materials>
-            <texture id="none" />
-            <children>
-                <primitiveref id="semaphore-light" />
-            </children>
-        </component>
-
-        <component id="semaphore-red-light">
-            <transformation>
-                <translate x="0" y="0.25" z="8.76" />
-            </transformation>
-            <materials>
-                <material id="semaphoreDarkRed" />
-            </materials>
-            <texture id="none" />
-            <children>
-                <primitiveref id="semaphore-light" />
-            </children>
-        </component>
-
-        <component id="semaphore-red-light2">
-            <transformation>
-                <translate x="0" y="0.25" z="8.76" />
-            </transformation>
-            <animationref id="red-animation" />
-            <materials>
-                <material id="semaphoreRed" />
-            </materials>
-            <texture id="none" />
-            <children>
-                <primitiveref id="semaphore-light" />
-            </children>
-        </component>
-
-        <component id="semaphore-bottom">
-            <transformation>
-                <translate x="0" y="0" z="7.5" />
-                <rotate axis="y" angle="180" />             
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <primitiveref id="semaphore-box-top" />
-            </children>
-        </component>
-
-        <component id="semaphore-top">
-            <transformation>
-                <translate x="0" y="0" z="9" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <primitiveref id="semaphore-box-top" />
-            </children>
-        </component>
-
-        <component id="semaphore-front">
-            <transformation>
-                <translate x="0" y="-0.25" z="8.25" />
-                <rotate axis="x" angle="90" />             
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <primitiveref id="semaphore-box-side" />
-            </children>
-        </component>
-
-        <component id="semaphore-back">
-            <transformation>
-                <translate x="0" y="0.25" z="8.25" />
-                <rotate axis="x" angle="-90" />             
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <primitiveref id="semaphore-box-side" />
-            </children>
-        </component>
-
-        <component id="semaphore-left">
-            <transformation>
-                <translate x="0.25" y="0" z="8.25" />
-                <rotate axis="z" angle="90" />             
-                <rotate axis="x" angle="90" />             
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <primitiveref id="semaphore-box-side" />
-            </children>
-        </component>
-
-        <component id="semaphore-right">
-            <transformation>
-                <translate x="-0.25" y="0" z="8.25" />
-                <rotate axis="z" angle=" 90" />             
-                <rotate axis="x" angle="-90" />             
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <primitiveref id="semaphore-box-side" />
-            </children>
-        </component>
-
-        <component id="sidewalk">
-            <transformation>
-                <translate x="3.70" y="0" z="5" />
-                <scale x="3.45" y="0.5" z="1" />           
-            </transformation>
-            <materials>
-                <material id="sidewalk" />
-                <material id="brown" />
-            </materials>
-            <texture id="sidewalk" length_s="1" length_t="1"/>
-            <children>
-                <componentref id="sidewalk1" />
-                <componentref id="sidewalk2" />
-            </children>
-        </component>
-
-        <component id="sidewalk1">
-            <transformation>
-                <transformationref id="noTransform" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <componentref id="sidewalk-left" />
-                <componentref id="sidewalk-right" />
-                <componentref id="sidewalk-front" />
-                <componentref id="sidewalk-back" />
-                <componentref id="sidewalk-top" />
-            </children>
-        </component>
-
-        <component id="sidewalk2">
-            <transformation>
-                <translate x="0" y="0" z="-15" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <componentref id="sidewalk1" />
-            </children>
-        </component>
-
-        <component id="sidewalk-left">
-            <transformation>
-                <rotate axis="y" angle="180" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="sidewalk" length_s="1" length_t="4"/>
-            <children>
-                <primitiveref id="sidewalk-box-side" />
-            </children>
-        </component>
-
-        <component id="sidewalk-right">
-            <transformation>
-                <translate x="0" y="0" z="3" />  
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="sidewalk" length_s="1" length_t="4"/>
-            <children>
-                <primitiveref id="sidewalk-box-side" />
-            </children>
-        </component>
-
-        <component id="sidewalk-front">
-            <transformation>
-                <translate x="4" y="0" z="3" />
-                <rotate axis="y" angle="90" />  
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="sidewalk" length_s="2" length_t="4"/>
-            <children>
-                <primitiveref id="sidewalk-box-front" />
-            </children>
-        </component>
-
-        <component id="sidewalk-back">
-            <transformation>
-                <translate x="-4" y="0" z="0" />
-                <rotate axis="y" angle="-90" />  
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="sidewalk" length_s="2" length_t="4"/>
-            <children>
-                <primitiveref id="sidewalk-box-front" />
-            </children>
-        </component>
-
-        <component id="sidewalk-top">
-            <transformation>
-                <translate x="-4" y="1" z="0" />
-                <scale x="4" y="1" z="1" />
-                <rotate axis="z" angle="-90" />  
-                <rotate axis="y" angle="-90" />  
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="sidewalk" length_s="5" length_t="1"/>
-            <children>
-                <primitiveref id="sidewalk-box-hood" />
-            </children>
-        </component>
-
-
-        <component id="cars">
-            <transformation>
-                <transformationref id="noTransform" />
-            </transformation>
-            <materials>
-                <material id="carRed" />
-                <material id="lightBlue" />
-            </materials>
-            <texture id="car" length_s="10" length_t="5"/>
-            <children>
-                <componentref id="car1" />
-                <componentref id="car2" />
+                <componentref id="cube" />
             </children>
         </component>
         
-        <component id="car1">
+                   <!--Chair2-->
+        <component id="chair2">
             <transformation>
-                <translate x="-55" y="0" z="0" />
+                <rotate axis="y" angle="180" />
+                <translate x="-6.6" y="0" z="-2.8" />
             </transformation>
-            <animationref id="car1-movement" />
             <materials>
-                <material id="inherit" />
+                <material id="metalMaterial" />
             </materials>
-            <texture id="inherit"/>
+            <texture id="inherit" length_s="1" length_t="1" />
             <children>
-                <componentref id="tire1" />
-                <componentref id="tire2" />
-                <componentref id="tire3" />
-                <componentref id="tire4" />
-                <componentref id="front-axis" />
-                <componentref id="back-axis" />
-                <componentref id="main-box" />
-                <componentref id="top-box" />
-                <componentref id="headlights" />
+                <componentref id="seat2" />
+                <componentref id="backrest2" />
+                <componentref id="chairLegs" />
+        </children>
+        </component>
+
+        <component id="seat2">
+            <transformation>
+                <translate x="1" y="1.7" z="1" />
+                <scale x="2.2" y="0.2" z="2.2" />
+            </transformation>
+            <materials>
+                <material id="whiterubberMaterial" />
+                <material id="demoMaterial" />
+                <material id="glassMaterial" />
+            </materials>
+            <texture id="inherit" length_s="1" length_t="1" />
+            <children>
+                <componentref id="cube" />
+            </children>
+        </component>
+        <component id="backrest2">
+            <transformation>
+                <translate x="-0.2" y="2.7" z="1" />
+                <rotate axis="z" angle="100" />
+                <scale x="2.2" y="0.2" z="2.2" />
+            </transformation>
+            <materials>
+                <material id="whiterubberMaterial" />
+                <material id="demoMaterial" />
+                <material id="glassMaterial" />
+            </materials>
+            <texture id="inherit" length_s="1" length_t="1" />
+            <children>
+                <componentref id="cube" />
             </children>
         </component>
 
-        <component id="car2">
+        <component id="chairLegs">
             <transformation>
-                <translate x="103" y="0" z="-3" />
-                <rotate axis="y" angle="180" />
             </transformation>
-            <animationref id="car2-movement" />
             <materials>
-                <material id="lightBlue" />
-                <material id="carRed" />
+                <material id="inherit" />
             </materials>
             <texture id="inherit" />
             <children>
-                <componentref id="tire1" />
-                <componentref id="tire2" />
-                <componentref id="tire3" />
-                <componentref id="tire4" />
-                <componentref id="front-axis" />
-                <componentref id="back-axis" />
-                <componentref id="main-box" />
-                <componentref id="top-box" />
-                <componentref id="headlights" />
+                <componentref id="chairLeg1" />
+                <componentref id="chairLeg2" />
+                <componentref id="chairLeg3" />
+                <componentref id="chairLeg4" />  
             </children>
         </component>
-
-        <component id="headlights">
+        <component id="chairLeg1">
             <transformation>
-                <translate x="4" y="1.2" z="3" />
+                <rotate axis="x" angle="-90" />
+                <scale x="0.1" y="0.1" z="0.6" />
             </transformation>
             <materials>
-                <material id="yellow" />
+                <material id="inherit" />
+                <material id="whiterubberMaterial" />
+                <material id="demoMaterial" />
+                <material id="glassMaterial" />
             </materials>
-            <texture id="headlight" length_s="1" length_t="1"/>
+            <texture id="inherit" />
             <children>
-                <componentref id="headlight-right" />
-                <componentref id="headlight-left" />
+                <primitiveref id="cylinder" />
+            </children>
+        </component>
+         <component id="chairLeg2">
+            <transformation>
+                <translate x="0" y="0" z="2" />
+                <rotate axis="x" angle="-90" />
+                <scale x="0.1" y="0.1" z="0.6" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+                <material id="whiterubberMaterial" />
+                <material id="demoMaterial" />
+                <material id="glassMaterial" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <primitiveref id="cylinder" />
+            </children>
+        </component>
+         <component id="chairLeg3">
+            <transformation>
+                <translate x="2" y="0" z="2" />
+                <rotate axis="x" angle="-90" />
+                <scale x="0.1" y="0.1" z="0.6" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+                <material id="whiterubberMaterial" />
+                <material id="demoMaterial" />
+                <material id="glassMaterial" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <primitiveref id="cylinder" />
+            </children>
+        </component>
+         <component id="chairLeg4">
+            <transformation>
+                <translate x="2" y="0" z="0" />
+                <rotate axis="x" angle="-90" />
+                <scale x="0.1" y="0.1" z="0.6" />
+                
+            </transformation>
+            <materials>
+                <material id="inherit" />
+                <material id="whiterubberMaterial" />
+                <material id="demoMaterial" />
+                <material id="glassMaterial" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <primitiveref id="cylinder" />
             </children>
         </component>
 
-        <component id="headlight-right">
+        <!--Table-->
+        <component id="table1">
             <transformation>
-                <translate x="-0.1" y="0.5" z="-0.5" />
+                <scale x="1" y="7.5" z="6.5" />
+                <translate x="2.2" y="2.45" z="-2.75" />
+                <rotate axis="z" angle="-90" />
+            </transformation>
+            <materials>
+                <material id="woodMaterial" />
+            </materials>
+            <texture id="wood" length_s="1" length_t="1" />
+            <children>
+                <componentref id="tableTop" />
+                <componentref id="tableLegs" />
+                <componentref id="chairs" />
+            </children>
+        </component>
+
+        <component id="table2">
+            <transformation>
+                <translate x="0" y="0" z="45" />
+                <scale x="1" y="6.5" z="6.5" />
+                <translate x="2.2" y="2.25" z="-2.25" />
+                <rotate axis="z" angle="-90" />
+            </transformation>
+            <materials>
+                <material id="woodMaterial" />
+            </materials>
+            <texture id="wood" length_s="1" length_t="1" />
+            <children>
+                <componentref id="tableTop" />
+                <componentref id="tableLegs" />
+                <componentref id="chair" />
+            </children>
+        </component>
+
+        <component id="table3">
+            <transformation>
+                <translate x="0" y="0" z="-45" />
+                <scale x="1" y="6.5" z="6.5" />
+                <translate x="2.2" y="2.25" z="-2.25" />
+                <rotate axis="z" angle="-90" />
+            </transformation>
+            <materials>
+                <material id="woodMaterial" />
+            </materials>
+            <texture id="wood" length_s="1" length_t="1" />
+            <children>
+                <componentref id="tableTop" />
+                <componentref id="tableLegs" />
+                <componentref id="chair" />
+            </children>
+        </component>
+
+        <component id="table4">
+            <transformation>
+                <translate x="0" y="-70" z="45" />
+                <scale x="1" y="6.5" z="6.5" />
+                <translate x="2.2" y="2.25" z="-2.25" />
+                <rotate axis="z" angle="-90" />
+            </transformation>
+            <materials>
+                <material id="woodMaterial" />
+            </materials>
+            <texture id="wood" length_s="1" length_t="1" />
+            <children>
+                <componentref id="tableTop" />
+                <componentref id="tableLegs" />
+                <componentref id="chair" />
+            </children>
+        </component>
+
+        <component id="table5">
+            <transformation>
+                <translate x="0" y="-70" z="0" />
+                <scale x="1" y="6.5" z="6.5" />
+                <translate x="2.2" y="2.25" z="-2.25" />
+                <rotate axis="z" angle="-90" />
+            </transformation>
+            <materials>
+                <material id="woodMaterial" />
+            </materials>
+            <texture id="wood" length_s="1" length_t="1" />
+            <children>
+                <componentref id="tableTop" />
+                <componentref id="tableLegs" />
+            </children>
+        </component>
+
+        <component id="table6">
+            <transformation>
+                <translate x="0" y="-70" z="-45" />
+                <scale x="1" y="6.5" z="6.5" />
+                <translate x="2.2" y="2.25" z="-2.25" />
+                <rotate axis="z" angle="-90" />
+            </transformation>
+            <materials>
+                <material id="woodMaterial" />
+            </materials>
+            <texture id="wood" length_s="1" length_t="1" />
+            <children>
+                <componentref id="tableTop" />
+                <componentref id="tableLegs" />
+                <componentref id="chair" />
+            </children>
+        </component>
+        
+        <component id="tableTop">
+            <transformation>
+                <translate x="0" y="16" z="0" />
+                <scale x="4.5" y="1.5" z="4.5" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="inherit"/>
+            <texture id="inherit" />
             <children>
-                <primitiveref id="headlight" />
+                <componentref id="cube" />
             </children>
         </component>
-
-        <component id="headlight-left">
+       
+        <!--Table Legs-->
+        <component id="tableLegs">
             <transformation>
-                <translate x="-0.1" y="0.5" z="-2.5" />
+                <translate x="0" y="-2" z="0" />
+                <scale x="0.2" y="6" z="0.2" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="inherit"/>
+            <texture id="inherit" />
             <children>
-                <primitiveref id="headlight" />
+                <componentref id="leg1" />
+                <componentref id="leg2" />
+                <componentref id="leg3" />
+                <componentref id="leg4" />
             </children>
         </component>
-
-        <component id="train-box">
+        <component id="leg1">
             <transformation>
-                <translate x="2" y="-2" z="0" />
-                <scale x="1.5" y="2" z="1" />             
+                <translate x="8" y="0" z="8" />
+                <rotate axis="x" angle="-90" />
             </transformation>
             <materials>
-                <material id="darkGray" />
+                <material id="inherit" />
             </materials>
-            <texture id="metal" length_s="1" length_t="1"/>
+            <texture id="inherit" />
             <children>
-                <componentref id="main-box-bottom" />
-                <componentref id="main-box-left" />
-                <componentref id="main-box-right" />
-                <componentref id="main-box-front" />
-                <componentref id="main-box-back" />
-                <componentref id="trunk" />
-                <componentref id="hood" />
+                <primitiveref id="cylinder" />
+            </children>
+        </component>
+        <component id="leg2">
+            <transformation>
+                <translate x="8" y="0" z="-8" />
+                <rotate axis="x" angle="-90" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <primitiveref id="cylinder" />
+            </children>
+        </component>
+        <component id="leg3">
+            <transformation>
+                <translate x="-8" y="0" z="8" />
+                <rotate axis="x" angle="-90" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <primitiveref id="cylinder" />
+            </children>
+        </component>
+        <component id="leg4">
+            <transformation>
+                <translate x="-8" y="0" z="-8" />
+                <rotate axis="x" angle="-90" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <primitiveref id="cylinder" />
             </children>
         </component>
 
-        <component id="train-head">
+                <!--Lower walls-->
+        <component id="walls">
             <transformation>
-                <translate x="6.5" y="4.3" z="1.5" />
-                <rotate axis="z" angle="-30" />
+                <translate x="30" y="0" z="0" />
+                <scale x="1.5" y="1" z="1" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="wall_paint" length_s="1" length_t="1" />
+            <children>
+                <componentref id="wall1" />
+                <componentref id="wall2" />
+                <componentref id="wall3" />
+                <componentref id="wall4" />
+                <componentref id="door" />
+            </children>
+        </component>
+
+        <component id="wall1">
+            <transformation>
+                <scale x="30" y="200" z="1" />
+                <translate x="0.5" y="0" z="-100" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="wall_paint" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="wall2">
+            <transformation>
+                <scale x="30" y="200" z="1" />
+                <translate x="0.5" y="0" z="100" />
+                <rotate axis="x" angle="180" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="wall_paint" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="wall3">
+            <transformation>
+                <rotate axis="x" angle="90" />
+                <scale x="30" y="200" z="1" />
+                <translate x="0.5" y="0" z="100" />
+                <rotate axis="x" angle="180" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="wall_paint" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="wall4">
+            <transformation>
+                <rotate axis="x" angle="90" />
+                <scale x="30" y="200" z="1" />
+                <translate x="0.5" y="0" z="-100" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="wall_paint" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="door">
+            <transformation>
+                <rotate axis="y" angle="90" />
+                <translate x="-50" y="0" z="0" />
+                <rotate axis="x" angle="90" />
+                <scale x="40" y="40" z="1" />
+                <translate x="0" y="0" z="-99.9" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="door" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="window1">
+            <transformation>
+                <translate x="53" y="50" z="0" />
+                <rotate axis="z" angle="90" />
+                <scale x="38" y="38" z="1" />
+                <translate x="0.5" y="0" z="99.9" />
+                <rotate axis="x" angle="180" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="window" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="window2">
+            <transformation>
+                <translate x="53" y="-20" z="0" />
+                <rotate axis="z" angle="90" />
+                <scale x="38" y="38" z="1" />
+                <translate x="0.5" y="0" z="99.9" />
+                <rotate axis="x" angle="180" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="window" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="window3">
+            <transformation>
+                <translate x="53" y="-90" z="0" />
+                <rotate axis="z" angle="90" />
+                <scale x="38" y="38" z="1" />
+                <translate x="0.5" y="0" z="99.9" />
+                <rotate axis="x" angle="180" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="window" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="black-board">
+            <transformation>
+                <rotate axis="y" angle="-90" />
+                <rotate axis="x" angle="90" />
+                <translate x="0" y="-45" z="0" />
+                <scale x="95" y="40" z="1" />
+                <translate x="0" y="0" z="99.9" />
+                <rotate axis="x" angle="180" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="black-board" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+
+        <!--Lower walls-->
+        <component id="lower-walls">
+            <transformation>
+                <rotate axis="y" angle="0" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="plastic" length_s="1" length_t="1" />
+            <children>
+                <componentref id="lower1" />
+                <componentref id="lower2" />
+                <componentref id="lower3" />
+                <componentref id="lower4" />
+            </children>
+        </component>
+
+        <component id="lower1">
+            <transformation>
+                <scale x="30" y="200" z="1" />
+                <translate x="0.5" y="0" z="-100" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="lower2">
+            <transformation>
+                <scale x="30" y="200" z="1" />
+                <translate x="0.5" y="0" z="100" />
+                <rotate axis="x" angle="180" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="lower3">
+            <transformation>
+                <rotate axis="x" angle="90" />
+                <scale x="30" y="200" z="1" />
+                <translate x="0.5" y="0" z="100" />
+                <rotate axis="x" angle="180" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="lower4">
+            <transformation>
+                <rotate axis="x" angle="90" />
+                <scale x="30" y="200" z="1" />
+                <translate x="0.5" y="0" z="-100" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+        
+        <!--Floor-->
+        <component id="floor">
+            <transformation>
+                <scale x="1" y="200" z="200" />
+                <rotate axis="y" angle="90" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="floor" length_s="1" length_t="1" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+
+         <!--CUBE-->
+        <component id="cube">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <componentref id="retangle1" />
+                <componentref id="retangle2" />
+                <componentref id="retangle3" />
+                <componentref id="retangle4" />
+                <componentref id="retangle5" />
+                <componentref id="retangle6" />
+            </children>
+        </component>
+        <component id="retangle1">
+            <transformation>
+                <rotate axis="x" angle="90" />
+                <translate x="-0.5" y="0" z="0" />
+                <rotate axis="y" angle="-90" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+        <component id="retangle2">
+            <transformation>
+                <translate x="0" y="0.5" z="0" />
+                <rotate axis="x" angle="-90" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+        <component id="retangle3">
+            <transformation>
+                <translate x="0" y="-0.5" z="0" />
                 <rotate axis="x" angle="90" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
-            <texture id="thomas" length_s="1" length_t="1"/>
+            <texture id="inherit" />
             <children>
-                <primitiveref id="train-sphere" />
+                <primitiveref id="rectangle" />
             </children>
         </component>
-
-        <component id="train-neck">
+        <component id="retangle4">
             <transformation>
-                <translate x="-2.5" y="4.3" z="1.5" />
-                <rotate axis="y" angle="90" />       
+                <translate x="0.5" y="0" z="0" />
+                <rotate axis="y" angle="90" />
             </transformation>
             <materials>
-                <material id="gray" />
+                <material id="inherit" />
             </materials>
-            <texture id="metal" length_s="1" length_t="1"/>
+            <texture id="inherit" />
             <children>
-                <primitiveref id="train-cylinder" />
+                <primitiveref id="rectangle" />
             </children>
         </component>
-
-        <component id="train-chimney">
+        <component id="retangle5">
             <transformation>
-                <translate x="5" y="7" z="1.5" />
-                <rotate axis="x" angle="90" />       
+                <translate x="0" y="0" z="-0.5" />
+                <rotate axis="y" angle="-180" />
             </transformation>
             <materials>
-                <material id="gray" />
+                <material id="inherit" />
             </materials>
-            <texture id="metal" length_s="1" length_t="1"/>
+            <texture id="inherit" />
             <children>
-                <primitiveref id="chimney" />
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+        <component id="retangle6">
+            <transformation>
+                <translate x="0" y="0" z="0.5" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <primitiveref id="rectangle" />
             </children>
         </component>
 
-        <component id="main-box">
+
+         <component id="board">
             <transformation>
-                <transformationref id="noTransform" />             
+                <translate x="19" y="6" z="-6" />
+                <rotate axis="y" angle="90" />
+                <scale x="6" y="6" z="1" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="board" length_s="4" length_t="4"/>
+            <children>
+                <primitiveref id="surface" />
+                <componentref id="tray" />
+                <componentref id="board-tiles" />
+            </children>
+        </component>
+
+        <component id="board-tiles">
+            <transformation>
+                <transformationref id="noTransform"/>
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="plastic" length_s="2" length_t="2"/>
+            <children>
+                <componentref id="tile1" />
+                <componentref id="tile2" />
+                <componentref id="tile3" />
+                <componentref id="tile4" />
+                <componentref id="tile5" />
+                <componentref id="tile6" />
+                <componentref id="tile7" />
+                <componentref id="tile8" />
+                <componentref id="tile9" />
+                <componentref id="tile10" />
+                <componentref id="tile11" />
+                <componentref id="tile12" />
+                <componentref id="tile13" />
+                <componentref id="tile14" />
+                <componentref id="tile15" />
+                <componentref id="tile16" />
+                <componentref id="tile17" />
+                <componentref id="tile18" />
+                <componentref id="tile19" />
+                <componentref id="tile20" />
+                <componentref id="tile21" />
+                <componentref id="tile22" />
+                <componentref id="tile23" />
+                <componentref id="tile24" />
+                <componentref id="tile25" />
+            </children>
+        </component>
+
+        <component id="tile1">
+            <transformation>
+                <translate x="3.233" y="0.6466" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
             <texture id="inherit"/>
             <children>
-                <componentref id="main-box-bottom" />
-                <componentref id="main-box-left" />
-                <componentref id="main-box-right" />
-                <componentref id="main-box-front" />
-                <componentref id="main-box-back" />
-                <componentref id="trunk" />
-                <componentref id="hood" />
-                <componentref id="top-box" />
-                <componentref id="exhaust-pipe" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="exhaust-pipe">
+        <component id="tile2">
             <transformation>
-                <translate x="-4" y="1.35" z="0.5" />
-                <rotate axis="y" angle="-90" />
-            </transformation>
-            <materials>
-                <material id="brown" />
-                <material id="gray" />
-            </materials>
-            <texture id="metal" length_s="1" length_t="1"/>
-            <children>
-                <primitiveref id="pipe" />
-                <componentref id="car-smoke1" />
-                <componentref id="car-smoke2" />
-            </children>
-        </component>
-
-        <component id="car-smoke1">
-            <transformation>
-                <translate x="0" y="0.2" z="0.5" />
-            </transformation>
-            <animationref id="first-car-smoke" />
-            <materials>
-                <material id="darkGray" />
-            </materials>
-            <texture id="none"/>
-            <children>
-                <primitiveref id="smoke" />
-            </children>
-        </component>
-
-        <component id="train-smoke1">
-            <transformation>
-                <scale x="2" y="2" z="2" />
-            </transformation>
-            <animationref id="first-train-smoke" />
-            <materials>
-                <material id="darkGray" />
-            </materials>
-            <texture id="none"/>
-            <children>
-                <primitiveref id="smoke" />
-            </children>
-        </component>
-
-        <component id="car-smoke2">
-            <transformation>
-                <translate x="0.1" y="0.2" z="0.5" />        
-            </transformation>
-            <animationref id="second-car-smoke" />
-            <materials>
-                <material id="darkGray" />
-            </materials>
-            <texture id="none"/>
-            <children>
-                <primitiveref id="smoke" />
-            </children>
-        </component>
-
-        <component id="train-smoke2">
-            <transformation>
-                <scale x="2" y="2" z="2" />
-            </transformation>
-            <animationref id="second-train-smoke" />
-            <materials>
-                <material id="darkGray" />
-            </materials>
-            <texture id="none"/>
-            <children>
-                <primitiveref id="smoke" />
-            </children>
-        </component>
-
-        <component id="train-smoke3">
-            <transformation>
-                <scale x="2" y="2" z="2" />
-            </transformation>
-            <animationref id="third-train-smoke" />
-            <materials>
-                <material id="darkGray" />
-            </materials>
-            <texture id="none"/>
-            <children>
-                <primitiveref id="smoke" />
-            </children>
-        </component>
-
-        <component id="top-box">
-            <transformation>
-                <transformationref id="noTransform" />              
+                <translate x="2.5864" y="0.6466" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
             <texture id="inherit"/>
             <children>
-                <componentref id="back-right" />
-                <componentref id="back-left" />
-                <componentref id="front-right" />
-                <componentref id="front-left" />
-                <componentref id="right-side" />
-                <componentref id="left-side" /> 
-                <componentref id="top-top" />   
-                <componentref id="top-back" />
-                <componentref id="top-front" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="top-top">
+        <component id="tile3">
             <transformation>
-                <translate x="-2" y="3.2" z="0" />
-                <rotate axis="z" angle="-90" />  
-                <rotate axis="y" angle="-90" />  
-            </transformation>
-            <materials>
-                <material id="darkGray" />
-            </materials>
-            <texture id="inherit"/>
-            <children>
-                <primitiveref id="box-hood" />
-            </children>
-        </component>
-
-        <component id="top-back">
-            <transformation>
-                <translate x="-3" y="2.2" z="0" />
-                <rotate axis="z" angle="-44.98" />  
-                <rotate axis="y" angle="-90" />
-            </transformation>
-            <materials>
-                <material id="glass" />
-            </materials>
-            <texture id="glass" length_s="1" length_t="1"/>
-            <children>
-                <primitiveref id="back-window" />
-            </children>
-        </component>
-
-        <component id="top-front">
-            <transformation>
-                <translate x="0" y="3.2" z="0" />
-                <rotate axis="z" angle="-116.48" />  
-                <rotate axis="y" angle="-90" />
-            </transformation>
-            <materials>
-                <material id="glass" />
-            </materials>
-            <texture id="glass" length_s="1" length_t="1"/>
-            <children>
-                <primitiveref id="front-window" />
-            </children>
-        </component>
-
-        <component id="left-side">
-            <transformation>
-                <translate x="-2" y="3.2" z="0" />  
-                <rotate axis="x" angle="180" />
+                <translate x="1.9398" y="0.6466" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
             <texture id="inherit"/>
             <children>
-                <primitiveref id="top-side" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="right-side">
+        <component id="tile4">
             <transformation>
-                <translate x="-2" y="2.2" z="3" />  
+                <translate x="1.2932" y="0.6466" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
             <texture id="inherit"/>
             <children>
-                <primitiveref id="top-side" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="back-right">
+        <component id="tile5">
             <transformation>
-                <translate x="0.2" y="0.2" z="6" /> 
-                <rotate axis="x" angle="180" />
-                <rotate axis="z" angle="90" /> 
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="car" length_s="1.5" length_t="1"/>
-            <children>
-                <primitiveref id="back-triangle" />
-            </children>
-        </component>
-
-        <component id="back-left">
-            <transformation>
-                <translate x="0" y="0" z="-3.0" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="car" length_s="1.5" length_t="1"/>
-            <children>
-                <primitiveref id="back-triangle" />
-            </children>
-        </component>
-
-        <component id="front-right">
-            <transformation>
-                <translate x="0" y="0" z="6" /> 
-                <scale x="1" y="-1" z="1" />
-                <rotate axis="x" angle="180" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="car" length_s="1" length_t="2"/>
-            <children>
-                <primitiveref id="front-triangle" />
-            </children>
-        </component>
-
-        <component id="front-left">
-            <transformation>
-                <translate x="0" y="0" z="-3" />
-            </transformation>
-            <materials>
-                <material id="inherit" />
-            </materials>
-            <texture id="car" length_s="1" length_t="2"/>
-            <children>
-                <primitiveref id="front-triangle" />
-            </children>
-        </component>
-
-        <component id="main-box-bottom">
-            <transformation>
-                <translate x="0" y="1.2" z="0" />  
-                <rotate axis="x" angle="90" />            
+                <translate x="0.6466" y="0.6466" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
             <texture id="inherit"/>
             <children>
-                <primitiveref id="box-bottom" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="main-box-left">
+        <component id="tile6">
             <transformation>
-                <rotate axis="y" angle="180" />
-                <translate x="0" y="1.2" z="0" />  
+                <translate x="3.233" y="1.2932" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
             <texture id="inherit"/>
             <children>
-                <primitiveref id="box-side" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="main-box-right">
+        <component id="tile7">
             <transformation>
-                <translate x="0" y="1.2" z="3" />  
+                <translate x="2.5864" y="1.2932" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
             <texture id="inherit"/>
             <children>
-                <primitiveref id="box-side" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="main-box-front">
+        <component id="tile8">
             <transformation>
-                <translate x="4" y="1.2" z="3" />
-                <rotate axis="y" angle="90" />  
+                <translate x="1.9398" y="1.2932" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
             <texture id="inherit"/>
             <children>
-                <primitiveref id="box-front" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="main-box-back">
+        <component id="tile9">
             <transformation>
-                <translate x="-4" y="1.2" z="0" />
-                <rotate axis="y" angle="-90" />  
+                <translate x="1.2932" y="1.2932" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
             <texture id="inherit"/>
             <children>
-                <primitiveref id="box-front" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="trunk">
+        <component id="tile10">
             <transformation>
-                <translate x="-4" y="2.2" z="0" />
-                <rotate axis="z" angle="-90" />  
-                <rotate axis="y" angle="-90" />  
+                <translate x="0.6466" y="1.2932" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
             <texture id="inherit"/>
             <children>
-                <primitiveref id="box-front" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="hood">
+        <component id="tile11">
             <transformation>
-                <translate x="2" y="2.2" z="0" />
-                <rotate axis="z" angle="-90" />  
-                <rotate axis="y" angle="-90" />  
+                <translate x="3.233" y="1.9398" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
                 <material id="inherit" />
             </materials>
             <texture id="inherit"/>
             <children>
-                <primitiveref id="box-hood" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="front-axis">
+        <component id="tile12">
             <transformation>
-                <translate x="2" y="0.6" z="0" />
-                <scale x="0.15" y="0.15" z="1" />                
+                <translate x="2.5864" y="1.9398" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
-                <material id="gray" />
-                <material id="darkGray" />
+                <material id="inherit" />
             </materials>
-            <texture id="metal" length_s="1" length_t="1"/>
+            <texture id="inherit"/>
             <children>
-                <primitiveref id="axis" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="back-axis">
+        <component id="tile13">
             <transformation>
-                <translate x="-2" y="0.6" z="0" />
-                <scale x="0.15" y="0.15" z="1" />                
+                <translate x="1.9398" y="1.9398" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
-                <material id="gray" />
-                <material id="darkGray" />
+                <material id="inherit" />
             </materials>
-            <texture id="metal" length_s="1" length_t="1"/>
+            <texture id="inherit"/>
             <children>
-                <primitiveref id="axis" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-
-        <component id="train-tire1">
+        <component id="tile14">
             <transformation>
-                <translate x="2" y="1" z="0" />
-                <scale x="0.25" y="0.25" z="0.25" />
+                <translate x="1.2932" y="1.9398" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
-                <material id="lightBlue" />
-                <material id="gray" />
+                <material id="inherit" />
             </materials>
-            <texture id="metal" length_s="1" length_t="1"/>
+            <texture id="inherit"/>
             <children>
-                <componentref id="tire-rim" />                
-                <primitiveref id="tire" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="train-tire2">
+        <component id="tile15">
             <transformation>
-                <translate x="2" y="1" z="3" />
-                <scale x="0.25" y="0.25" z="0.25" />
+                <translate x="0.6466" y="1.9398" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
-                <material id="lightBlue" />
-                <material id="gray" />
+                <material id="inherit" />
             </materials>
-            <texture id="metal" length_s="1" length_t="1"/>
+            <texture id="inherit"/>
             <children>
-                <componentref id="tire-rim" />                
-                <primitiveref id="tire" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="train-tire3">
+        <component id="tile16">
             <transformation>
-                <translate x="-2" y="1" z="3" />
-                <scale x="0.25" y="0.25" z="0.25" />
+                <translate x="3.233" y="2.5864" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
-                <material id="lightBlue" />
-                <material id="gray" />
+                <material id="inherit" />
             </materials>
-            <texture id="metal" length_s="1" length_t="1"/>
+            <texture id="inherit"/>
             <children>
-                <componentref id="tire-rim" />                
-                <primitiveref id="tire" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="train-tire4">
+        <component id="tile17">
             <transformation>
-                <translate x="-2" y="1" z="0" />
-                <scale x="0.25" y="0.25" z="0.25" />
+                <translate x="2.5864" y="2.5864" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
-                <material id="lightBlue" />
-                <material id="gray" />
+                <material id="inherit" />
             </materials>
-            <texture id="metal" length_s="1" length_t="1"/>
+            <texture id="inherit"/>
             <children>
-                <componentref id="tire-rim" />                
-                <primitiveref id="tire" />
+                <primitiveref id="tile" />
+            </children>
+        </component>
+        
+        <component id="tile18">
+            <transformation>
+                <translate x="1.9398" y="2.5864" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="train-tire5">
+        <component id="tile19">
             <transformation>
-                <translate x="6" y="1" z="3" />
-                <scale x="0.25" y="0.25" z="0.25" />
+                <translate x="1.2932" y="2.5864" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
-                <material id="lightBlue" />
-                <material id="gray" />
+                <material id="inherit" />
             </materials>
-            <texture id="metal" length_s="1" length_t="1"/>
+            <texture id="inherit"/>
             <children>
-                <componentref id="tire-rim" />                
-                <primitiveref id="tire" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="train-tire6">
+        <component id="tile20">
             <transformation>
-                <translate x="6" y="1" z="0" />
-                <scale x="0.25" y="0.25" z="0.25" />
+                <translate x="0.6466" y="2.5864" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
-                <material id="lightBlue" />
-                <material id="gray" />
+                <material id="inherit" />
             </materials>
-            <texture id="metal" length_s="1" length_t="1"/>
+            <texture id="inherit"/>
             <children>
-                <componentref id="tire-rim" />                
-                <primitiveref id="tire" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="tire1">
+        <component id="tile21">
             <transformation>
-                <translate x="2" y="0.6" z="0" />
-                <scale x="0.15" y="0.15" z="0.15" />
+                <translate x="3.233" y="3.233" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
-                <material id="darkGray" />
-                <material id="gray" />
+                <material id="inherit" />
             </materials>
-            <texture id="tire" length_s="1" length_t="1"/>
+            <texture id="inherit"/>
             <children>
-                <componentref id="tire-rim" />                
-                <primitiveref id="tire" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="tire2">
+        <component id="tile22">
             <transformation>
-                <translate x="2" y="0.6" z="3" />
-                <scale x="0.15" y="0.15" z="0.15" />
+                <translate x="2.5864" y="3.233" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
-                <material id="darkGray" />
-                <material id="gray" />
+                <material id="inherit" />
             </materials>
-            <texture id="tire" length_s="1" length_t="1"/>
+            <texture id="inherit"/>
             <children>
-                <componentref id="tire-rim" />                
-                <primitiveref id="tire" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="tire3">
+        <component id="tile23">
             <transformation>
-                <translate x="-2" y="0.6" z="3" />
-                <scale x="0.15" y="0.15" z="0.15" />
+                <translate x="1.9398" y="3.233" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
-                <material id="darkGray" />
-                <material id="gray" />
+                <material id="inherit" />
             </materials>
-            <texture id="tire" length_s="1" length_t="1"/>
+            <texture id="inherit"/>
             <children>
-                <componentref id="tire-rim" />                
-                <primitiveref id="tire" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="tire4">
+        <component id="tile24">
             <transformation>
-                <translate x="-2" y="0.6" z="0" />
-                <scale x="0.15" y="0.15" z="0.15" />
+                <translate x="1.2932" y="3.233" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
-                <material id="darkGray" />
-                <material id="gray" />
+                <material id="inherit" />
             </materials>
-            <texture id="tire" length_s="1" length_t="1"/>
+            <texture id="inherit"/>
             <children>
-                <componentref id="tire-rim" />                
-                <primitiveref id="tire" />
+                <primitiveref id="tile" />
             </children>
         </component>
 
-        <component id="tire-rim">
+        <component id="tile25">
             <transformation>
-                <transformationref id="noTransform" />
+                <translate x="0.6466" y="3.233" z="0.05" />
+                <scale x="0.06" y="0.06" z="1" />
             </transformation>
             <materials>
-                <material id="gray" />
-                <material id="darkGray" />
+                <material id="inherit" />
             </materials>
-            <texture id="metal" length_s="1" length_t="1"/>
+            <texture id="inherit"/>
             <children>
-                <primitiveref id="rim" />
+                <primitiveref id="tile" />
             </children>
         </component>
+        
+        <component id="tray">
+            <transformation>
+                <translate x="-6" y="-2.5" z="0" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="piece" length_s="5" length_t="5"/>
+            <children>
+                <componentref id="red-pieces" />
+                <componentref id="green-pieces" />
+            </children>
+        </component>
+
+        <component id="red-pieces">
+            <transformation>
+                <translate x="5.5" y="1" z="0" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="piece" length_s="1" length_t="1"/>
+            <children>
+                <componentref id="piece1" />
+                <componentref id="piece2" />
+                <componentref id="piece3" />
+                <componentref id="piece4" />
+            </children>
+        </component>
+
+        <component id="green-pieces">
+            <transformation>
+                <translate x="5.5" y="6" z="0" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="piece" length_s="1" length_t="1"/>
+            <children>
+                <componentref id="piece5" />
+                <componentref id="piece6" />
+                <componentref id="piece7" />
+                <componentref id="piece8" />
+            </children>
+        </component>
+
+        <component id="piece1">
+            <transformation>
+                <translate x="1" y="1" z="0.05" />
+                <scale x="0.2" y="0.2" z="0.4" />
+            </transformation>
+            <materials>
+                <material id="red" />
+                <material id="yellow" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="piece" />
+            </children>
+        </component>
+
+        <component id="piece2">
+            <transformation>
+                <translate x="2" y="1" z="0.05" />
+                <scale x="0.2" y="0.2" z="0.4" />
+            </transformation>
+            <materials>
+                <material id="red" />
+                <material id="yellow" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="piece" />
+            </children>
+        </component>
+
+        <component id="piece3">
+            <transformation>
+                <translate x="3" y="1" z="0.05" />
+                <scale x="0.2" y="0.2" z="0.4" />
+            </transformation>
+            <materials>
+                <material id="red" />
+                <material id="yellow" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="piece" />
+            </children>
+        </component>
+
+        <component id="piece4">
+            <transformation>
+                <translate x="4" y="1" z="0.05" />
+                <scale x="0.2" y="0.2" z="0.4" />
+            </transformation>
+            <materials>
+                <material id="red" />
+                <material id="yellow" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="piece" />
+            </children>
+        </component>
+
+        <component id="piece5">
+            <transformation>
+                <translate x="1" y="1" z="0.05" />
+                <scale x="0.2" y="0.2" z="0.4" />
+            </transformation>
+            <materials>
+                <material id="green" />
+                <material id="yellow" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="piece" />
+            </children>
+        </component>
+
+        <component id="piece6">
+            <transformation>
+                <translate x="2" y="1" z="0.05" />
+                <scale x="0.2" y="0.2" z="0.4" />
+            </transformation>
+            <materials>
+                <material id="green" />
+                <material id="yellow" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="piece" />
+            </children>
+        </component>
+
+        <component id="piece7">
+            <transformation>
+                <translate x="3" y="1" z="0.05" />
+                <scale x="0.2" y="0.2" z="0.4" />
+            </transformation>
+            <materials>
+                <material id="green" />
+                <material id="yellow" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="piece" />
+            </children>
+        </component>
+
+        <component id="piece8">
+            <transformation>
+                <translate x="4" y="1" z="0.05" />
+                <scale x="0.2" y="0.2" z="0.4" />
+            </transformation>
+            <materials>
+                <material id="green" />
+                <material id="yellow" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="piece" />
+            </children>
+        </component>
+
+        
     </components>
 </lxs>
