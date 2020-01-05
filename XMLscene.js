@@ -439,7 +439,6 @@ class XMLscene extends CGFscene {
             return;
         }
         var values = this.movies[this.moviePlaying][this.movieAnimation];
-        this.graph.piecePositions[j] = [values[2], values[3]];
         this.graph.generateAnimation(values[0] + 1, values[1] - 8, this.selectedTheme);
     }
 
