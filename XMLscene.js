@@ -500,7 +500,6 @@ class XMLscene extends CGFscene {
                 }
                 this.tempCamera._up[0] = this.tempCamera._up[0] + this.cameraUpChange[0] / 60;
                 this.tempCamera._up[1] = this.tempCamera._up[1] + this.cameraUpChange[1] / 60;
-                console.log(this.tempCamera._up[1]);
                 this.tempCamera._up[2] = this.tempCamera._up[2] + this.cameraUpChange[2] / 60;
                 this.camera = this.tempCamera;
             }
