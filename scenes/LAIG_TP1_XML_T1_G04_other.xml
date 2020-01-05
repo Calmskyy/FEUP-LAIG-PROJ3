@@ -10,17 +10,13 @@
             <from x="50" y="40" z="-20" />
             <to x="0" y="10" z="-20" />
         </perspective>
-        <perspective id="thirdView" near="0.1" far="500" angle="58">
-            <from x="30" y="75" z="-45" />
-            <to x="25" y="-45" z="45" />
+        <perspective id="thirdView" near="0.1" far="500" angle="-58">
+            <from x="50" y="80" z="-20" />
+            <to x="20" y="-50" z="-20" />
         </perspective>
         <perspective id="fourthView" near="0.1" far="500" angle="58">
-            <from x="15" y="15" z="-15" />
-            <to x="0" y="-2" z="0" />
-        </perspective>
-        <perspective id="fifthView" near="0.1" far="500" angle="58">
-            <from x="50" y="10" z="-30" />
-            <to x="0" y="-2" z="0" />
+            <from x="50" y="-100" z="-20" />
+            <to x="20" y="100" z="-20" />
         </perspective>
     </views>
 
