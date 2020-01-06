@@ -286,7 +286,7 @@ class XMLscene extends CGFscene {
     updateGameMode() {
         if (this.game == undefined)
             return;
-        this.endGame();
+        this.endGame(0);
         this.graph.repositionPieces(this.selectedTheme);
     }
 
@@ -317,7 +317,7 @@ class XMLscene extends CGFscene {
      */
     forfeit() {
         if (this.game != undefined) {
-            this.endGame();
+            this.endGame(1);
         }
     }
 
@@ -392,7 +392,7 @@ class XMLscene extends CGFscene {
     /**
      * Ends the game, saving its sequence of moves and awarding a win to the player that won.
      */
-    endGame() {
+    endGame(time) {
         this.game = undefined;
         this.gamesPlayed++;
         if (this.movie.length != 0) {
@@ -404,13 +404,24 @@ class XMLscene extends CGFscene {
             this.moviesStored++;
             this.interface.updateMovieSelection();
         }
-        if (this.redTurn == true) {
-            this.redWins++;
-            this.redTurn = false;
-        }
-        else if (this.greenTurn == true) {
-            this.greenWins++;
-            this.greenTurn = false;
+        if (time == 0) {
+            if (this.redTurn == true) {
+                this.redWins++;
+                this.redTurn = false;
+            }
+            else if (this.greenTurn == true) {
+                this.greenWins++;
+                this.greenTurn = false;
+            }
+        } else {
+            if (this.redTurn == true) {
+                this.greenWins++;
+                this.greenTurn = false;
+            }
+            else if (this.greenTurn == true) {
+                this.redWins++;
+                this.redTurn = false;
+            }
         }
     }
 
@@ -427,7 +438,7 @@ class XMLscene extends CGFscene {
         this.movieAnimation = -3;
         this.graph.repositionPieces(this.selectedTheme);
         if (this.game != undefined) {
-            this.endGame();
+            this.endGame(0);
         }
         this.moviePlaying = movieNumber - 1;
     }
@@ -469,7 +480,7 @@ class XMLscene extends CGFscene {
                     this.timeLeft = Math.round(this.timeLeft * 100) / 100;
                     if (this.timeLeft <= 0) {
                         if (this.game != undefined) {
-                            this.endGame();
+                            this.endGame(1);
                         }
                     }
                 }
@@ -525,7 +536,7 @@ class XMLscene extends CGFscene {
     swapPlayer() {
         this.game.moveCounter++;
         if (this.game.gameOver) {
-            this.endGame();
+            this.endGame(0);
             return;
         }
 
