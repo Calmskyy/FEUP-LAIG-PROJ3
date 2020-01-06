@@ -391,8 +391,9 @@ class XMLscene extends CGFscene {
 
     /**
      * Ends the game, saving its sequence of moves and awarding a win to the player that won.
+     * @param result Decides if the win should be awarded to player 1 or player 2. 
      */
-    endGame(time) {
+    endGame(result) {
         this.game = undefined;
         this.gamesPlayed++;
         if (this.movie.length != 0) {
@@ -404,7 +405,7 @@ class XMLscene extends CGFscene {
             this.moviesStored++;
             this.interface.updateMovieSelection();
         }
-        if (time == 0) {
+        if (result == 0) {
             if (this.redTurn == true) {
                 this.redWins++;
                 this.redTurn = false;
@@ -834,8 +835,8 @@ class XMLscene extends CGFscene {
             this.rtt.attachToFrameBuffer()
             this.rules.rules.display();
             this.rtt.detachFromFrameBuffer()
+            this.render(this.camera);
         }
-        this.render(this.camera)
         if (this.displayRules)
             this.rules.display();
 
