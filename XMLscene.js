@@ -40,9 +40,9 @@ class XMLscene extends CGFscene {
         this.gl.depthFunc(this.gl.LEQUAL);
 
         this.displayRules = false;
+        this.automaticCameraChange = true;
         this.scaleFactor = 1;
         this.turnTime = 20;
-        this.displayAxis = true;
         this.selectedView = 0;
         this.selectedTheme = 0;
         this.score = "Red - 0 | 0 - Green";
@@ -532,10 +532,20 @@ class XMLscene extends CGFscene {
         if (this.redTurn == true) {
             this.redTurn = false;
             this.greenTurn = true;
+            if (this.automaticCameraChange)
+                if (this.playingOption == "Player v Player") {
+                    this.selectedView = 1;
+                    this.updateCamera();
+                }
         }
         else if (this.greenTurn == true) {
             this.redTurn = true;
             this.greenTurn = false;
+            if (this.automaticCameraChange)
+                if (this.playingOption == "Player v Player") {
+                    this.selectedView = 0;
+                    this.updateCamera();
+                }
         }
     }
 
@@ -791,10 +801,6 @@ class XMLscene extends CGFscene {
         this.applyViewMatrix();
 
         this.pushMatrix();
-        if (this.displayAxis)
-            this.axis.display();
-
-        
 
         this.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
 
@@ -820,7 +826,7 @@ class XMLscene extends CGFscene {
         }
         this.render(this.camera)
         if (this.displayRules)
-             this.rules.display();
+            this.rules.display();
 
 
     }

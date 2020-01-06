@@ -38,7 +38,6 @@ class MyInterface extends CGFinterface {
     initSceneGUI() {
         this.sceneGUI.destroy();
         this.sceneGUI = new dat.GUI();
-        this.sceneGUI.add(this.scene, 'displayAxis').name('Display Axis');
         this.sceneGUI.add(this.scene, 'scaleFactor', 0.1, 15).name('Scale Factor');
     }
 
@@ -49,6 +48,7 @@ class MyInterface extends CGFinterface {
         this.gameGUI.destroy();
         this.gameGUI = new dat.GUI();
         this.gameGUI.add(this.scene, 'displayRules').name('Rules');
+        this.gameGUI.add(this.scene, 'automaticCameraChange').name('Automatic Camera');
         this.gameGUI.add(this.scene, 'playingOption', this.scene.playingOptions).name('Game Mode').onChange(this.scene.updateGameMode.bind(this.scene));
         this.gameGUI.add(this.scene, 'difficulty', this.scene.difficulties).name('Difficulty').onChange(this.scene.updateDifficulty.bind(this.scene));
         this.gameGUI.add(this.scene, 'turnTime', 5, 30).name('Turn Time');
