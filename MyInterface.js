@@ -52,7 +52,7 @@ class MyInterface extends CGFinterface {
         this.gameGUI.add(this.scene, 'playingOption', this.scene.playingOptions).name('Game Mode').onChange(this.scene.updateGameMode.bind(this.scene));
         this.gameGUI.add(this.scene, 'difficulty', this.scene.difficulties).name('Difficulty').onChange(this.scene.updateDifficulty.bind(this.scene));
         this.gameGUI.add(this.scene, 'turnTime', 5, 30).name('Turn Time');
-        this.gameGUI.add(this.scene, 'timeLeft', 0, 30).name('Time Left').listen();
+        this.gameGUI.add(this.scene, 'timeLeft').name('Time Left').listen();
         this.gameGUI.add(this.scene, "startGame").name('Start Game');
         this.gameGUI.add(this.scene, "forfeit").name('Forfeit');
         this.gameGUI.add(this.scene, "score").name('Score').listen();

@@ -50,7 +50,7 @@ class XMLscene extends CGFscene {
         this.greenWins = 0;
         this.redTurn = false;
         this.greenTurn = false;
-        this.timeLeft = 20;
+        this.timeLeft = "Not In-Game";
         this.movie = [];
         this.movies = [];
         this.selectedMovie = -1;
@@ -466,6 +466,7 @@ class XMLscene extends CGFscene {
             if (this.checkForMovement() != 1)
                 if (this.timeLeft > 0) {
                     this.timeLeft -= deltaTime / 1000;
+                    this.timeLeft = Math.round(this.timeLeft * 100) / 100;
                     if (this.timeLeft <= 0) {
                         if (this.game != undefined) {
                             this.endGame();
@@ -473,6 +474,8 @@ class XMLscene extends CGFscene {
                     }
                 }
         }
+        else
+            this.timeLeft = "Not In-Game";
         if (this.moviePlaying != -1)
             this.updateMovie();
         this.time = t;
@@ -523,6 +526,7 @@ class XMLscene extends CGFscene {
         this.game.moveCounter++;
         if (this.game.gameOver) {
             this.endGame();
+            return;
         }
 
         if (this.redTurn == true) {
@@ -731,6 +735,9 @@ class XMLscene extends CGFscene {
         }
     }
 
+    /**
+     * Checks if the game is currently being played, and hands off control to a human or a CPU depending on game mode.
+     */
     logPicking() {
         if (this.game != undefined) {
             var result = this.checkForMovement();
@@ -742,6 +749,8 @@ class XMLscene extends CGFscene {
                 this.gameDelay++;
                 return;
             }
+            if (this.game == undefined)
+                return;
             switch (this.playingOption) {
                 case "Bot v Bot":
                     this.cpuPick();
