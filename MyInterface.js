@@ -48,6 +48,7 @@ class MyInterface extends CGFinterface {
     initGameGUI() {
         this.gameGUI.destroy();
         this.gameGUI = new dat.GUI();
+        this.gameGUI.add(this.scene, 'displayRules').name('Rules');
         this.gameGUI.add(this.scene, 'playingOption', this.scene.playingOptions).name('Game Mode').onChange(this.scene.updateGameMode.bind(this.scene));
         this.gameGUI.add(this.scene, 'difficulty', this.scene.difficulties).name('Difficulty').onChange(this.scene.updateDifficulty.bind(this.scene));
         this.gameGUI.add(this.scene, 'turnTime', 5, 30).name('Turn Time');

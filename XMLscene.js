@@ -39,6 +39,7 @@ class XMLscene extends CGFscene {
         this.gl.enable(this.gl.CULL_FACE);
         this.gl.depthFunc(this.gl.LEQUAL);
 
+        this.displayRules = false;
         this.scaleFactor = 1;
         this.turnTime = 20;
         this.displayAxis = true;
@@ -59,6 +60,7 @@ class XMLscene extends CGFscene {
         this.pieceMoves = [];
         this.moviePlaying = -1;
         this.movieAnimation = 0;
+        this.rules = new MyRules(this);
 
         this.enableLight1 = false;
         this.enableLight2 = false;
@@ -71,6 +73,8 @@ class XMLscene extends CGFscene {
 
         this.cameras = [];
         this.updatingCamera = false;
+
+        this.rtt = new CGFtextureRTT(this, this.gl.canvas.width, this.gl.canvas.height);
 
         this.axis = new CGFaxis(this);
         this.setUpdatePeriod(1000 / FPS);
@@ -360,6 +364,13 @@ class XMLscene extends CGFscene {
                 }
             }
         }
+    }
+
+    /**
+     * Shows rules of the game
+     */
+    showRules() {
+        this.rules.display();
     }
 
     /**
@@ -774,6 +785,8 @@ class XMLscene extends CGFscene {
         if (this.displayAxis)
             this.axis.display();
 
+        
+
         this.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
 
         if (this.sceneInited) {
@@ -791,7 +804,15 @@ class XMLscene extends CGFscene {
     display() {
         this.logPicking();
         this.clearPickRegistration();
-        if (this.sceneInited)
-            this.render(this.camera)
+        if (this.sceneInited) {
+            this.rtt.attachToFrameBuffer()
+            this.rules.rules.display();
+            this.rtt.detachFromFrameBuffer()
+        }
+        this.render(this.camera)
+        if (this.displayRules)
+             this.rules.display();
+
+
     }
 }
