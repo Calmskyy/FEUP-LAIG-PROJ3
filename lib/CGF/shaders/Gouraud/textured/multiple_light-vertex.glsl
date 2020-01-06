@@ -1,6 +1,9 @@
-attribute vec3 aVertexPosition;
-attribute vec3 aVertexNormal;
-attribute vec2 aTextureCoord;
+#version 300 es
+precision highp float;
+
+in vec3 aVertexPosition;
+in vec3 aVertexNormal;
+in vec2 aTextureCoord;
 
 uniform bool uUseTexture;
 
@@ -43,8 +46,8 @@ uniform lightProperties uLight[NUMBER_OF_LIGHTS];
 uniform materialProperties uFrontMaterial;
 uniform materialProperties uBackMaterial;
 
-varying vec4 vFinalColor;
-varying vec2 vTextureCoord;
+out vec4 vFinalColor;
+out vec2 vTextureCoord;
 
 vec4 lighting(vec4 vertex, vec3 E, vec3 N) {
 

@@ -1,5 +1,8 @@
-attribute vec3 aVertexPosition;
-attribute vec3 aVertexNormal;
+#version 300 es 
+precision highp float;
+
+in vec3 aVertexPosition;
+in vec3 aVertexNormal;
 
 struct lightProperties {
     vec4 position;                  // Default: (0, 0, 1, 0)
@@ -40,7 +43,7 @@ uniform lightProperties uLight[NUMBER_OF_LIGHTS];
 uniform materialProperties uFrontMaterial;
 uniform materialProperties uBackMaterial;
 
-varying vec4 vFinalColor;
+out vec4 vFinalColor;
 
 vec4 lighting(vec4 vertex, vec3 E, vec3 N) {
 

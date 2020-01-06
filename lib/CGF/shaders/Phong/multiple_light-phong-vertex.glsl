@@ -1,7 +1,10 @@
+#version 300 es 
+precision highp float;
+
 #define NUMBER_OF_LIGHTS 4
 
-attribute vec3 aVertexPosition;
-attribute vec3 aVertexNormal;
+in vec3 aVertexPosition;
+in vec3 aVertexNormal;
 
 uniform mat4 uMVMatrix;
 uniform mat4 uPMatrix;
@@ -24,9 +27,9 @@ struct lightProperties {
 
 uniform lightProperties uLight[NUMBER_OF_LIGHTS];
 
-varying vec3 vNormal;
-varying vec3 vLightDir[NUMBER_OF_LIGHTS];
-varying vec3 vEyeVec;
+out vec3 vNormal;
+out vec3 vLightDir[NUMBER_OF_LIGHTS];
+out vec3 vEyeVec;
 
 void main() {
     vec4 vertex = uMVMatrix * vec4(aVertexPosition, 1.0);

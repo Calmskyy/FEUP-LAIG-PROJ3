@@ -1,9 +1,10 @@
-#ifdef GL_ES
+#version 300 es
 precision highp float;
-#endif
 
-varying vec4 vFinalColor;
-varying vec2 vTextureCoord;
+in vec4 vFinalColor;
+in vec2 vTextureCoord;
+
+out vec4 fragColor;
 
 uniform sampler2D uSampler;
 
@@ -14,10 +15,10 @@ void main() {
 	// When based on a non-changing uniform, it is usually optimized.
 	if (uUseTexture)
 	{
-		vec4 textureColor = texture2D(uSampler, vTextureCoord);
-		gl_FragColor = textureColor * vFinalColor;
+		vec4 textureColor = texture(uSampler, vTextureCoord);
+		fragColor = textureColor * vFinalColor;
 	}
 	else
-		gl_FragColor = vFinalColor;
+		fragColor = vFinalColor;
 
 }

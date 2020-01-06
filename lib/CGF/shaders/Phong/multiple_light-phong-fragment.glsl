@@ -1,6 +1,5 @@
-#ifdef GL_ES
+#version 300 es 
 precision highp float;
-#endif
 
 #define NUMBER_OF_LIGHTS 4
 
@@ -39,10 +38,11 @@ uniform lightProperties uLight[NUMBER_OF_LIGHTS];
 uniform materialProperties uFrontMaterial;
 uniform materialProperties uBackMaterial;
 
-varying vec3 vNormal;
-varying vec3 vLightDir[NUMBER_OF_LIGHTS];
-varying vec3 vEyeVec;
+in vec3 vNormal;
+in vec3 vLightDir[NUMBER_OF_LIGHTS];
+in vec3 vEyeVec;
 
+out vec4 fragColor;
 
 vec4 calcDirectionalLight(int i, vec3 E, vec3 L, vec3 N) {
     float lambertTerm = dot(N, -L);
@@ -116,5 +116,5 @@ void main() {
 
     vec3 E = normalize(vEyeVec);
 
-    gl_FragColor = lighting(E, N);
+    fragColor = lighting(E, N);
 }

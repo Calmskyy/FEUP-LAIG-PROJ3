@@ -1,5 +1,8 @@
-attribute vec3 aVertexPosition;
-attribute vec3 aVertexNormal;
+#version 300 es 
+precision highp float;
+
+in vec3 aVertexPosition;
+in vec3 aVertexNormal;
 
 uniform mat4 uMVMatrix;
 uniform mat4 uPMatrix;
@@ -9,7 +12,7 @@ uniform vec3 uLightDirection;
 uniform vec4 uLightDiffuse;
 uniform vec4 uMaterialDiffuse;
 
-varying vec4 vFinalColor;
+out vec4 vFinalColor;
 
 void main() {
     vec3 light = vec3(uMVMatrix * vec4(uLightDirection, 0.0));

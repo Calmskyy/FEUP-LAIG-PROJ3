@@ -1,6 +1,5 @@
-#ifdef GL_ES
+#version 300 es 
 precision highp float;
-#endif
 
 uniform mat4 uMVMatrix;
 
@@ -15,8 +14,10 @@ uniform vec4 uMaterialAmbient;
 uniform vec4 uMaterialDiffuse;
 uniform vec4 uMaterialSpecular;
 
-varying vec3 vNormal;
-varying vec3 vEyeVec;
+in vec3 vNormal;
+in vec3 vEyeVec;
+
+out vec4 fragColor;
 
 void main() {
 	// Normalize light to calculate lambertTerm
@@ -47,5 +48,5 @@ void main() {
 	vec4 finalColor = Ia + Id + Is;
      finalColor.a = 1.0;
 
-     gl_FragColor = finalColor;
+     fragColor = finalColor;
 }

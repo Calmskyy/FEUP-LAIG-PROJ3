@@ -1,11 +1,14 @@
-attribute vec3 aVertexPosition;
+#version 300 es
+precision highp float;
+
+in vec3 aVertexPosition;
 
 uniform bool uUseTexture;
 
 uniform mat4 uMVMatrix;
 uniform mat4 uPMatrix;
 
-varying vec4 vFinalColor;
+out vec4 vFinalColor;
 
 uniform vec4 uPickColor;
 

@@ -1,12 +1,15 @@
-attribute vec3 aVertexPosition;
-attribute vec3 aVertexNormal;
+#version 300 es 
+precision highp float;
+
+in vec3 aVertexPosition;
+in vec3 aVertexNormal;
 
 uniform mat4 uMVMatrix;
 uniform mat4 uPMatrix;
 uniform mat4 uNMatrix;
 
-varying vec3 vNormal;
-varying vec3 vEyeVec;
+out vec3 vNormal;
+out vec3 vEyeVec;
 
 void main() {
     vec4 vertex = uMVMatrix * vec4(aVertexPosition, 1.0);
